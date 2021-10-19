@@ -12,7 +12,7 @@
 - Main Options
 - Nav
 
-## Main Options
+## Pages
 
 *Again, current page (within `<main> </main>` will be displayed with a switch case unless Ben builds in something different.*
 
