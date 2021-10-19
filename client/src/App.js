@@ -9,18 +9,16 @@ import PokeStorePage from "./pages/PokeStorePage";
 function App() {
 
   //set state at APP level to track all pokemon in our pokedexDB 
-  const [pokedex, setPokedex]  = useState([])
+  const [pokedex, setPokedex]  = useState([]);
+  console.log('APP POKEDEX');
   console.log(pokedex);
-
 
   //useEffect to call our API file on App load and setPokedex to the returned array of pokemon 
   useEffect(() => {
-    //pokemon getAll fetch
+    // pokemon getAll fetch
     pokeAPI.get('/pokemon/', {
 
     }).then(response => {
-      console.log('RESPONSE');
-      console.log(response);
       console.log(response.data.results);
       
       const pokemonURL = response.data.results.map(pokemon => {

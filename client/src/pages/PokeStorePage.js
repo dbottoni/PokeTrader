@@ -1,30 +1,57 @@
-import React, { Component, useEffect, useState  } from 'react';
-import { pokemonJSON } from '../utils/pokeAPI';
-import axios from 'axios';
+import React, { Component, useEffect, useState } from "react";
+import axios from "axios";
+
+export default function PokeStorePage(props) {
+  const { pokedex } = props;
+
+  const [pokemonJSON, setPokemonJSON] = useState([]);
+  console.log("POKEMON JSON");
+  console.log(pokemonJSON);
+
+  useEffect(() => {
+      fetchJSON(pokedex)
+
+  }, [pokedex] );
 
 
-export default function PokeStorePage (props){
-    console.log(props);
-    const { pokedex } = props
-    console.log(pokedex);
+  //fetch pokemon JSON and store as pokemonJSON state
+  const fetchJSON = (pokedex) => {
+    pokedex.map((url) => {
+      axios.get(url).then((response) => {
+          console.log(response);
 
-   pokedex.map( url => {
-       axios.get(url).then(response => {
-           console.log(response.data);
+        setPokemonJSON(prevState => {
+            return [...prevState, response.data ]
+        });
+      });
+    });
+  };
 
-           //setPokedex(response.data)
-       })
-   })
-    //functions to handle: openPokemonModal, filter/search, buyPokemon, buyCoins (open a modal on store page? or buy coins in profile?)
+  //functions to handle: openPokemonModal, filter/search, buyPokemon, buyCoins (open a modal on store page? or buy coins in profile?)
 
-
-        //render our store page with all pokemon 
+  //render our store page with all pokemon
+  return (
+    <>
+      <div>Pokemon Store</div>
+      {pokemonJSON.map((pokemon) => {
         return (
-            <div>
-
-              Pokemon Store   
-              {/* {this.props.pokedex.map()} */}
-            </div>
-        )
-    
+          <>
+            <p>{pokemon.name}</p>
+            <div>{pokemon.base_experience}</div>
+          </>
+        );
+      })}
+    </>
+  );
 }
+
+const pokemonModel = [
+  {
+    pokeName: "test",
+    base_experience: 1,
+  },
+  {
+    pokeName: "test 2",
+    base_experience: 2,
+  },
+];
