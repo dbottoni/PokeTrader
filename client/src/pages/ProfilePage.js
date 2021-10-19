@@ -1,20 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class ProfilePage extends Component {
+export default function ProfilePage() {
 
+    //access user data via state or Context? 
 
-    //access user data via state or Context?
-
-
-
-    render() {
-
-        //render user's page: user info, pokemon, currentTeam, avatar?
-
-        return (
-            <div>
-                
-            </div>
-        )
-    }
+    return (
+        <div>
+            Profile Page
+        </div>
+    )
 }
+

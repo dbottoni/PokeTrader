@@ -5,31 +5,28 @@ export default function PokeStorePage(props) {
   const { pokedex } = props;
 
   const [pokemonJSON, setPokemonJSON] = useState([]);
-//   console.log("POKEMON JSON");
-  console.log(pokemonJSON);
 
   //useEffect - fetchJSON will probably go in another file to save as global state
-  //envoke fetchJSON on mount 
+  //envoke fetchJSON on mount
   useEffect(() => {
-      fetchJSON(pokedex)
-
-  }, [pokedex] );
-
+    fetchJSON(pokedex);
+  }, [pokedex]); 
 
   //fetch pokemon JSON and store as pokemonJSON state
   const fetchJSON = (pokedex) => {
     // eslint-disable-next-line array-callback-return
     pokedex.map((url) => {
       axios.get(url).then((response) => {
-
-        //prevState => ...prevState to add to state 
-        setPokemonJSON(prevState => {
-            return [...prevState, response.data ]
+        //prevState => ...prevState to add to state
+        setPokemonJSON((prevState) => {
+          return [...prevState, response.data];
         });
       });
     });
   };
 
+  console.log("POKEMON JSON");
+  console.log(pokemonJSON);
   //functions to handle: openPokemonModal, filter/search, buyPokemon, buyCoins (open a modal on store page? or buy coins in profile?)
 
   //render our store page with all pokemon
@@ -47,14 +44,3 @@ export default function PokeStorePage(props) {
     </>
   );
 }
-
-// const pokemonModel = [
-//   {
-//     pokeName: "test",
-//     base_experience: 1,
-//   },
-//   {
-//     pokeName: "test 2",
-//     base_experience: 2,
-//   },
-// ];
