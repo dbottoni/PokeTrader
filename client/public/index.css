@@ -52,6 +52,17 @@ a:hover {
   margin-bottom: 1em;
 }
 
+.indicator {
+    color: var(--royal-blue-dark);
+    font-family: var(--header-font);
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  
+  a span:hover, .indicator.is-active {
+    color: var(--goldenrod);
+  }
+
 a.navbar-item:hover,
 a.navbar-item.is-active {
   color: var(--goldenrod);
@@ -131,6 +142,22 @@ a.footer {
 /* HOME */
 section.hero {
   background-color: var(--french-blue-light);
+  align-items: center;
+}
+
+.home-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+
+.title {
+    font-size: 3rem;
+}
+
+img.home {
+  width: 500px;
 }
 
 /* 404 */

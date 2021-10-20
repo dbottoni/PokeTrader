@@ -14,9 +14,6 @@ function Nav() {
   //           </li>
   //           <li className="mx-1">
   //             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-  //             <a href="/" onClick={() => Auth.logout()}>
-  //               Logout
-  //             </a>
   //           </li>
   //         </ul>
   //       );
@@ -60,21 +57,32 @@ function Nav() {
         <div className="navbar-menu container">
           <div className="navbar-start">
             <Link to="/">
-              <a className="navbar-item" onclick="myFunction()">HOME</a>
+              <a className="navbar-item" onclick="myFunction()">
+                HOME
+              </a>
             </Link>
             <Link to="/trade">
-            <a className="navbar-item">TRADE</a>
+              <a className="navbar-item">TRADE</a>
             </Link>
             <Link to="/team">
-            <a className="navbar-item">TEAM</a>
+              <a className="navbar-item">TEAM</a>
             </Link>
           </div>
 
           <div className="navbar-end mt-3 mb-3">
-            <a className="button is-primary">Sign Up</a>
-            <a className="button is-primary">Login</a>
-            <a className="button is-primary">Account</a>
-            <a className="button is-primary">Logout</a>
+            <Link to="/signup">
+              <a className="button is-primary">Sign Up</a>
+            </Link>
+            <Link to="/login">
+              <a className="button is-primary">Login</a>
+            </Link>
+            <Link to="/account">
+              <a className="button is-primary">Account</a>
+            </Link>
+            <Link to="/logout">
+              <a className="button is-primary">Logout</a>
+              {/* <a href="/" className="button is-primary" onClick={() => Auth.logout()}>Logout</a> */}
+            </Link>
           </div>
         </div>
       </nav>

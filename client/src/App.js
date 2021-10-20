@@ -59,7 +59,7 @@ function App() {
             />
             <Route exact path="/team" component={Team} />
               {/* <Route exact path="/products/:id" component={Detail} /> */}
-            <Route exact path="/404" component={NoMatch} />
+            <Route component={NoMatch} />
           </Switch>
         </div>
         <Footer />
