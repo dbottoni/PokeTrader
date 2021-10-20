@@ -5,7 +5,9 @@ import {
   generatePokemonStats,
   generatePokemonLevel,
 } from "./utils/actualizedStats";
+
 import { setCardColor } from "./utils/helpers";
+import { capitalizeName } from "./utils/helpers";
 
 import PokeStorePage from "./pages/PokeStorePage";
 import ProfilePage from "./pages/ProfilePage";

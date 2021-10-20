@@ -59,3 +59,11 @@ export const setCardColor = (type) => {
 }
 
 console.log(setCardColor('steel'))
+
+
+
+export const capitalizeName = (str) => {
+ return str[0].toUpperCase() + str.slice(1)
+}
+
+console.log(capitalizeName('charizard'))

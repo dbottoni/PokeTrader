@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-
-export default function PokeStorePage({pokedex}) {
-  
-//   console.log('POKEDEX IN STORE');
+export default function PokeStorePage({ pokedex }) {
+  console.log("POKEDEX IN STORE");
   console.log(pokedex);
-
-
 
   //functions to handle: openPokemonModal, filter/search, buyPokemon, buyCoins (open a modal on store page? or buy coins in profile?)
 
@@ -18,35 +14,38 @@ export default function PokeStorePage({pokedex}) {
 
       {pokedex.map((pokemon) => {
         return (
-        <>
-          <div key={pokemon.id}>
-            <p>{pokemon.name}</p>
-            {pokemon.types.map(type => {
-              return <p>{type.type.name}</p> 
-            })}
-            <div>{pokemon.base_experience}</div>
+          <div key={pokemon.id} style={{ border: "2px solid black" }}>
+            <div>
+              <h3>{pokemon.name}</h3>
+              <img alt="pokemon" src={pokemon.sprites.front_default} />
+              <p> {pokemon.types.map((type) => type.type.name + " ")}</p>
+            </div>
+
+            <div>
+              <h3>Base XP: {pokemon.base_experience} </h3>
+              <p>
+                {" "}
+                Base Stats:
+                <ul>
+                  {pokemon.stats.map(stat => {
+                    return (
+                    <li>{stat.stat.name}: {stat.base_stat}</li>
+                    )
+                  })}
+                </ul>
+              </p>
+            </div>
           </div>
-        </>
         );
       })}
-
-      
     </>
   );
 }
 
+////old code
 
-
-
-
-
-
-
-////old code 
-
-
-  //useEffect - fetchJSON will probably go in another file to save as global state
-  //envoke fetchJSON on mount
+//useEffect - fetchJSON will probably go in another file to save as global state
+//envoke fetchJSON on mount
 //   useEffect(() => {
 //     fetchJSON(pokedex);
 //   }, []);
@@ -55,7 +54,7 @@ export default function PokeStorePage({pokedex}) {
 //   const fetchJSON = ( (pokedex) => {
 //     // eslint-disable-next-line array-callback-return
 //     pokedex.map((url) => {
-        
+
 //       axios.get(url).then((response) => {
 //         //prevState => ...prevState to add to state
 //         setPokemonJSON((prevState) => {
