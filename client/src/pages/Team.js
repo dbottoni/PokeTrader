@@ -39,8 +39,8 @@ const Team = () => {
 
                 </div>
               </div>
-              <footer class="card-footer">
-                <a href="#" class="card-footer-item" onClick={removeFromTeam}>
+              <footer className="card-footer">
+                <a href="#" className="card-footer-item" onClick={removeFromTeam}>
                   Remove From Team
                 </a>
               </footer>

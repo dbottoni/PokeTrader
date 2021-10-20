@@ -9,7 +9,7 @@ function Footer() {
           <a className="column">About PokeTraders</a>
         </div>
         <p className="footer-yellow">
-          <span class="copyright">&#169;</span>2021 PocketTraders{" "}
+          <span className="copyright">&#169;</span>2021 PocketTraders{" "}
         </p>
         <p className="footer-yellow">
           {" "}

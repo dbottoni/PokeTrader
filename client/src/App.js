@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import pokeAPI from "./utils/pokeAPI";
-// import { pokemonJSON } from './utils/pokeAPI';
+import { pokemonJSON } from './utils/pokeAPI';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Nav from "./components/Nav";
@@ -17,7 +17,7 @@ import NoMatch from "./pages/NoMatch";
 function App() {
   //set state at APP level to track all pokemon in our pokedexDB
   const [pokedex, setPokedex] = useState([]);
-  console.log(pokedex);
+  // console.log(pokedex);
 
   //useEffect to call our API file on App load and setPokedex to the returned array of pokemon
   useEffect(() => {
@@ -25,9 +25,9 @@ function App() {
     pokeAPI
       .get("/pokemon/", {})
       .then((response) => {
-        console.log("RESPONSE");
-        console.log(response);
-        console.log(response.data.results);
+        // console.log("RESPONSE");
+        // console.log(response);
+        // console.log(response.data.results);
 
         const pokemonURL = response.data.results.map((pokemon) => {
           return pokemon.url;

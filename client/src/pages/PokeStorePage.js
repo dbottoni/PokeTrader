@@ -3,9 +3,9 @@ import { pokemonJSON } from "../utils/pokeAPI";
 import axios from "axios";
 
 export default function PokeStorePage(props) {
-  //   console.log(props);
-  const { pokedex } = props;
-  //   console.log(pokedex);
+    console.log(props);
+  // const { pokedex } = props;
+    // console.log(pokedex);
 
   // pokedex.map((url) => {
   //   axios.get(url).then((response) => {
@@ -79,8 +79,8 @@ export default function PokeStorePage(props) {
               <p>data.types[0].type.name</p>
             </div>
           </div>
-          <footer class="card-footer">
-            <a href="#" class="card-footer-item" onClick={addToTeam}>
+          <footer className="card-footer">
+            <a href="#" className="card-footer-item" onClick={addToTeam}>
               Add to Team
             </a>
           </footer>
