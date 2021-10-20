@@ -1,43 +1,51 @@
 import React, { useState, useEffect } from "react";
 import pokeAPI from "./utils/pokeAPI";
+import axios from "axios";
 import {
   generatePokemonStats,
   generatePokemonLevel,
 } from "./utils/actualizedStats";
+import { setCardColor } from "./utils/helpers";
+
 import PokeStorePage from "./pages/PokeStorePage";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   //set state at APP level to track all pokemon in our pokedexDB
   const [pokedex, setPokedex] = useState([]);
-  // console.log(pokedex);
+  console.log("POKEDEX");
+  console.log(pokedex);
 
-  //how do I call this useEffect exactly ONCE, not on every app load?
-  //useEffect to call our API file on App load and setPokedex to the returned array of pokemon
+
   useEffect(() => {
-    // pokemon getAll fetch
-    pokeAPI
-      .get("/pokemon/", {})
-      .then((response) => {
-        // console.log(response.data.results);
+    // on load, fetch pokemon data and save to state
+    const populateData = async () => {
+      const pokedexData = [];
 
-        const pokemonURL = response.data.results.map((pokemon) => {
-          return pokemon.url;
+      const response = await pokeAPI.get("/pokemon/", {});
+      const URLs = response.data.results.map((pokemon) => pokemon.url);
+      
+      URLs.map((url) => {
+        axios.get(url).then((res) => {
+          pokedexData.push(res.data);
+
+          setPokedex(pokedexData);
         });
-
-        setPokedex(pokemonURL);
-      })
-      .catch((err) => console.log(err));
-
-    //[] run once on app load
+      });
+    };
+    populateData();
   }, []);
 
   return (
     //conditionally render pages
     <PokeStorePage pokedex={pokedex} />
+    // <ProfilePage />
   );
 }
 
 export default App;
+
+
 
 
 
