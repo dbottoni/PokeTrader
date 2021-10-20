@@ -64,11 +64,11 @@ function Nav() {
             <a className="navbar-item">TEAM</a>
           </div>
 
-          <div className="navbar-end">
+          <div className="navbar-end mt-3 mb-3">
             <a className="button is-primary">Sign Up</a>
-            <a className="button is-light">Login</a>
+            <a className="button is-primary">Login</a>
             <a className="button is-primary">Account</a>
-            <a className="button is-light">Logout</a>
+            <a className="button is-primary">Logout</a>
           </div>
         </div>
       </nav>

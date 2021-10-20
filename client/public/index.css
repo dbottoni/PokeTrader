@@ -7,10 +7,14 @@
     --header-font: 'Press Start 2P', cursive;
     --content-font: 'Ubuntu', sans-serif;
 }
+/* Coolors Exported Palette - https://coolors.co/0a285f-0075be-d5a100-ffcc00-ffffff */
+
 
 body {
     background-color: var(--white);
 }
+
+/* CONTENT */
 
 h1, h2, h3, h4, h5 {
     font-family: var(--header-font);
@@ -22,14 +26,42 @@ p {
     color: black;
 }
 
+/* NAV */
+
 .navbar-item {
     color: var(--white);
+    font-family: var(--header-font);
+}
+
+a.navbar-item:hover, a.navbar-item.is-active {
+    color: var(--goldenrod);
     font-family: var(--header-font);
 }
 
 .footer, .navbar {
     background-color: var(--royal-blue-dark);
 }
+
+a.button.is-primary {
+    background-color: var(--royal-blue-dark);
+    font-family: var(--content-font);
+    color: var(--white);
+    border-bottom: var(--white) double;
+    border-right: var(--white) double;
+}
+
+a.button.is-primary:hover, a.button.is-primary.is-active {
+    background-color: var(--royal-blue-dark);
+    font-family: var(--content-font);
+    color: var(--goldenrod);
+    border-bottom: var(--goldenrod) double;
+    border-right: var(--goldenrod) double;
+}
+
+
+
+
+/* FOOTER */
 
 footer p {
 font-family: var(--content-font);
@@ -39,6 +71,3 @@ color: var(--white);
 .footer-yellow {
     color: var(--sunglow);
 }
-
-/* Coolors Exported Palette - https://coolors.co/0a285f-0075be-d5a100-ffcc00-ffffff
-​
