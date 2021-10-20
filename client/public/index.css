@@ -1,0 +1,26 @@
+:root {
+    --royal-blue-dark: #0a285fff;
+    --french-blue: #0075beff;
+    --goldenrod: #d5a100ff;
+    --sunglow: #ffcc00ff;
+    --white: #ffffffff;    
+    --header-font: 'Press Start 2P', cursive;
+    --content-font: 'Ubuntu', sans-serif;
+}
+
+body {
+    background-color: var(--white);
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: var(--header-font);
+    color: black;
+}
+
+p {
+    font-family: var(--content-font);
+    color: black;
+}
+
+/* Coolors Exported Palette - https://coolors.co/0a285f-0075be-d5a100-ffcc00-ffffff
+​

@@ -22,7 +22,7 @@ export default function PokeStorePage (props){
         return (
             <div>
 
-              Pokemon Store   
+              <h1>Pokemon Store</h1>
               {/* {this.props.pokedex.map()} */}
             </div>
         )
