@@ -1,11 +1,11 @@
 import React from "react";
 
-const Home = () => {
+const Team = () => {
   return (
       <section className="hero is-fullheight">
         <div className="hero-body">
           <div className="">
-            <p className="title">Fullheight hero</p>
+            <p className="title">Team</p>
             <p className="subtitle">Fullheight subtitle</p>
           </div>
         </div>
@@ -13,4 +13,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Team;

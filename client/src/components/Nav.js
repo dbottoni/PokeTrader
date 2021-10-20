@@ -44,7 +44,7 @@ function Nav() {
         PokeTrader
       </h1>
 
-      <nav className="navbar mt-3 mb-3">
+      <nav className="navbar">
         <a
           role="button"
           className="navbar-burger"
@@ -59,9 +59,15 @@ function Nav() {
 
         <div className="navbar-menu container">
           <div className="navbar-start">
-            <a className="navbar-item">HOME</a>
+            <Link to="/">
+              <a className="navbar-item" onclick="myFunction()">HOME</a>
+            </Link>
+            <Link to="/trade">
             <a className="navbar-item">TRADE</a>
+            </Link>
+            <Link to="/team">
             <a className="navbar-item">TEAM</a>
+            </Link>
           </div>
 
           <div className="navbar-end mt-3 mb-3">

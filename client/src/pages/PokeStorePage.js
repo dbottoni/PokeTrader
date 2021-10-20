@@ -7,14 +7,14 @@ export default function PokeStorePage(props) {
   const { pokedex } = props;
   //   console.log(pokedex);
 
-  pokedex.map((url) => {
-    axios.get(url).then((response) => {
-      console.log(response);
-      console.log(response.data.name);
+  // pokedex.map((url) => {
+  //   axios.get(url).then((response) => {
+  //     console.log(response);
+  //     console.log(response.data.name);
 
-      // setPokedex(response.data)
-    });
-  });
+  //     // setPokedex(response.data)
+  //   });
+  // });
   //functions to handle: openPokemonModal, filter/search, buyPokemon, buyCoins (open a modal on store page? or buy coins in profile?)
 
 
@@ -53,7 +53,7 @@ export default function PokeStorePage(props) {
 
   //render our store page with all pokemon
   return (
-    <div>
+    <div className="container">
       <h2 className="content has-text-centered">Add to Your Team</h2>
       {/* <p className="content has-text-centered">Search for pokemon in the space below.</p> */}
 

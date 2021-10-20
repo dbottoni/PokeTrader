@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
 import pokeAPI from "./utils/pokeAPI";
 // import { pokemonJSON } from './utils/pokeAPI';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
+import Home from "./pages/Home";
+import Team from "./pages/Team";
 import PokeStorePage from "./pages/PokeStorePage";
+
+
+import NoMatch from "./pages/NoMatch";
+
 
 function App() {
   //set state at APP level to track all pokemon in our pokedexDB
@@ -35,13 +43,28 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <Nav />
-      <div className="container">
-        <PokeStorePage pokedex={pokedex} />
+    <Router>
+      <div>
+        <Nav />
+        <div>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            {/* <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} /> */}
+            <Route
+              exact
+              path="/trade"
+              component={PokeStorePage}
+              pokedex={pokedex}
+            />
+            <Route exact path="/team" component={Team} />
+              {/* <Route exact path="/products/:id" component={Detail} /> */}
+            <Route exact path="/404" component={NoMatch} />
+          </Switch>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </Router>
   );
 }
 
