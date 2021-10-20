@@ -28,7 +28,7 @@ function App() {
       const URLs = response.data.results.map((pokemon) => pokemon.url);
       
       URLs.map((url) => {
-        axios.get(url).then((res) => {
+       return axios.get(url).then((res) => {
           pokedexData.push(res.data);
 
           setPokedex(pokedexData);
@@ -50,7 +50,7 @@ export default App;
 
 
 
-
+///store only maps one on first render, node_modules, 
 
 
 

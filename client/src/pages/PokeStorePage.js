@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { setCardColor } from "../utils/helpers";
 
+// are we getting our pokedex state through props like this? 
 export default function PokeStorePage({ pokedex }) {
   console.log("POKEDEX IN STORE");
   console.log(pokedex);
+
+
 
   //functions to handle: openPokemonModal, filter/search, buyPokemon, buyCoins (open a modal on store page? or buy coins in profile?)
 
@@ -14,7 +18,7 @@ export default function PokeStorePage({ pokedex }) {
 
       {pokedex.map((pokemon) => {
         return (
-          <div key={pokemon.id} style={{ border: "2px solid black" }}>
+          <div key={pokemon.id} style={{ border: "2px solid black", background: setCardColor(pokemon.types[0].type.name) }}>
             <div>
               <h3>{pokemon.name}</h3>
               <img alt="pokemon" src={pokemon.sprites.front_default} />
@@ -23,17 +27,17 @@ export default function PokeStorePage({ pokedex }) {
 
             <div>
               <h3>Base XP: {pokemon.base_experience} </h3>
-              <p>
+              <div>
                 {" "}
                 Base Stats:
                 <ul>
                   {pokemon.stats.map(stat => {
                     return (
-                    <li>{stat.stat.name}: {stat.base_stat}</li>
+                    <li key={stat.stat.name}> {stat.stat.name}: {stat.base_stat} </li>
                     )
                   })}
                 </ul>
-              </p>
+              </div>
             </div>
           </div>
         );
