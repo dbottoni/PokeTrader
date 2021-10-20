@@ -26,6 +26,15 @@ p {
     color: black;
 }
 
+a {
+    color: var(--white);
+}
+
+a:hover {
+    color: var(--goldenrod);
+}
+
+
 /* NAV */
 
 .navbar-item {
@@ -71,3 +80,9 @@ color: var(--white);
 .footer-yellow {
     color: var(--sunglow);
 }
+
+a.footer {
+    color: var(--white);
+    font-family: var(--content-font);
+}
+
