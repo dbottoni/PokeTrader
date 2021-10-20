@@ -2,6 +2,7 @@
     --royal-blue-dark: #0a285fff;
     --french-blue: #0075beff;
     --goldenrod: #d5a100ff;
+    --goldenrod-light: #d6b963;
     --sunglow: #ffcc00ff;
     --white: #ffffffff;    
     --header-font: 'Press Start 2P', cursive;
@@ -72,7 +73,7 @@ a.button.is-primary:hover, a.button.is-primary.is-active {
 
 /* FOOTER */
 
-footer p {
+p.footer {
 font-family: var(--content-font);
 color: var(--white);
 }
@@ -86,3 +87,32 @@ a.footer {
     font-family: var(--content-font);
 }
 
+/* CARDS */
+
+.card-image {
+    background-color: var(--white);
+    border-radius: 1em;
+}
+
+.card, .card-content {
+    background-color: var(--goldenrod-light);
+    border-radius: 1em;
+}
+
+.card-footer {
+    border-top: none;
+}
+
+.card-footer a {
+    color: var(--white);
+    border-bottom: var(--white) double;
+    border-right: var(--white) double;
+    background-color: var(--goldenrod);
+}
+
+.card-footer a:hover  {
+    color: var(--royal-blue-dark);
+    border-bottom: var(--royal-blue-dark) double;
+    border-right: var(--royal-blue-dark) double;
+    border-top: none;
+}

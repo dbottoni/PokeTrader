@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer mt-6">
       <div className="content has-text-centered">
         <div className="columns">
           <a className="column">Home</a>
