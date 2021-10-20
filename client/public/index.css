@@ -22,5 +22,23 @@ p {
     color: black;
 }
 
+.navbar-item {
+    color: var(--white);
+    font-family: var(--header-font);
+}
+
+.footer, .navbar {
+    background-color: var(--royal-blue-dark);
+}
+
+footer p {
+font-family: var(--content-font);
+color: var(--white);
+}
+
+.footer-yellow {
+    color: var(--sunglow);
+}
+
 /* Coolors Exported Palette - https://coolors.co/0a285f-0075be-d5a100-ffcc00-ffffff
 ​
