@@ -9,4 +9,12 @@ export default axios.create({
 });
 
 
+// export const pokemonJSON = (url) => {
+//     fetch(url).then(response => {
+//         console.log(response);
+//         return response
+//     })
+// }
+
+
 //limit: 384 is gens 1-3 
