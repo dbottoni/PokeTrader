@@ -1,4 +1,4 @@
-const {User,bookSchema} = require('../models')
+const {User, bookSchema} = require('../models')
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
