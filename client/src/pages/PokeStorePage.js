@@ -17,7 +17,7 @@ export default function PokeStorePage(props) {
   });
   //functions to handle: openPokemonModal, filter/search, buyPokemon, buyCoins (open a modal on store page? or buy coins in profile?)
 
-
+//test
 
         //   BEN'S PREVIOUS CODE FOR REFERENCE
         //render our store page with all pokemon 
