@@ -36,29 +36,16 @@ export default function PokeStorePage(props) {
   // }
 }
 
-
 const renderedPokedex = sortByType(pokedex, 'grass')
 const renderedByXP = sortByXP(renderedPokedex, 100)
 
-const [addPokemon] = useMutation(ADD_POKEMON)
-
 //   const pokemon = "Pokemon";
-  
-  const addToTeam = async (pokemon) => {
-    try {
-      await addPokemon({
-        variables: { id: pokemon._id }
-      });
-    } catch (e) {
-      console.error("Error click handler");
-    }
-  };
 
 
 // const renderedPokedex = sortByType(pokedex, 'poison')
 // console.log(renderedPokedex);
-const renderedByXP = sortByXP(pokedex, 100)
-console.log('REDNER BY XP');
+
+console.log('RENDER BY XP');
 console.log(renderedByXP);
 
   //functions to handle: openPokemonModal, filter/search, buyPokemon, buyCoins (open a modal on store page? or buy coins in profile?)
