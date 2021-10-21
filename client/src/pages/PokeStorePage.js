@@ -1,28 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
-<<<<<<< HEAD
-//import { PokedexContext } from "../App";
-=======
 import { PokedexContext } from "../App";
->>>>>>> 768857b5857d7900f12a39b62d185d0eef6e438d
 // import axios from "axios";
 
 import { setCardColor } from "../utils/helpers";
 import { capitalizeName } from "../utils/helpers";
 import { sortByType } from "../utils/helpers";
-<<<<<<< HEAD
-//import { sortByXP } from '../utils/helpers';
-
-import { useMutation } from '@apollo/react-hooks';
-import { ADD_POKEMON } from "../utils/mutations";
-
-
-// are we getting our pokedex state through props like this? 
-export default function PokeStorePage(props) {
-  //const {pokedex} = useContext(PokedexContext)
-  console.log("POKEDEX IN STORE");
-  console.log(pokedex);
-
-=======
 import { sortByXP } from '../utils/helpers';
 
 // are we getting our pokedex state through props like this? 
@@ -54,30 +36,16 @@ export default function PokeStorePage(props) {
   // }
 }
 
-
 const renderedPokedex = sortByType(pokedex, 'grass')
 const renderedByXP = sortByXP(renderedPokedex, 100)
->>>>>>> 768857b5857d7900f12a39b62d185d0eef6e438d
-
-  const [addPokemon] = useMutation(ADD_POKEMON)
 
 //   const pokemon = "Pokemon";
-  
-  const addToTeam = async (pokemon) => {
-    try {
-      await addPokemon({
-        variables: { id: pokemon._id }
-      });
-    } catch (e) {
-      console.error("Error click handler");
-    }
-  };
 
 
 // const renderedPokedex = sortByType(pokedex, 'poison')
 // console.log(renderedPokedex);
-const renderedByXP = sortByXP(pokedex, 100)
-console.log('REDNER BY XP');
+
+console.log('RENDER BY XP');
 console.log(renderedByXP);
 
   //functions to handle: openPokemonModal, filter/search, buyPokemon, buyCoins (open a modal on store page? or buy coins in profile?)
@@ -114,11 +82,7 @@ console.log(renderedByXP);
               <div className="content">
                 <p>Base XP : {pokemon.base_experience}</p>
               </div>
-<<<<<<< HEAD
-              <span className="card-footer"><a href="#" className="card-footer-item" onClick={() => addToTeam(pokemon)}>
-=======
               <span className="card-footer"><a href="#" className="card-footer-item" onClick={addToTeam}>
->>>>>>> 768857b5857d7900f12a39b62d185d0eef6e438d
                 Add to Team
               </a></span>
             </div>
@@ -128,18 +92,7 @@ console.log(renderedByXP);
       </div>
     </div>
   )
-<<<<<<< HEAD
-
-
-  //render our store page with all pokemon
 }
 
 
 
- 
-=======
-}
-
-
-
->>>>>>> 768857b5857d7900f12a39b62d185d0eef6e438d
