@@ -64,7 +64,7 @@ export const capitalizeName = (str) => {
 
 console.log(capitalizeName("charizard"));
 
-
+//STORE FILTER FUNCTIONS
 export const sortByType = (pokedex, type) => {
   let filteredPokedex = [];
   pokedex.map((pokemon) => {
@@ -77,9 +77,14 @@ export const sortByType = (pokedex, type) => {
   return filteredPokedex;
 };
 
+export const sortByXP = (pokedex, num) => {
+   return pokedex.filter(pokemon => pokemon.base_experience > num)
+}
 
+
+// 1 in X chance to return true; used for shiney probability 
 export function diceRoll(){
-    const randNum = Math.floor(Math.random() * 3 + 1)
+    const randNum = Math.floor(Math.random() * 100 + 1)
     console.log(randNum);
     if (randNum === 1) return true;
     else return false;

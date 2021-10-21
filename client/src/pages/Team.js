@@ -52,16 +52,14 @@ const Team = () => {
                       })}
                     </ul>
                   </div>
-                </div>
-                <footer className="card-footer">
-                  <a
+                <span className='card-footer'><a
                     href="#"
                     className="card-footer-item"
                     onClick={removeFromTeam}
                   >
                     Remove From Team
-                  </a>
-                </footer>
+                  </a></span>
+                </div>
               </div>
             );
           })

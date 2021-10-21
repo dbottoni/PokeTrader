@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import { PokedexContext } from "../App";
 // import axios from "axios";
+
 import { setCardColor } from "../utils/helpers";
 import { capitalizeName } from "../utils/helpers";
 import { sortByType } from "../utils/helpers";
+import { sortByXP } from '../utils/helpers';
 
 // are we getting our pokedex state through props like this? 
 export default function PokeStorePage(props) {
@@ -34,8 +36,11 @@ export default function PokeStorePage(props) {
   // }
 }
 
-const renderedPokedex = sortByType(pokedex, 'fire')
-console.log(renderedPokedex);
+// const renderedPokedex = sortByType(pokedex, 'poison')
+// console.log(renderedPokedex);
+const renderedByXP = sortByXP(pokedex, 100)
+console.log('REDNER BY XP');
+console.log(renderedByXP);
 
   //functions to handle: openPokemonModal, filter/search, buyPokemon, buyCoins (open a modal on store page? or buy coins in profile?)
 
@@ -50,7 +55,7 @@ console.log(renderedPokedex);
 
       {/* POTENTIAL SEARCH OR FILTER EXPERIENCE HERE */}
       
-      {renderedPokedex.map(pokemon => {
+      {renderedByXP.length > 0 ? renderedByXP.map(pokemon => {
         return (
           <div className="card column is-one-fifth" style={{"background-color": setCardColor(pokemon.types[0].type.name)}}>
             <div className="card-image">
@@ -71,15 +76,13 @@ console.log(renderedPokedex);
               <div className="content">
                 <p>Base XP : {pokemon.base_experience}</p>
               </div>
-            </div>
-            <footer className="card-footer">
-              <a href="#" className="card-footer-item" onClick={addToTeam}>
+              <span className="card-footer"><a href="#" className="card-footer-item" onClick={addToTeam}>
                 Add to Team
-              </a>
-            </footer>
+              </a></span>
+            </div>
           </div>
         )
-      })}
+      }): <div> No Pokemon Returned</div>}
       </div>
     </div>
   )
