@@ -34,7 +34,7 @@ export default function PokeStorePage(props) {
   // }
 }
 
-const renderedPokedex = sortByType(pokedex, 'poison')
+const renderedPokedex = sortByType(pokedex, 'fire')
 console.log(renderedPokedex);
 
   //functions to handle: openPokemonModal, filter/search, buyPokemon, buyCoins (open a modal on store page? or buy coins in profile?)
@@ -70,7 +70,6 @@ console.log(renderedPokedex);
   
               <div className="content">
                 <p>Base XP : {pokemon.base_experience}</p>
-                {/* <p>data.types[0].type.name</p> */}
               </div>
             </div>
             <footer className="card-footer">

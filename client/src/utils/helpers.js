@@ -77,6 +77,12 @@ export const sortByType = (pokedex, type) => {
   return filteredPokedex;
 };
 
-// if (pokemon.types.includes(type.name === type)){
-//     filteredPokedex.push(pokemon)
-// }
+
+export function diceRoll(){
+    const randNum = Math.floor(Math.random() * 3 + 1)
+    console.log(randNum);
+    if (randNum === 1) return true;
+    else return false;
+}
+
+console.log(diceRoll());
