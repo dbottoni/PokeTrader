@@ -1,118 +1,169 @@
 :root {
-    --royal-blue-dark: #0a285fff;
-    --french-blue: #0075beff;
-    --goldenrod: #d5a100ff;
-    --goldenrod-light: #d6b963;
-    --sunglow: #ffcc00ff;
-    --white: #ffffffff;    
-    --header-font: 'Press Start 2P', cursive;
-    --content-font: 'Ubuntu', sans-serif;
+  --royal-blue-dark: #0a285fff;
+  --french-blue: #0075beff;
+  --french-blue-light: rgb(108, 159, 190);
+  --goldenrod: #d5a100ff;
+  --goldenrod-light: #d6b963;
+  --sunglow: #ffcc00ff;
+  --white: #ffffffff;
+  --header-font: "Press Start 2P", cursive;
+  --content-font: "Ubuntu", sans-serif;
 }
 /* Coolors Exported Palette - https://coolors.co/0a285f-0075be-d5a100-ffcc00-ffffff */
 
-
 body {
-    background-color: var(--white);
+  background-color: var(--white);
+}
+
+.columns:last-child {
+  margin-bottom: 1em;
 }
 
 /* CONTENT */
 
-h1, h2, h3, h4, h5 {
-    font-family: var(--header-font);
-    color: black;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--header-font);
+  color: black;
 }
 
 p {
-    font-family: var(--content-font);
-    color: black;
+  font-family: var(--content-font);
+  color: black;
 }
 
 a {
-    color: var(--white);
+  color: var(--white);
 }
 
 a:hover {
-    color: var(--goldenrod);
+  color: var(--goldenrod);
 }
-
 
 /* NAV */
 
 .navbar-item {
-    color: var(--white);
-    font-family: var(--header-font);
+  color: var(--white);
+  font-family: var(--header-font);
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
-a.navbar-item:hover, a.navbar-item.is-active {
+.indicator {
+    color: var(--royal-blue-dark);
+    font-family: var(--header-font);
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  
+  a span:hover, .indicator.is-active {
     color: var(--goldenrod);
-    font-family: var(--header-font);
+  }
+
+a.navbar-item:hover,
+a.navbar-item.is-active {
+  color: var(--goldenrod);
+  font-family: var(--header-font);
+  background-color: var(--royal-blue-dark);
 }
 
-.footer, .navbar {
-    background-color: var(--royal-blue-dark);
+.footer,
+.navbar {
+  background-color: var(--royal-blue-dark);
 }
 
 a.button.is-primary {
-    background-color: var(--royal-blue-dark);
-    font-family: var(--content-font);
-    color: var(--white);
-    border-bottom: var(--white) double;
-    border-right: var(--white) double;
+  background-color: var(--royal-blue-dark);
+  font-family: var(--content-font);
+  color: var(--white);
+  border-bottom: var(--white) double;
+  border-right: var(--white) double;
 }
 
-a.button.is-primary:hover, a.button.is-primary.is-active {
-    background-color: var(--royal-blue-dark);
-    font-family: var(--content-font);
-    color: var(--goldenrod);
-    border-bottom: var(--goldenrod) double;
-    border-right: var(--goldenrod) double;
+a.button.is-primary:hover,
+a.button.is-primary.is-active {
+  background-color: var(--royal-blue-dark);
+  font-family: var(--content-font);
+  color: var(--goldenrod);
+  border-bottom: var(--goldenrod) double;
+  border-right: var(--goldenrod) double;
 }
-
-
-
 
 /* FOOTER */
 
 p.footer {
-font-family: var(--content-font);
-color: var(--white);
+  font-family: var(--content-font);
+  color: var(--white);
 }
 
 .footer-yellow {
-    color: var(--sunglow);
+  color: var(--sunglow);
 }
 
 a.footer {
-    color: var(--white);
-    font-family: var(--content-font);
+  color: var(--white);
+  font-family: var(--content-font);
 }
 
 /* CARDS */
 
 .card-image {
-    background-color: var(--white);
-    border-radius: 1em;
+  background-color: var(--white);
+  border-radius: 1em;
 }
 
-.card, .card-content {
-    background-color: var(--goldenrod-light);
-    border-radius: 1em;
+.card,
+.card-content {
+  background-color: var(--goldenrod-light);
+  border-radius: 1em;
 }
 
 .card-footer {
-    border-top: none;
+  border-top: none;
 }
 
 .card-footer a {
-    color: var(--white);
-    border-bottom: var(--white) double;
-    border-right: var(--white) double;
-    background-color: var(--goldenrod);
+  color: var(--white);
+  border-bottom: var(--white) double;
+  border-right: var(--white) double;
+  background-color: var(--goldenrod);
 }
 
-.card-footer a:hover  {
-    color: var(--royal-blue-dark);
-    border-bottom: var(--royal-blue-dark) double;
-    border-right: var(--royal-blue-dark) double;
-    border-top: none;
+.card-footer a:hover {
+  color: var(--royal-blue-dark);
+  border-bottom: var(--royal-blue-dark) double;
+  border-right: var(--royal-blue-dark) double;
+  border-top: none;
+}
+
+/* HOME */
+section.hero {
+  background-color: var(--french-blue-light);
+  align-items: center;
+}
+
+.home-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+
+.title {
+    font-size: 3rem;
+}
+
+img.home {
+  width: 500px;
+}
+
+/* 404 */
+
+.no-match-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
