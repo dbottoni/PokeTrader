@@ -53,6 +53,9 @@ export const setCardColor = (type) => {
 
     case "fairy":
       return `#de96ecf6`;
+
+    case 'rock':
+        return `#8d4810`  
   }
 };
 
@@ -66,6 +69,7 @@ console.log(capitalizeName("charizard"));
 
 //STORE FILTER FUNCTIONS
 export const sortByType = (pokedex, type) => {
+    if (!type) return pokedex
   let filteredPokedex = [];
   pokedex.map((pokemon) => {
     for (let i = 0; i < pokemon.types.length; i++) {
