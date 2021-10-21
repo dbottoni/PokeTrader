@@ -37,7 +37,7 @@ export default function PokeStorePage(props) {
 }
 
 
-const renderedPokedex = sortByType(pokedex, )
+const renderedPokedex = sortByType(pokedex, 'grass')
 const renderedByXP = sortByXP(renderedPokedex, 100)
 
 

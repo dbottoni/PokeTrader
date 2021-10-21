@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from 'apollo-boost';
 import pokeAPI from "./utils/pokeAPI";
 import axios from "axios";
 // import {
@@ -16,12 +18,28 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Team from "./pages/Team";
 import NoMatch from "./pages/NoMatch";
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+
 
 
 import PokeStorePage from "./pages/PokeStorePage";
 import ProfilePage from "./pages/ProfilePage";
 
 export const PokedexContext = React.createContext()
+
+const client = new ApolloClient({
+  request: (operation) => {
+    const token = localStorage.getItem("id_token");
+
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : "",
+      },
+    });
+  },
+  uri: "/graphql",
+});
 
 
 function App() {
@@ -62,6 +80,7 @@ function App() {
 
 
   return (
+    <ApolloProvider client = {client} >
     <PokedexContext.Provider value={pokemonContextValue}>
       <Router>
       <div>
@@ -69,8 +88,8 @@ function App() {
         <div>
           <Switch>
             <Route exact path="/" component={Home} />
-            {/* <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} /> */}
+            <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={SignUp} />
             <Route
               exact
               path="/trade"
@@ -86,7 +105,7 @@ function App() {
       </div>
     </Router>
     </PokedexContext.Provider>
-
+    </ApolloProvider>
   );
 }
 
@@ -101,18 +120,7 @@ export default App;
 
 
 
-// const client = new ApolloClient({
-//   request: (operation) => {
-//     const token = localStorage.getItem("id_token");
 
-//     operation.setContext({
-//       headers: {
-//         authorization: token ? `Bearer ${token}` : "",
-//       },
-//     });
-//   },
-//   uri: "/graphql",
-// });
 
 //or use Context.Provider?
 //export const PokemonStoreContext = React.createContext()
