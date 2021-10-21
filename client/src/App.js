@@ -8,6 +8,17 @@ import {
 
 import { setCardColor } from "./utils/helpers";
 import { capitalizeName } from "./utils/helpers";
+import { pokemonJSON } from './utils/pokeAPI';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+
+import Home from "./pages/Home";
+import Team from "./pages/Team";
+import PokeStorePage from "./pages/PokeStorePage";
+import NoMatch from "./pages/NoMatch";
+
 
 import PokeStorePage from "./pages/PokeStorePage";
 import ProfilePage from "./pages/ProfilePage";
@@ -50,12 +61,29 @@ function App() {
 
 
   return (
-    //conditionally render pages
-    <>
-   <PokeStorePage pokedex={pokedex} />
-    
-   {/* <ProfilePage /> */}
-    </>
+    <Router>
+    <div>
+      <Nav />
+      <div>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          {/* <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} /> */}
+          <Route
+            exact
+            path="/trade"
+            component={PokeStorePage}
+            pokedex={pokedex}
+          />
+          <Route exact path="/team" component={Team} />
+            {/* <Route exact path="/products/:id" component={Detail} /> */}
+          <Route component={NoMatch} />
+        </Switch>
+      </div>
+      <Footer />
+    </div>
+  </Router>
+
   );
 }
 
