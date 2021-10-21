@@ -19,7 +19,23 @@ import NoMatch from "./pages/NoMatch";
 
 
 import PokeStorePage from "./pages/PokeStorePage";
-import ProfilePage from "./pages/ProfilePage";
+//import ProfilePage from "./pages/ProfilePage";
+import { ApolloProvider } from "@apollo/react-hooks";
+import ApolloClient from "apollo-boost";
+
+const client = new ApolloClient({
+  request: (operation) => {
+    const token = localStorage.getItem("id_token");
+
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : "",
+      },
+    });
+  },
+  uri: "/graphql",
+});
+
 
 export const PokedexContext = React.createContext()
 
