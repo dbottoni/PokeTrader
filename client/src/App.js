@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import pokeAPI from "./utils/pokeAPI";
 import axios from "axios";
-import {
-  generatePokemonStats,
-  generatePokemonLevel,
-} from "./utils/actualizedStats";
+// import {
+//   generatePokemonStats,
+//   generatePokemonLevel,
+// } from "./utils/actualizedStats";
 
-import { setCardColor } from "./utils/helpers";
-import { capitalizeName } from "./utils/helpers";
-import { pokemonJSON } from './utils/pokeAPI';
+// import { setCardColor } from "./utils/helpers";
+// import { capitalizeName } from "./utils/helpers";
+// import { pokemonJSON } from './utils/pokeAPI';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Nav from "./components/Nav";
@@ -20,7 +20,23 @@ import NoMatch from "./pages/NoMatch";
 
 
 import PokeStorePage from "./pages/PokeStorePage";
-import ProfilePage from "./pages/ProfilePage";
+//import ProfilePage from "./pages/ProfilePage";
+import { ApolloProvider } from "@apollo/react-hooks";
+import ApolloClient from "apollo-boost";
+
+const client = new ApolloClient({
+  request: (operation) => {
+    const token = localStorage.getItem("id_token");
+
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : "",
+      },
+    });
+  },
+  uri: "/graphql",
+});
+
 
 function App() {
   //set state at APP level to track all pokemon in our pokedexDB
@@ -60,6 +76,7 @@ function App() {
 
 
   return (
+    <ApolloProvider client={client}>
       <Router>
       <div>
         <Nav />
@@ -82,7 +99,7 @@ function App() {
         <Footer />
       </div>
     </Router>
-
+  </ApolloProvider>
   );
 }
 

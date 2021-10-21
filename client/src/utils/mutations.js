@@ -45,11 +45,24 @@ export const ADD_USER = gql`
 `;
 
 
-export const BUY_POKEMON = gql`
-  mutation buyPokemon()
-`
+// export const BUY_POKEMON = gql`
+//   mutation buyPokemon()
+// `
+
+export const ADD_POKEMON = gql`
+  mutation savePokemon($id: ID!) {
+    savePokemon(pokemonId: $id) {
+      _id
+      pokeName
+      images
+      stats
+      level
+    }
+  }
+
+  `
 
 
-export const REMOVE_POKEMON = gql`
-  mutation removePokemon()
-`
+// export const REMOVE_POKEMON = gql`
+//   mutation removePokemon()
+// `
