@@ -117,7 +117,6 @@ export default function PokeStorePage({pokedex}) {
 
 {/* <>
 <div>Pokemon Store</div>
-
 {pokedex.map((pokemon) => {
   return (
     <div key={pokemon.id} style={{ border: "2px solid black", background: setCardColor(pokemon.types[0].type.name) }}>
@@ -126,7 +125,6 @@ export default function PokeStorePage({pokedex}) {
         <img alt="pokemon" src={pokemon.sprites.front_default} />
         <p> {pokemon.types.map((type) => type.type.name + " ")}</p>
       </div>
-
       <div>
         <h3>Base XP: {pokemon.base_experience} </h3>
         <div>
