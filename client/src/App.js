@@ -78,30 +78,32 @@ function App() {
 
 
   return (
-    <PokedexContext.Provider value={pokemonContextValue}>
-      <Router>
-      <div>
-        <Nav />
+    <ApolloProvider>
+      <PokedexContext.Provider value={pokemonContextValue}>
+        <Router>
         <div>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            {/* <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} /> */}
-            <Route
-              exact
-              path="/trade"
-              component={PokeStorePage}
-              pokedex={pokedex}
-            />
-            <Route exact path="/team" component={Team} />
-              {/* <Route exact path="/products/:id" component={Detail} /> */}
-            <Route component={NoMatch} />
-          </Switch>
+          <Nav />
+          <div>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              {/* <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={Signup} /> */}
+              <Route
+                exact
+                path="/trade"
+                component={PokeStorePage}
+                pokedex={pokedex}
+              />
+              <Route exact path="/team" component={Team} />
+                {/* <Route exact path="/products/:id" component={Detail} /> */}
+              <Route component={NoMatch} />
+            </Switch>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </Router>
-    </PokedexContext.Provider>
+      </Router>
+      </PokedexContext.Provider>
+    </ApolloProvider>
 
   );
 }

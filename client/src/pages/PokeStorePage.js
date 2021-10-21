@@ -14,33 +14,10 @@ export default function PokeStorePage(props) {
   console.log(pokedex);
 
 
-  const addToTeam = () => {
-   return console.log("Added to Cart");
-  // const itemInCart = cart.find((cartItem) => cartItem._id === _id)
-  // if (itemInCart) {
-  //   dispatch({
-  //     type: UPDATE_CART_QUANTITY,
-  //     _id: _id,
-  //     purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-  //   });
-  //   idbPromise('cart', 'put', {
-  //     ...itemInCart,
-  //     purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-  //   });
-  // } else {
-  //   dispatch({
-  //     type: ADD_TO_CART,
-  //     product: { ...item, purchaseQuantity: 1 }
-  //   });
-  //   idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
-  // }
-}
-
-
 const renderedPokedex = sortByType(pokedex, )
 const renderedByXP = sortByXP(renderedPokedex, 100)
 
-  const [addPokemon] = useMutation(ADD_POKEMON)
+const [addPokemon] = useMutation(ADD_POKEMON)
 
 //   const pokemon = "Pokemon";
   
