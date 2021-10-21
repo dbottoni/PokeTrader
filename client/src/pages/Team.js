@@ -30,7 +30,7 @@ const Team = () => {
               >
                 <div className="card-image">
                   <figure className="image is-4by3">
-                    <img src={  pokemon.shinyImg ? pokemon.shinyImg : pokemon.images} alt="data.sprites.back_default" />
+                    <img src={pokemon.shinyImg ? pokemon.shinyImg : pokemon.images} alt="data.sprites.back_default" />
                   </figure>
                 </div>
                 <div className="card-content">
