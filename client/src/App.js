@@ -6,7 +6,6 @@ import axios from "axios";
 //   generatePokemonLevel,
 // } from "./utils/actualizedStats";
 
-// import { setCardColor } from "./utils/helpers";
 // import { capitalizeName } from "./utils/helpers";
 // import { pokemonJSON } from './utils/pokeAPI';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -38,6 +37,9 @@ const client = new ApolloClient({
 });
 
 
+export const PokedexContext = React.createContext()
+
+
 function App() {
   //set state at APP level to track all pokemon in our pokedexDB
   const [pokedex, setPokedex] = useState([]);
@@ -45,9 +47,11 @@ function App() {
   console.log(pokedex);
   
   let isLoading = true;
-
   let pokedexData = [];
 
+  const pokemonContextValue = {
+    pokedex
+  }
   
 
   useEffect(() => {
@@ -60,15 +64,13 @@ function App() {
     
     const response = await pokeAPI.get("/pokemon/", {});
     const URLs = response.data.results.map((pokemon) => pokemon.url);
-    console.log('URLS--------');
-    console.log(URLs);
     URLs.map(async (url) => {
       const res = await axios.get(url)
 
       pokedexData.push(res.data);
       
     });
-    
+    setPokedex(pokedexData)
     isLoading = false;
   };
   
@@ -76,7 +78,7 @@ function App() {
 
 
   return (
-    <ApolloProvider client={client}>
+    <PokedexContext.Provider value={pokemonContextValue}>
       <Router>
       <div>
         <Nav />
@@ -99,7 +101,8 @@ function App() {
         <Footer />
       </div>
     </Router>
-  </ApolloProvider>
+    </PokedexContext.Provider>
+
   );
 }
 

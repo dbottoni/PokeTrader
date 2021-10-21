@@ -1,10 +1,15 @@
 import React, { useEffect, useState, useContext } from "react";
+<<<<<<< HEAD
 //import { PokedexContext } from "../App";
+=======
+import { PokedexContext } from "../App";
+>>>>>>> 768857b5857d7900f12a39b62d185d0eef6e438d
 // import axios from "axios";
 
 import { setCardColor } from "../utils/helpers";
 import { capitalizeName } from "../utils/helpers";
 import { sortByType } from "../utils/helpers";
+<<<<<<< HEAD
 //import { sortByXP } from '../utils/helpers';
 
 import { useMutation } from '@apollo/react-hooks';
@@ -17,6 +22,42 @@ export default function PokeStorePage(props) {
   console.log("POKEDEX IN STORE");
   console.log(pokedex);
 
+=======
+import { sortByXP } from '../utils/helpers';
+
+// are we getting our pokedex state through props like this? 
+export default function PokeStorePage(props) {
+  const {pokedex} = useContext(PokedexContext)
+  console.log("POKEDEX IN STORE");
+  console.log(pokedex);
+
+
+  const addToTeam = () => {
+   return console.log("Added to Cart");
+  // const itemInCart = cart.find((cartItem) => cartItem._id === _id)
+  // if (itemInCart) {
+  //   dispatch({
+  //     type: UPDATE_CART_QUANTITY,
+  //     _id: _id,
+  //     purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+  //   });
+  //   idbPromise('cart', 'put', {
+  //     ...itemInCart,
+  //     purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+  //   });
+  // } else {
+  //   dispatch({
+  //     type: ADD_TO_CART,
+  //     product: { ...item, purchaseQuantity: 1 }
+  //   });
+  //   idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
+  // }
+}
+
+
+const renderedPokedex = sortByType(pokedex, )
+const renderedByXP = sortByXP(renderedPokedex, 100)
+>>>>>>> 768857b5857d7900f12a39b62d185d0eef6e438d
 
   const [addPokemon] = useMutation(ADD_POKEMON)
 
@@ -73,7 +114,11 @@ console.log(renderedByXP);
               <div className="content">
                 <p>Base XP : {pokemon.base_experience}</p>
               </div>
+<<<<<<< HEAD
               <span className="card-footer"><a href="#" className="card-footer-item" onClick={() => addToTeam(pokemon)}>
+=======
+              <span className="card-footer"><a href="#" className="card-footer-item" onClick={addToTeam}>
+>>>>>>> 768857b5857d7900f12a39b62d185d0eef6e438d
                 Add to Team
               </a></span>
             </div>
@@ -83,6 +128,7 @@ console.log(renderedByXP);
       </div>
     </div>
   )
+<<<<<<< HEAD
 
 
   //render our store page with all pokemon
@@ -91,3 +137,9 @@ console.log(renderedByXP);
 
 
  
+=======
+}
+
+
+
+>>>>>>> 768857b5857d7900f12a39b62d185d0eef6e438d
