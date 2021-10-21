@@ -3,15 +3,25 @@ import axios from "axios";
 import { setCardColor } from "../utils/helpers";
 
 // are we getting our pokedex state through props like this? 
-export default function PokeStorePage({ pokedex }) {
+export default function PokeStorePage({pokedex}) {
   console.log("POKEDEX IN STORE");
   console.log(pokedex);
 
+  const renderedPokemon = pokedex.map(pokemon => {
+    return (
+      <div>
+        <p>pokemon.name</p>
+      </div>
+    )
+  })
+  console.log('RENDER');
+  console.log(renderedPokemon);
 
 
   //functions to handle: openPokemonModal, filter/search, buyPokemon, buyCoins (open a modal on store page? or buy coins in profile?)
 
   //render our store page with all pokemon
+
   return (
     <>
       <div>Pokemon Store</div>

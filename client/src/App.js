@@ -17,40 +17,55 @@ function App() {
   const [pokedex, setPokedex] = useState([]);
   console.log("POKEDEX");
   console.log(pokedex);
+  
+  let isLoading = true;
 
+  let pokedexData = [];
+
+  
 
   useEffect(() => {
     // on load, fetch pokemon data and save to state
-    const populateData = async () => {
-      const pokedexData = [];
-
-      const response = await pokeAPI.get("/pokemon/", {});
-      const URLs = response.data.results.map((pokemon) => pokemon.url);
-      
-      URLs.map((url) => {
-       return axios.get(url).then((res) => {
-          pokedexData.push(res.data);
-
-          setPokedex(pokedexData);
-        });
-      });
-    };
     populateData();
+
   }, []);
+  
+  const populateData = async () => {
+    
+    const response = await pokeAPI.get("/pokemon/", {});
+    const URLs = response.data.results.map((pokemon) => pokemon.url);
+    console.log('URLS--------');
+    console.log(URLs);
+    URLs.map(async (url) => {
+      const res = await axios.get(url)
+
+      pokedexData.push(res.data);
+      
+    });
+    
+    isLoading = false;
+  };
+  
+
+
 
   return (
     //conditionally render pages
-    <PokeStorePage pokedex={pokedex} />
-    // <ProfilePage />
+    <>
+   <PokeStorePage pokedex={pokedex} />
+    
+   {/* <ProfilePage /> */}
+    </>
   );
 }
+
 
 export default App;
 
 
 
 
-///store only maps one on first render, node_modules, 
+///store only maps one on first render 
 
 
 
