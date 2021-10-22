@@ -24,7 +24,8 @@ import SignUp from './pages/SignUp';
 
 
 import PokeStorePage from "./pages/PokeStorePage";
-import ProfilePage from "./pages/ProfilePage";
+//import ProfilePage from "./pages/ProfilePage";
+
 
 export const PokedexContext = React.createContext()
 

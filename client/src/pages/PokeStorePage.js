@@ -5,7 +5,13 @@ import { PokedexContext } from "../App";
 import { setCardColor } from "../utils/helpers";
 import { capitalizeName } from "../utils/helpers";
 import { sortByType } from "../utils/helpers";
+
+//import { sortByXP } from '../utils/helpers';
+
+import { useMutation } from '@apollo/react-hooks';
+import { ADD_POKEMON } from "../utils/mutations";
 import { sortByXP } from '../utils/helpers';
+
 
 // are we getting our pokedex state through props like this? 
 export default function PokeStorePage(props) {
@@ -37,8 +43,13 @@ export default function PokeStorePage(props) {
 }
 
 
-const renderedPokedex = sortByType(pokedex, 'water')
-const renderedByXP = sortByXP(renderedPokedex, 220)
+const renderedPokedex = sortByType(pokedex, 'grass')
+const renderedByXP = sortByXP(renderedPokedex, 100)
+
+
+  // const [addPokemon] = useMutation(ADD_POKEMON)
+
+//   const pokemon = "Pokemon";
 
 
   //functions to handle: openPokemonModal, filter/search, buyPokemon, buyCoins (open a modal on store page? or buy coins in profile?)
