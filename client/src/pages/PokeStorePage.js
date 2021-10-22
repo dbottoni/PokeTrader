@@ -37,8 +37,8 @@ export default function PokeStorePage(props) {
 }
 
 
-const renderedPokedex = sortByType(pokedex, 'grass')
-const renderedByXP = sortByXP(renderedPokedex, 100)
+const renderedPokedex = sortByType(pokedex, 'water')
+const renderedByXP = sortByXP(renderedPokedex, 220)
 
 
   //functions to handle: openPokemonModal, filter/search, buyPokemon, buyCoins (open a modal on store page? or buy coins in profile?)
