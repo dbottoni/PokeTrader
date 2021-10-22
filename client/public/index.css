@@ -19,6 +19,14 @@ body {
   margin-bottom: 1em;
 }
 
+.no-match-container,
+.form-container,
+.home-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 /* CONTENT */
 
 h1,
@@ -39,6 +47,7 @@ a {
   color: var(--white);
 }
 
+
 a:hover {
   color: var(--goldenrod);
 }
@@ -53,15 +62,16 @@ a:hover {
 }
 
 .indicator {
-    color: var(--royal-blue-dark);
-    font-family: var(--header-font);
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
-  
-  a span:hover, .indicator.is-active {
-    color: var(--goldenrod);
-  }
+  color: var(--royal-blue-dark);
+  font-family: var(--header-font);
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+a span:hover,
+.indicator.is-active {
+  color: var(--goldenrod);
+}
 
 a.navbar-item:hover,
 a.navbar-item.is-active {
@@ -73,6 +83,7 @@ a.navbar-item.is-active {
 .footer,
 .navbar {
   background-color: var(--royal-blue-dark);
+  align-content: center;
 }
 
 a.button.is-primary {
@@ -109,7 +120,7 @@ a.footer {
 }
 
 /* CARDS */
-.card{
+.card {
   margin: 5px;
 }
 
@@ -149,25 +160,57 @@ section.hero {
   align-items: center;
 }
 
-.home-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-
 .title {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 
 img.home {
   width: 500px;
 }
 
-/* 404 */
+/* FORM STYLING */
 
-.no-match-container {
+.login-signup-form {
+  border: black double;
+}
+
+img.oak-img {
+  height: 300px;
+}
+.image-space {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: flex-end;
+}
+
+.poke-button {
+  border: none;
+  align-content: flex-end;
+  font-family: var(--header-font);
+}
+
+.label {
+  font-size: .75em;
+  font-family: var(--header-font);
+  color: black;
+  font-weight: normal;
+}
+
+legend.form-title {
+  font-family: var(--header-font);
+  font-size: 1.5em;
+}
+
+h1.form-header {
+  font-family: var(--header-font);
+  font-size: 1.5em;
+}
+
+p.form-header {
+  font-family: var(--header-font);
+  font-size: .75em;
+}
+
+a.link-on-white {
+  font-family: var(--content-font);
+  text-align: center;
 }

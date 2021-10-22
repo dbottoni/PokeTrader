@@ -20,7 +20,10 @@ import Team from "./pages/Team";
 import NoMatch from "./pages/NoMatch";
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import About from './pages/About';
 import { StoreProvider } from "./utils/GlobalState";
+
+
 
 
 import PokeStorePage from "./pages/PokeStorePage";
@@ -98,6 +101,13 @@ function App() {
                   component={PokeStorePage}
                   pokedex={pokedex}
                 />
+                            <Route
+                  exact
+                  path="/about"
+                  component={About}
+                  pokedex={pokedex}
+                />
+
                 <Route exact path="/team" component={Team} />
                   {/* <Route exact path="/products/:id" component={Detail} /> */}
                 <Route component={NoMatch} />
