@@ -65,7 +65,7 @@ export default function SignUp() {
 
       <div className="columns form-container m-6">
         <div className="column image-space">
-          <img className="oak-img" src="/images/oak.png" />
+          <img className="oak-img" src="/images/oak.png" alt="pokemon"/>
         </div>
 
         <div className="column">

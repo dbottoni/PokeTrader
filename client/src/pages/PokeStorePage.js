@@ -6,13 +6,15 @@ import { setCardColor } from "../utils/helpers";
 import { capitalizeName } from "../utils/helpers";
 import { sortByType } from "../utils/helpers";
 import { sortByXP } from '../utils/helpers';
+import Filters from "../components/Filters";
 
 
 // are we getting our pokedex state through props like this? 
 export default function PokeStorePage(props) {
   const {pokedex} = useContext(PokedexContext)
-  console.log("POKEDEX IN STORE");
-  console.log(pokedex);
+
+  const [renderedPokemon, setRenderedPokemon] = useState(pokedex)
+
 
 
   const addToTeam = () => {
@@ -37,8 +39,8 @@ export default function PokeStorePage(props) {
   // }
 }
 
-const renderedPokedex = sortByType(pokedex, 'grass')
-const renderedByXP = sortByXP(renderedPokedex, 100)
+// const renderedPokedex = sortByType(pokedex, )
+// const renderedByXP = sortByXP(renderedPokedex, 100)
 
 
   // const [addPokemon] = useMutation(ADD_POKEMON)
@@ -53,15 +55,15 @@ const renderedByXP = sortByXP(renderedPokedex, 100)
 
   return (
     <div className="container">
-      <h2 className="content has-text-centered">Add to Your Team</h2>
-      <div className="columns is-desktop is-justify-content-center is-flex-wrap-wrap is-flex-direction-row" >
       {/* <p className="content has-text-centered">Search for pokemon in the space below.</p> */}
 
       {/* POTENTIAL SEARCH OR FILTER EXPERIENCE HERE */}
-      
-      {renderedByXP.length > 0 ? renderedByXP.map(pokemon => {
+       <Filters renderedPokemon={renderedPokemon} setRenderedPokemon={setRenderedPokemon}/> 
+      <h2 className="content has-text-centered">Add to Your Team</h2>
+      <div className="columns is-desktop is-justify-content-center is-flex-wrap-wrap is-flex-direction-row" >
+      {renderedPokemon.length > 0 ? renderedPokemon.map(pokemon => {
         return (
-          <div className="card column is-one-fifth" style={{"background-color": setCardColor(pokemon.types[0].type.name)}}>
+          <div className="card column is-one-fifth" style={{"backgroundColor": setCardColor(pokemon.types[0].type.name)}}>
             <div className="card-image">
               <figure className="image is-4by3">
                 <img src={pokemon.sprites.front_default} alt="data.sprites.back_default" />

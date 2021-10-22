@@ -54,8 +54,8 @@ export const setCardColor = (type) => {
     case "fairy":
       return `#de96ecf6`;
 
-    case 'rock':
-        return `#8d4810`  
+    case "rock":
+      return `#8d4810`;
   }
 };
 
@@ -67,31 +67,37 @@ export const capitalizeName = (str) => {
 
 console.log(capitalizeName("charizard"));
 
-//STORE FILTER FUNCTIONS
-export const sortByType = (pokedex, type) => {
-    if (!type) return pokedex
+
+
+//STORE FILTER FUNCTION
+export const sortPokedex = (pokedex, type, xp) => {
+  console.log(xp);
+  if (type === null && xp === 0) return pokedex;
+
   let filteredPokedex = [];
-  pokedex.map((pokemon) => {
-    for (let i = 0; i < pokemon.types.length; i++) {
-      if (pokemon.types[i].type.name === type) {
-        filteredPokedex.push(pokemon);
+
+  if (type !== null) {
+    pokedex.map((pokemon) => {
+      for (let i = 0; i < pokemon.types.length; i++) {
+        if (pokemon.types[i].type.name === type) {
+          filteredPokedex.push(pokemon);
+        }
       }
-    }
-  });
-  return filteredPokedex;
+    });
+
+    return filteredPokedex.filter((pokemon) => pokemon.base_experience > xp);
+  }
+  return pokedex.filter((pokemon) => pokemon.base_experience > xp);
 };
 
-export const sortByXP = (pokedex, num) => {
-   return pokedex.filter(pokemon => pokemon.base_experience > num)
+
+
+// 1 in X chance to return true; used for shiney probability
+export function diceRoll() {
+  const randNum = Math.floor(Math.random() * 100 + 1);
+  console.log(randNum);
+  if (randNum === 1) return true;
+  else return false;
 }
 
-
-// 1 in X chance to return true; used for shiney probability 
-export function diceRoll(){
-    const randNum = Math.floor(Math.random() * 100 + 1)
-    console.log(randNum);
-    if (randNum === 1) return true;
-    else return false;
-}
-
-console.log(diceRoll());
+// console.log(diceRoll());
