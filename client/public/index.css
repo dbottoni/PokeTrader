@@ -47,6 +47,7 @@ a {
   color: var(--white);
 }
 
+
 a:hover {
   color: var(--goldenrod);
 }
@@ -82,6 +83,7 @@ a.navbar-item.is-active {
 .footer,
 .navbar {
   background-color: var(--royal-blue-dark);
+  align-content: center;
 }
 
 a.button.is-primary {
