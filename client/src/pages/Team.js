@@ -1,18 +1,27 @@
 import React, { useContext } from "react";
 import { PokedexContext } from "../App";
+import Auth from '../utils/auth';
+import PokeStorePage from "./PokeStorePage";
+import { useStoreContext } from '../utils/GlobalState';
 
 
-import { capitalizeName } from "../utils/helpers";
-import { diceRoll } from "../utils/helpers";
-import { setCardColor } from "../utils/helpers";
+import { capitalizeName, setCardColor } from "../utils/helpers";
+//import { diceRoll } from "../utils/helpers";
 
 
 const Team = () => {
   const myPokemon = dummyData.pokemon;
+ 
+  const [state] = useStoreContext();
 
   const removeFromTeam = () => {
     console.log("Removed from Team");
   };
+
+  // function myPokemon(){
+    
+  //   return dummyData.pokemon
+  // }
 
   return (
     <div className="container">
@@ -21,6 +30,16 @@ const Team = () => {
         You can only have six Pokemon on your team.
       </p>
       <div className="columns is-desktop is-justify-content-center is-flex-wrap-wrap is-flex-direction-row">
+        {/* {myPokemon().map((pokemon) => (
+              <PokeStorePage
+                key={pokemon._id}
+                _id={pokemon.pokemonId}
+                image={pokemon.images}
+                name={pokemon.pokeName}
+
+              />
+          ))} */}
+        
         {myPokemon.length ? (
           myPokemon.map((pokemon) => {
             return (

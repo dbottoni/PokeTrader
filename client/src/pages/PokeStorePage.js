@@ -6,40 +6,31 @@ import { setCardColor } from "../utils/helpers";
 import { capitalizeName } from "../utils/helpers";
 import { sortByType } from "../utils/helpers";
 import { sortByXP } from '../utils/helpers';
+import { useStoreContext } from "../utils/GlobalState";
+import { ADD_TO_TEAM } from "../utils/actions";
 
 // are we getting our pokedex state through props like this? 
-export default function PokeStorePage(props) {
+export default function PokeStorePage(pokemon) {
   const {pokedex} = useContext(PokedexContext)
-  console.log("POKEDEX IN STORE");
   console.log(pokedex);
+  const [state, dispatch] = useStoreContext();
 
-
+  const { pokemonId, pokeName, images, actualizedStats, level, type, cost, shinyImg } = pokemon;
+  
+  const { team } = state
+  
   const addToTeam = () => {
-   return console.log("Added to Cart");
-  // const itemInCart = cart.find((cartItem) => cartItem._id === _id)
-  // if (itemInCart) {
-  //   dispatch({
-  //     type: UPDATE_CART_QUANTITY,
-  //     _id: _id,
-  //     purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-  //   });
-  //   idbPromise('cart', 'put', {
-  //     ...itemInCart,
-  //     purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-  //   });
-  // } else {
-  //   dispatch({
-  //     type: ADD_TO_CART,
-  //     product: { ...item, purchaseQuantity: 1 }
-  //   });
-  //   idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
-  // }
-}
+    const playerOnTeam = team.find((teamPlayer) => teamPlayer._id === pokemonId )
+    if (playerOnTeam) {
+      dispatch({
+        type: ADD_TO_TEAM,
+        pokemonQuantity: { ...pokemon, quantity: 1 }
+      });
+    }    
+  }
 
 const renderedPokedex = sortByType(pokedex, 'grass')
 const renderedByXP = sortByXP(renderedPokedex, 100)
-
-//   const pokemon = "Pokemon";
 
 
 // const renderedPokedex = sortByType(pokedex, 'poison')
@@ -63,7 +54,7 @@ console.log(renderedByXP);
       
       {renderedByXP.length > 0 ? renderedByXP.map(pokemon => {
         return (
-          <div className="card column is-one-fifth" style={{"background-color": setCardColor(pokemon.types[0].type.name)}}>
+          <div className="card column is-one-fifth" style={{"backgroundColor": setCardColor(pokemon.types[0].type.name)}}>
             <div className="card-image">
               <figure className="image is-4by3">
                 <img src={pokemon.sprites.front_default} alt="data.sprites.back_default" />

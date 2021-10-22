@@ -20,7 +20,7 @@ import Team from "./pages/Team";
 import NoMatch from "./pages/NoMatch";
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-
+import { StoreProvider } from "./utils/GlobalState";
 
 
 import PokeStorePage from "./pages/PokeStorePage";
@@ -82,30 +82,32 @@ function App() {
 
   return (
     <ApolloProvider client = {client} >
-    <PokedexContext.Provider value={pokemonContextValue}>
-      <Router>
-      <div>
-        <Nav />
-        <div>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={SignUp} />
-            <Route
-              exact
-              path="/trade"
-              component={PokeStorePage}
-              pokedex={pokedex}
-            />
-            <Route exact path="/team" component={Team} />
-              {/* <Route exact path="/products/:id" component={Detail} /> */}
-            <Route component={NoMatch} />
-          </Switch>
-        </div>
-        <Footer />
-      </div>
-    </Router>
-    </PokedexContext.Provider>
+      <PokedexContext.Provider value={pokemonContextValue}>
+        <Router>
+          <div>
+            <StoreProvider>
+            <Nav />
+            <div>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/login" component={Login} />
+                  <Route exact path="/signup" component={SignUp} />
+                <Route
+                  exact
+                  path="/trade"
+                  component={PokeStorePage}
+                  pokedex={pokedex}
+                />
+                <Route exact path="/team" component={Team} />
+                  {/* <Route exact path="/products/:id" component={Detail} /> */}
+                <Route component={NoMatch} />
+              </Switch>
+            </div>
+            <Footer />
+            </StoreProvider>
+          </div>
+        </Router>
+      </PokedexContext.Provider>
     </ApolloProvider>
   );
 }
