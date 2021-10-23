@@ -32,7 +32,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         savePokemon(name:String!,abilities: [String]!, type:[String]!,pokemonId:String!,image:String!,items:[String]!): Pokemon
-        removePokemon(pokemonId: String!): Pokemon
+        removePokemon(_id: String!): Pokemon
     }
 `;
 

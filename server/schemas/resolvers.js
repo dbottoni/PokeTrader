@@ -64,14 +64,17 @@ const resolvers = {
           },
 
           removePokemon: async (parent, args, context) => {
+            console.log(args._id)
             if(context.user) {
-            const updatedUser = await User.findOneAndUpdate(
+              const removedPoke = await Pokemon.findByIdAndDelete(args._id)
+
+                const updateUser =  await User.findOneAndUpdate(
                 { _id: context.user._id },
-                { $pull: { savePokemons: { pokemonId: args.pokemonId } } },
+                { $pull: { pokemonList: removedPoke._id} },
                 { new: true }
             );
 
-            return updatedUser;
+            return updateUser;
             }
 
             throw new AuthenticationError('You need to be logged in!');
