@@ -1,0 +1,216 @@
+:root {
+  --royal-blue-dark: #0a285fff;
+  --french-blue: #0075beff;
+  --french-blue-light: rgb(108, 159, 190);
+  --goldenrod: #d5a100ff;
+  --goldenrod-light: #d6b963;
+  --sunglow: #ffcc00ff;
+  --white: #ffffffff;
+  --header-font: "Press Start 2P", cursive;
+  --content-font: "Ubuntu", sans-serif;
+}
+/* Coolors Exported Palette - https://coolors.co/0a285f-0075be-d5a100-ffcc00-ffffff */
+
+body {
+  background-color: var(--white);
+}
+
+.columns:last-child {
+  margin-bottom: 1em;
+}
+
+.no-match-container,
+.form-container,
+.home-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* CONTENT */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--header-font);
+  color: black;
+}
+
+p {
+  font-family: var(--content-font);
+  color: black;
+}
+
+a {
+  color: var(--white);
+}
+
+
+a:hover {
+  color: var(--goldenrod);
+}
+
+/* NAV */
+
+.navbar-item {
+  color: var(--white);
+  font-family: var(--header-font);
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.indicator {
+  color: var(--royal-blue-dark);
+  font-family: var(--header-font);
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+a span:hover,
+.indicator.is-active {
+  color: var(--goldenrod);
+}
+
+a.navbar-item:hover,
+a.navbar-item.is-active {
+  color: var(--goldenrod);
+  font-family: var(--header-font);
+  background-color: var(--royal-blue-dark);
+}
+
+.footer,
+.navbar {
+  background-color: var(--royal-blue-dark);
+  align-content: center;
+}
+
+a.button.is-primary {
+  background-color: var(--royal-blue-dark);
+  font-family: var(--content-font);
+  color: var(--white);
+  border-bottom: var(--white) double;
+  border-right: var(--white) double;
+}
+
+a.button.is-primary:hover,
+a.button.is-primary.is-active {
+  background-color: var(--royal-blue-dark);
+  font-family: var(--content-font);
+  color: var(--goldenrod);
+  border-bottom: var(--goldenrod) double;
+  border-right: var(--goldenrod) double;
+}
+
+/* FOOTER */
+
+p.footer {
+  font-family: var(--content-font);
+  color: var(--white);
+}
+
+.footer-yellow {
+  color: var(--sunglow);
+}
+
+a.footer {
+  color: var(--white);
+  font-family: var(--content-font);
+}
+
+/* CARDS */
+.card {
+  margin: 5px;
+}
+
+.card-image {
+  background-color: var(--white);
+  border-radius: 1em;
+}
+
+.card,
+.card-content {
+  background-color: var(--goldenrod-light);
+  border-radius: 1em;
+  margin-top: px;
+}
+
+.card-footer {
+  border-top: none;
+}
+
+.card-footer a {
+  color: var(--white);
+  border-bottom: var(--white) double;
+  border-right: var(--white) double;
+  background-color: var(--goldenrod);
+}
+
+.card-footer a:hover {
+  color: var(--royal-blue-dark);
+  border-bottom: var(--royal-blue-dark) double;
+  border-right: var(--royal-blue-dark) double;
+  border-top: none;
+}
+
+/* HOME */
+section.hero {
+  background-color: var(--french-blue-light);
+  align-items: center;
+}
+
+.title {
+  font-size: 3rem;
+}
+
+img.home {
+  width: 500px;
+}
+
+/* FORM STYLING */
+
+.login-signup-form {
+  border: black double;
+}
+
+img.oak-img {
+  height: 300px;
+}
+.image-space {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.poke-button {
+  border: none;
+  align-content: flex-end;
+  font-family: var(--header-font);
+}
+
+.label {
+  font-size: .75em;
+  font-family: var(--header-font);
+  color: black;
+  font-weight: normal;
+}
+
+legend.form-title {
+  font-family: var(--header-font);
+  font-size: 1.5em;
+}
+
+h1.form-header {
+  font-family: var(--header-font);
+  font-size: 1.5em;
+}
+
+p.form-header {
+  font-family: var(--header-font);
+  font-size: .75em;
+}
+
+a.link-on-white {
+  font-family: var(--content-font);
+  text-align: center;
+}
