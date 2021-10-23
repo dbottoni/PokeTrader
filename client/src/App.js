@@ -48,23 +48,22 @@ const client = new ApolloClient({
 function App() {
   //set state at APP level to track all pokemon in our pokedexDB
   const [pokedex, setPokedex] = useState([]);
-  console.log("POKEDEX");
-  console.log(pokedex);
   
-  let isLoading = true;
-  let pokedexData = [];
-
+  
   const pokemonContextValue = {
     pokedex
   }
   
-
-  useEffect(() => {
+  
+useEffect(() => {
     // on load, fetch pokemon data and save to state
     populateData();
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
+
+  let pokedexData = [];
+
   const populateData = async () => {
     
     const response = await pokeAPI.get("/pokemon/", {});
@@ -76,11 +75,8 @@ function App() {
       
     });
     setPokedex(pokedexData)
-    isLoading = false;
   };
   
-
-
 
   return (
     <ApolloProvider client = {client} >

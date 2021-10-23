@@ -1,4 +1,5 @@
-const { Schema } = require('mongoose');
+
+const { Schema, model } = require('mongoose');
 
 const pokemonschema = new Schema({
   name:
@@ -6,10 +7,10 @@ const pokemonschema = new Schema({
       type: String,
       required:true,
     },
-  abilities: [{
-    type: String,
-    required: true,
-  },],
+  // abilities: [{
+  //   type: String,
+  //   required: true,
+  // },],
   type: [{
     type: String,
     required: true,
@@ -23,11 +24,21 @@ const pokemonschema = new Schema({
   image: {
     type: String,
   },
-  items:[
-    {
-    type:String
-    }
-  ]
+  // items:[
+  //   {
+  //   type:String
+  //   }
+  // ],
+  // username:{
+  //   type: String,
+  //   required:true
+  // }
+},
+{
+  toJSON: {
+    getters: true
+  }
 });
+// const Pokemon = model('Pokemon',pokemonschema)
 
 module.exports = pokemonschema;

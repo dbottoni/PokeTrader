@@ -1,14 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { PokedexContext } from "../App";
 
 
 import { capitalizeName } from "../utils/helpers";
 import { diceRoll } from "../utils/helpers";
 import { setCardColor } from "../utils/helpers";
+// import  useToggle  from '../utils/useToggle';
+
 
 
 const Team = () => {
   const myPokemon = dummyData.pokemon;
+
 
   const removeFromTeam = () => {
     console.log("Removed from Team");
@@ -107,6 +110,26 @@ const dummyData = {
       level: 40,
       type: "flying",
       cost: 40,
+    },
+    {
+      pokemonId: 4,
+      pokeName: "arbok",
+      images:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png",
+      actualizedStats: [99, 95, 75, 85, 130, 65],
+      level: 25,
+      type: "poison",
+      cost: 45,
+    },
+    {
+      pokemonId: 4,
+      pokeName: "arbok",
+      images:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png",
+      actualizedStats: [99, 95, 75, 85, 130, 65],
+      level: 25,
+      type: "poison",
+      cost: 45,
     },
     {
       pokemonId: 4,
