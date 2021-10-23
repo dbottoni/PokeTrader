@@ -23,12 +23,7 @@ const userSchema = new Schema(
     balance: {
       type: String,
     },
-    pokemonList: [
-      {
-        type: Schema.Types.ObjectId,
-        ref:'Pokemon'
-      }
-    ],
+    pokemonList: [pokemonschema],
   },
   {
     toJSON: {

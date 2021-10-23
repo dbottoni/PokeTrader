@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
 
 const pokemonschema = new Schema({
   name:
@@ -27,17 +27,7 @@ const pokemonschema = new Schema({
     {
     type:String
     }
-  ],
-  username:{
-    type: String,
-    required:true
-  }
-},
-{
-  toJSON: {
-    getters: true
-  }
+  ]
 });
-const Pokemon = model('Pokemon',pokemonschema)
 
-module.exports = Pokemon;
+module.exports = pokemonschema;
