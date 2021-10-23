@@ -74,8 +74,8 @@ export default function SignUp() {
             <legend className="form-title ml-6">Sign Up</legend>
 
               <form className="m-6">
-                <div class="field mt-3">
-                  <label class="label">First, what is your username?</label>
+                <div className="field mt-3">
+                  <label className="label">First, what is your username?</label>
 
                   <input
                     className="input"
@@ -87,8 +87,8 @@ export default function SignUp() {
                   />
                 </div>
 
-                <div class="field mt-3">
-                  <label class="label">Great! What is your email?</label>
+                <div className="field mt-3">
+                  <label className="label">Great! What is your email?</label>
 
                   <input
                     className="input"
@@ -100,8 +100,8 @@ export default function SignUp() {
                   />
                 </div>
 
-                <div class="field mt-3">
-                  <label class="label">
+                <div className="field mt-3">
+                  <label className="label">
                     What do you want your password to be?{" "}
                   </label>
 
