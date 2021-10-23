@@ -55,9 +55,10 @@ function App() {
   }
   
   
-  useEffect(() => {
+useEffect(() => {
     // on load, fetch pokemon data and save to state
     populateData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
 

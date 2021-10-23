@@ -58,7 +58,7 @@ function Nav() {
         <div className="navbar-menu container">
           <div className="navbar-start">
             <Link to="/">
-              <a className="navbar-item" onClick="myFunction()">
+              <a className="navbar-item" onClick={''}>
                 HOME
               </a>
             </Link>

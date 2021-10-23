@@ -6,7 +6,7 @@ export default function Filters(props) {
   const { renderedPokemon, setRenderedPokemon } = props;
   const { pokedex } = useContext(PokedexContext);
   const [sliderValue, setSliderValue] = useState(0);
-  const [selectedType, setSelectedType] = useState(null);
+  const [selectedType, setSelectedType] = useState('');
 
   function handleSlider(e) {
     setSliderValue(e.target.value);
@@ -26,7 +26,7 @@ export default function Filters(props) {
     <div className="container">
       <div className="select">
         <select onChange={handleTypeFilter} value={selectedType}>
-          <option>Select dropdown</option>
+          <option>Choose Type</option>
           <option value="fire">Fire</option>
           <option value="water">Water</option>
           <option value="grass">Grass</option>

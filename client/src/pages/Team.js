@@ -121,6 +121,26 @@ const dummyData = {
       type: "poison",
       cost: 45,
     },
+    {
+      pokemonId: 4,
+      pokeName: "arbok",
+      images:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png",
+      actualizedStats: [99, 95, 75, 85, 130, 65],
+      level: 25,
+      type: "poison",
+      cost: 45,
+    },
+    {
+      pokemonId: 4,
+      pokeName: "arbok",
+      images:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png",
+      actualizedStats: [99, 95, 75, 85, 130, 65],
+      level: 25,
+      type: "poison",
+      cost: 45,
+    },
   ],
   currentTeam: [1, 3],
 };

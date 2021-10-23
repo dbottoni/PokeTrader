@@ -71,8 +71,7 @@ console.log(capitalizeName("charizard"));
 
 //STORE FILTER FUNCTION
 export const sortPokedex = (pokedex, type, xp) => {
-  console.log(xp);
-  if (type === null && xp === 0) return pokedex;
+  if (type === '' && xp === 0) return pokedex;
 
   let filteredPokedex = [];
 

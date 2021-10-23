@@ -1,11 +1,9 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { PokedexContext } from "../App";
 // import axios from "axios";
 
 import { setCardColor } from "../utils/helpers";
 import { capitalizeName } from "../utils/helpers";
-import { sortByType } from "../utils/helpers";
-import { sortByXP } from '../utils/helpers';
 import Filters from "../components/Filters";
 
 
