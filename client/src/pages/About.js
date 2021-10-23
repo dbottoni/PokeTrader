@@ -1,9 +1,16 @@
 import React from "react";
 
+
+
+
+
 const About = () => {
   return (
-    <div className="container">
+    <div className="about-container">
       {/* PLACEHOLDER CODE PLEASE REMOVE */}
+      <div className="page-heading">
+        <h1>About Us</h1>
+        </div>
       <div className="tile is-ancestor">
         <div className="tile is-vertical is-8">
           <div className="tile">

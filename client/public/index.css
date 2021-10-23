@@ -21,7 +21,8 @@ body {
 
 .no-match-container,
 .form-container,
-.home-container {
+.home-container 
+.about-container{
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -214,3 +215,5 @@ a.link-on-white {
   font-family: var(--content-font);
   text-align: center;
 }
+
+page-heading {}
