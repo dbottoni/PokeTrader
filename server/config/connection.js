@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/poketrader', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/pockettrader', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,

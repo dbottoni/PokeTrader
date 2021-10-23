@@ -65,8 +65,8 @@ export default function Login() {
             <legend className="form-title ml-6">Log In</legend>
 
             <form className="m-6">
-              <div class="field mt-3">
-                <label class="label">What is your email?</label>
+              <div className="field mt-3">
+                <label className="label">What is your email?</label>
 
                 <input
                   className="input"
@@ -78,8 +78,8 @@ export default function Login() {
                 />
               </div>
 
-              <div class="field mt-3">
-                <label class="label">
+              <div className="field mt-3">
+                <label className="label">
                   What is your password?
                 </label>
 
