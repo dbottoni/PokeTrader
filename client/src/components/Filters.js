@@ -6,7 +6,7 @@ export default function Filters(props) {
   const { renderedPokemon, setRenderedPokemon } = props;
   const { pokedex } = useContext(PokedexContext);
   const [sliderValue, setSliderValue] = useState(0);
-  const [selectedType, setSelectedType] = useState('');
+  const [selectedType, setSelectedType] = useState("");
 
   function handleSlider(e) {
     setSliderValue(e.target.value);
@@ -17,48 +17,55 @@ export default function Filters(props) {
   }
 
   useEffect(() => {
-    //next add set timeout to delay state change on slider by like .2 seconds - add page persistence 
+    //next add set timeout to delay state change on slider by like .2 seconds - add page persistence
     const filteredPokemon = sortPokedex(pokedex, selectedType, sliderValue);
     setRenderedPokemon(filteredPokemon);
   }, [sliderValue, selectedType, setRenderedPokemon, pokedex]);
 
   return (
-    <div className="container">
-      <div className="select">
-        <select onChange={handleTypeFilter} value={selectedType}>
-          <option>Choose Type</option>
-          <option value="fire">Fire</option>
-          <option value="water">Water</option>
-          <option value="grass">Grass</option>
-          <option value="normal">Normal</option>
-          <option value="flying">Flying</option>
-          <option value="electric">Electric</option>
-          <option value="ice">Ice</option>
-          <option value="fighting">Fighting</option>
-          <option value="poison">Poison</option>
-          <option value="ground">Ground</option>
-          <option value="rock">Rock</option>
-          <option value="psychic">Psychic</option>
-          <option value="bug">Bug</option>
-          <option value="ghost">Ghost</option>
-          <option value="dragon">Dragon</option>
-          <option value="dark">Dark</option>
-          <option value="steel">Steel</option>
-          <option value="fairy">Fairy</option>
-        </select>
-      </div>
+    <div className="select-container is-flex-wrap-nowrap is-justify-content-center">
+      <fieldset className="login-signup-form">
+        <legend className="filter-title has-text-centered">
+          Filter Pokemon
+        </legend>
 
-      <div>
-        <input
-          type="range"
-          value={sliderValue}
-          min={0}
-          max={250}
-          step={1}
-          onChange={handleSlider}
-        />
-        Value: {sliderValue}
-      </div>
+        <div className="dropdown select is-info mt-6 mb-6">
+          <select onChange={handleTypeFilter} value={selectedType}>
+            <option>Select Type</option>
+            <option value="fire">Fire</option>
+            <option value="water">Water</option>
+            <option value="grass">Grass</option>
+            <option value="normal">Normal</option>
+            <option value="flying">Flying</option>
+            <option value="electric">Electric</option>
+            <option value="ice">Ice</option>
+            <option value="fighting">Fighting</option>
+            <option value="poison">Poison</option>
+            <option value="ground">Ground</option>
+            <option value="rock">Rock</option>
+            <option value="psychic">Psychic</option>
+            <option value="bug">Bug</option>
+            <option value="ghost">Ghost</option>
+            <option value="dragon">Dragon</option>
+            <option value="dark">Dark</option>
+            <option value="steel">Steel</option>
+            <option value="fairy">Fairy</option>
+          </select>
+        </div>
+
+        <div className="mt-6 mb-6 has-text-centered">
+          <p>Experience Value</p>
+          <p>{sliderValue}</p>
+          <input
+            type="range"
+            value={sliderValue}
+            min={0}
+            max={250}
+            step={1}
+            onChange={handleSlider}
+          />
+        </div>
+      </fieldset>
     </div>
   );
 }
