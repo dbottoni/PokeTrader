@@ -1,4 +1,4 @@
-const {User,Pokemon} = require('../models')
+const {User, bookSchema} = require('../models')
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -7,28 +7,19 @@ const resolvers = {
         me: async (parent, args, context) => {
             if (context.user) {
               const userData = await User.findOne({ _id: context.user._id })
-                .select('-__v -password')
-                .populate('pokemonList')        
+                .select('-__v -password')        
               return userData;
             }
           
             throw new AuthenticationError('Not logged in');
         },
-        users: async () => {
-          return User.find()
-                    .select('-__v -password')
-                    .populate('pokemonList')
-      },
-        pokemons:async()=>{
-          return Pokemon.find()
-        }
     },
     Mutation:{
         addUser: async(parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);
 
-            return {token,user};
+            return {user,token};
         },
 
         login: async(parent, { email, password }) =>{
@@ -49,32 +40,27 @@ const resolvers = {
         },
         savePokemon: async (parent, args, context) => {
             if (context.user) {
-              const pokemon = await Pokemon.create({...args, username:context.user.username})
-             
-              await User.findByIdAndUpdate(
+            const updateUser  =  await User.findByIdAndUpdate(
                 { _id: context.user._id },
-                { $push: { pokemonList: pokemon._id } },
-                { new: true }
+                { $push: { savePokemons: args } },
+                { new: true, runValidators: true }
               );
           
-              return pokemon;
+              return updateUser;
             }
           
             throw new AuthenticationError('You need to be logged in!');
           },
 
           removePokemon: async (parent, args, context) => {
-            console.log(args._id)
             if(context.user) {
-              const removedPoke = await Pokemon.findByIdAndDelete(args._id)
-
-                const updateUser =  await User.findOneAndUpdate(
+            const updatedUser = await User.findOneAndUpdate(
                 { _id: context.user._id },
-                { $pull: { pokemonList: removedPoke._id} },
+                { $pull: { savePokemons: { pokemonId: args.pokemonId } } },
                 { new: true }
             );
 
-            return updateUser;
+            return updatedUser;
             }
 
             throw new AuthenticationError('You need to be logged in!');
