@@ -12,7 +12,7 @@ function Nav() {
   return (
     <header>
       <h1 className="content has-text-centered m-6 is-large is-full">
-        PokeTrader
+        PocketTrader
       </h1>
 
       <nav className="navbar">
@@ -58,9 +58,9 @@ function Nav() {
           <div className="navbar-end mt-3 mb-3">
             {Auth.loggedIn() ? (
               <>
-                <Link to="/account">
+                {/* <Link to="/account">
                   <a className="button is-primary">Account</a>
-                </Link>
+                </Link> */}
                 <Link to="/logout">
                   <a href="/" className="button is-primary" onClick={() => Auth.logout()}>Logout</a>
                 </Link>
