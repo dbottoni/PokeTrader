@@ -8,14 +8,11 @@ export const LOGIN_USER = gql`
         _id
         username
         email
-        pokemon {
+        pokemonList {
           pokemonId
-          pokeName
-          images
-          stats
-          level
-          type
-          cost  
+          name
+          image
+          type  
         }
       }
     }
@@ -30,14 +27,11 @@ export const ADD_USER = gql`
         _id
         username
         email
-        pokemon {
-            pokemonId
-            pokeName
-            images
-            stats
-            level
-            type
-            cost  
+        pokemonList {
+          name
+          type
+          pokemonId
+          image 
           }
       }
     }

@@ -10,6 +10,7 @@ export default function SignUp() {
     email: "",
     password: "",
   });
+  const [validated] = useState(false);
   const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleFormChange = (event) => {
@@ -37,6 +38,7 @@ export default function SignUp() {
       console.log(data);
 
       if (error) {
+        console.log(error);
         throw new Error("something went wrong!");
       }
 
@@ -65,7 +67,7 @@ export default function SignUp() {
 
       <div className="columns form-container m-6">
         <div className="column image-space">
-          <img className="oak-img" src="/images/oak.png" />
+          <img className="oak-img" src="/images/oak.png" alt="pokemon"/>
         </div>
 
         <div className="column">
@@ -73,7 +75,7 @@ export default function SignUp() {
             <fieldset className="login-signup-form">
             <legend className="form-title ml-6">Sign Up</legend>
 
-              <form className="m-6">
+              <form className="m-6" noValidate validated={validated}>
                 <div className="field mt-3">
                   <label className="label">First, what is your username?</label>
 

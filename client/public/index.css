@@ -133,7 +133,7 @@ a.footer {
 .card-content {
   background-color: var(--goldenrod-light);
   border-radius: 1em;
-  margin-top: px;
+  margin-top: 5px;
 }
 
 .card-footer {
