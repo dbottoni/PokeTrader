@@ -15,8 +15,6 @@ const typeDefs = gql`
         _id: ID
         username: String
         email: String
-        balance: Int
-        pokemonCount: Int
         pokemonList: [Pokemon]
     }
     type Auth{
