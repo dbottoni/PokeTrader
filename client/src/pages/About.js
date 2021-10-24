@@ -33,12 +33,13 @@ const About = () => {
               
             </div>
             <div className="tile is-parent">
-              <article className="tile is-child notification is-info">
-                <p className="title">Middle tile</p>
-                <p className="subtitle">With an image</p>
+              <article className="tile is-child notification is-info has-text-centered">
+                <p className="subtitle"><h3>BAIYANG</h3></p>
+                <p className="nametag"><h4>Qi</h4></p>
                 <figure className="image is-1by1">
                   <img className="is-rounded" src="./images/Baiyang.png" alt="photo of Baiyang" />
                 </figure>
+                <div className="content">Content </div>
               </article>
               &nbsp; 
               &nbsp;
@@ -47,12 +48,13 @@ const About = () => {
               &nbsp;
               &nbsp;
 
-              <article className="tile is-child notification is-info">
-                <p className="title">Middle tile</p>
-                <p className="subtitle">With an image</p>
+              <article className="tile is-child notification is-info has-text-centered">
+                <p className="subtitle"><h3>BEN</h3></p>
+                <p className="nametag"><h4>Gallagher</h4></p>
                 <figure className="image is-1by1">
                   <img className="is-rounded" src="./images/Ben.jpeg"  alt="photo of Ben" />
                 </figure>
+                <div className="content">Content </div>
               </article> 
               &nbsp;
               &nbsp;
@@ -62,10 +64,9 @@ const About = () => {
               &nbsp;
 
 
-              <article className="tile is-child notification is-warning">
-              <p className="title">Wide tile</p>
-              {/* <p className="subtitle">Aligned with the right tile</p> */}
-              <p className="subtitle">With an image</p>
+              <article className="tile is-child notification is-info has-text-centered">
+                <p className="subtitle"><h3>DANA</h3></p>
+                <p className="nametag"><h4>Bottoni</h4></p>
                 <figure className="image is-1by1">
                   <img className="is-rounded" src="./images/Dana.png"  alt="photo of Dana" />
                 </figure>
@@ -78,12 +79,13 @@ const About = () => {
               &nbsp;
               &nbsp;
 
-              <article className="tile is-child notification is-info">
-                <p className="title">Middle tile</p>
-                <p className="subtitle">With an image</p>
+              <article className="tile is-child notification is-info has-text-centered">
+                <p className="subtitle"><h3>EMILY</h3></p>
+                <p className="nametag"><h4>Necciai Mayeski</h4></p>
                 <figure className="image is-1by1">
                   <img className="is-rounded" src="./images/Emily.jpeg"  alt="photo of Emily" />
                 </figure>
+                <div className="content">Content </div>
               </article> 
               &nbsp;
               &nbsp;
@@ -91,12 +93,13 @@ const About = () => {
               &nbsp;
               &nbsp;
               &nbsp;
-              <article className="tile is-child notification is-info">
-                <p className="title">Middle tile</p>
-                <p className="subtitle">With an image</p>
+              <article className="tile is-child notification is-info has-text-centered">
+                <p className="subtitle"><h3>GAYE</h3></p>
+                <p className="nametag"><h5>Proctor</h5></p>
                 <figure className="image is-1by1">
                   <img className="is-rounded" src="./images/Gaye.jpeg"  alt="photo of Gaye" />
                 </figure>
+                <div className="content">Content </div>
               </article> 
             </div>
             <div className="body is-parent notification is-warning">
