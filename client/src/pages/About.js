@@ -37,7 +37,7 @@ const About = () => {
                 <p className="title">Middle tile</p>
                 <p className="subtitle">With an image</p>
                 <figure className="image is-1by1">
-                  <img className="is-rounded" src="./images/Dana.png" alt="photo of Dana" />
+                  <img className="is-rounded" src="./images/Baiyang.png" alt="photo of Baiyang" />
                 </figure>
               </article>
               &nbsp; 
@@ -51,7 +51,7 @@ const About = () => {
                 <p className="title">Middle tile</p>
                 <p className="subtitle">With an image</p>
                 <figure className="image is-1by1">
-                  <img className="is-rounded" src="./images/Dana.png"  alt="photo of Dana" />
+                  <img className="is-rounded" src="./images/Ben.jpeg"  alt="photo of Ben" />
                 </figure>
               </article> 
               &nbsp;
@@ -82,7 +82,7 @@ const About = () => {
                 <p className="title">Middle tile</p>
                 <p className="subtitle">With an image</p>
                 <figure className="image is-1by1">
-                  <img className="is-rounded" src="./images/Dana.png"  alt="photo of Dana" />
+                  <img className="is-rounded" src="./images/Emily.jpeg"  alt="photo of Emily" />
                 </figure>
               </article> 
               &nbsp;
@@ -95,36 +95,31 @@ const About = () => {
                 <p className="title">Middle tile</p>
                 <p className="subtitle">With an image</p>
                 <figure className="image is-1by1">
-                  <img className="is-rounded" src="./images/Dana.png"  alt="photo of Dana" />
+                  <img className="is-rounded" src="./images/Gaye.jpeg"  alt="photo of Gaye" />
                 </figure>
               </article> 
-              
             </div>
             <div className="body is-parent notification is-warning">
-  <div className="tile is-parent">
+  <div className="tile is-parent has-text-centered">
 
 <article className="tile is-child">
-              <p className="subtitle">Wide tile</p>
+              <p className="subtitle"><h1>ABOUT POKETRADERS</h1></p>
               {/* <p className="subtitle">Aligned with the right tile</p> */}
-              <p className="subtitle">With an image</p>
+              <p className="subtitle">
+                Since October 2021, we have been helping Pokemon Enthusiasts who crave all things Pokemon to interact with one another through our PokeTraders trading card app.
+                </p> 
+    
+            <p>Learn more about us, who we are, and what we stand for (which is ALL THINGS POKEMON).</p>
+    
+            <p>We’re a small team focused on creating more fun by creating interactive, dynamic on-line trading cards. &nbsp;&nbsp;</p>
+  
                 
-              <div className="content">Content </div>
+              {/* <div className="">Content </div> */}
             </article>
 
             
-            &nbsp;
-              &nbsp;
-              &nbsp;
-              &nbsp;
-              &nbsp;
-              &nbsp;
-            <article className="tile is-child">
-              <p className="subtitle">Wide tile</p>
-              {/* <p className="subtitle">Aligned with the right tile</p> */}
-              <p className="subtitle">With an image</p>
-                
-              <div className="content">Content </div>
-            </article>
+            
+            
 
           
           
