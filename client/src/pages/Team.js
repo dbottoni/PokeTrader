@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { PokedexContext } from "../App";
-
+import { useQuery } from "@apollo/client";
+import { GET_ME } from '../utils/queries';
+ 
 
 import { capitalizeName } from "../utils/helpers";
 import { diceRoll } from "../utils/helpers";
@@ -10,6 +12,9 @@ import { setCardColor } from "../utils/helpers";
 
 
 const Team = () => {
+  const {loading, data} = useQuery(GET_ME)
+  const userData = data?.me || {};
+  console.log(userData);
   const myPokemon = dummyData.pokemon;
 
 
@@ -19,7 +24,7 @@ const Team = () => {
 
   return (
     <div className="container">
-      <h2 className="content has-text-centered">Your Team</h2>
+      <h2 className="content has-text-centered">{userData.username ? `${userData.username}'s ` : "Your" } Team</h2>
       <p className="content has-text-centered">
         You can only have six Pokemon on your team.
       </p>

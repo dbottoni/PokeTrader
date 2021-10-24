@@ -2,7 +2,7 @@
 const { Schema, model } = require('mongoose');
 
 const pokemonschema = new Schema({
-  name:
+  pokeName:
     {
       type: String,
       required:true,
@@ -21,7 +21,7 @@ const pokemonschema = new Schema({
     required:true
   },
   //image linke: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<pokemonId>.png
-  image: {
+  images: {
     type: String,
   },
   // items:[

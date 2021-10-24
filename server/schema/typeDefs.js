@@ -3,12 +3,13 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
     type Pokemon{
         _id:ID
-        name: String
+        pokeName: String
         abilities: [String]
         pokemonId: String
         type:[String]
         image: String
         items: [String]
+        stats: [String]
         username:String
     }
     type User{

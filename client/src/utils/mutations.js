@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
@@ -21,7 +21,7 @@ export const ADD_USER = gql`
         username
         email
         pokemonList {
-          name
+          pokeName
           type
           pokemonId
           image 
@@ -42,7 +42,7 @@ export const ADD_POKEMON = gql`
     savePokemon(pokemonId: $id) {
       _id
       pokeName
-      images
+      image
       stats
       level
     }
