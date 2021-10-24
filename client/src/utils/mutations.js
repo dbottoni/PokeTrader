@@ -7,13 +7,6 @@ export const LOGIN_USER = gql`
       user {
         _id
         username
-        email
-        pokemonList {
-          pokemonId
-          name
-          image
-          type  
-        }
       }
     }
   }
