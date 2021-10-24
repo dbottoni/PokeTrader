@@ -11,6 +11,8 @@ import axios from "axios";
 // import { capitalizeName } from "./utils/helpers";
 // import { pokemonJSON } from './utils/pokeAPI';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { GET_ME } from "./utils/queries";
 
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
@@ -48,6 +50,7 @@ const client = new ApolloClient({
 function App() {
   //set state at APP level to track all pokemon in our pokedexDB
   const [pokedex, setPokedex] = useState([]);
+
   
   
   const pokemonContextValue = {

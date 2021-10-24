@@ -15,6 +15,8 @@ const Team = () => {
   const {loading, data} = useQuery(GET_ME)
   const userData = data?.me || {};
   console.log(userData);
+
+  const ownedPokemon = userData.pokemonList;
   const myPokemon = dummyData.pokemon;
 
 

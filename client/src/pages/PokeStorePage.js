@@ -1,6 +1,11 @@
 import React, { useState, useContext } from "react";
 import { PokedexContext } from "../App";
+import Auth from "../utils/auth";
 // import axios from "axios";
+import { useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
+import { GET_ME } from "../utils/queries";
+import { ADD_POKEMON } from "../utils/mutations";
 
 import { setCardColor } from "../utils/helpers";
 import { capitalizeName } from "../utils/helpers";
@@ -10,13 +15,32 @@ import Filters from "../components/Filters";
 // are we getting our pokedex state through props like this? 
 export default function PokeStorePage(props) {
   const {pokedex} = useContext(PokedexContext)
+  console.log(pokedex);
 
   const [renderedPokemon, setRenderedPokemon] = useState(pokedex)
 
+  const {loading, data} = useQuery(GET_ME)
+  const userData = data?.me || {};
+  console.log(userData);
+
+  const ownedPokemon = userData.pokemonList;
 
 
-  const addToTeam = () => {
-   return console.log("Added to Cart");
+
+  const addToTeam = (id) => {
+   console.log("Adding to Team");
+   console.log(id);
+    if (userData.pokemonList.length >= 5) window.alert('You can only own 6 pokemon at a time!')
+    const pokemonToAdd = pokedex.filter(pokemon => pokemon.id === id)
+
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+  
+
   // const itemInCart = cart.find((cartItem) => cartItem._id === _id)
   // if (itemInCart) {
   //   dispatch({
@@ -80,9 +104,9 @@ export default function PokeStorePage(props) {
               <div className="content">
                 <p>Base XP : {pokemon.base_experience}</p>
               </div>
-              <span className="card-footer"><a href="#" className="card-footer-item" onClick={addToTeam}>
+              <span className="card-footer"><p className="card-footer-item" onClick={() => addToTeam(pokemon.id)}>
                 Add to Team
-              </a></span>
+              </p></span>
             </div>
           </div>
         )
