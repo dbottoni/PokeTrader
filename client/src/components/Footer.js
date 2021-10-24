@@ -8,12 +8,12 @@ function Footer() {
         <div className="columns">
           <div className="column">
             <Link to="/">
-              <a>Home</a>
+              <p>Home</p>
             </Link>
           </div>
           <div className="column">
             <Link to="/about">
-              <a className="column">About PokeTraders</a>
+              <p className="column">About PokeTraders</p>
             </Link>
           </div>
         </div>

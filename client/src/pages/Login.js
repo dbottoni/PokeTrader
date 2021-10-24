@@ -1,45 +1,37 @@
 import React, { useState } from "react";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
 
 export default function Login() {
   const [formState, setFormState] = useState({ email: "", password: "" });
-  const [loginUser, { error }] = useMutation(LOGIN_USER);
+  const [login, { error }] = useMutation(LOGIN_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({ ...formState, [name]: value });
   };
 
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     // check if form has everything (as per react-bootstrap docs)
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
+    // const form = event.currentTarget;
+    // if (form.checkValidity() === false) {
+    //   event.preventDefault();
+    //   event.stopPropagation();
+    // }
 
     try {
-      const { data } = await loginUser({
-        variables: {
-          ...formState,
-        },
+      const { data } = await login({
+        variables: {...formState}
       });
-
-      if (error) {
-        throw new Error("something went wrong!");
-      }
-
-      //   const { token, user } = await response.json();
-      //   console.log(user);
-      Auth.login(data.login.token);
+      console.log(data);
+      Auth.login(data.login.token)
     } catch (err) {
       console.error(err);
-      //   setShowAlert(true);
     }
 
     setFormState({
@@ -64,11 +56,12 @@ export default function Login() {
           <fieldset className="login-signup-form">
             <legend className="form-title ml-6">Log In</legend>
 
-            <form className="m-6">
-              <div class="field mt-3">
-                <label class="label">What is your email?</label>
+            <form className="m-6" onSubmit={handleFormSubmit}>
+              <div className="field mt-3">
+                <label className="label">What is your email?</label>
 
                 <input
+                  id="email"
                   className="input"
                   name="email"
                   value={formState.email}
@@ -78,12 +71,13 @@ export default function Login() {
                 />
               </div>
 
-              <div class="field mt-3">
-                <label class="label">
+              <div className="field mt-3">
+                <label className="label">
                   What is your password?
                 </label>
 
                 <input
+                  id="password"
                   className="input"
                   name="password"
                   value={formState.password}
@@ -92,19 +86,15 @@ export default function Login() {
                   onChange={handleChange}
                 />
               </div>
-            </form>
-            <button
+              <button
               className="button poke-button is-fullwidth mb-3"
               type="submit"
-              onClick={handleFormSubmit}
-            >
+              >
               ▶ Log In
             </button>
-
+            </form>
             <Link to="/signup">
-              <a className="content link-on-white">
                 <p className="is-underlined">Don't have an account? Make one now!</p>
-              </a>
             </Link>
           </fieldset>
         </div>

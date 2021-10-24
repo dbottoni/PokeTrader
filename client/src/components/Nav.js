@@ -43,7 +43,7 @@ function Nav() {
       </h1>
 
       <nav className="navbar">
-        <a
+        <p
           role="button"
           className="navbar-burger"
           aria-label="menu"
@@ -53,35 +53,35 @@ function Nav() {
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
-        </a>
+        </p>
 
         <div className="navbar-menu container">
           <div className="navbar-start">
             <Link to="/">
-              <a className="navbar-item" onClick="myFunction()">
+              <p className="navbar-item">
                 HOME
-              </a>
+              </p>
             </Link>
             <Link to="/trade">
-              <a className="navbar-item">TRADE</a>
+              <p className="navbar-item">TRADE</p>
             </Link>
             <Link to="/team">
-              <a className="navbar-item">TEAM</a>
+              <p className="navbar-item">TEAM</p>
             </Link>
           </div>
 
           <div className="navbar-end mt-3 mb-3">
             <Link to="/signup">
-              <a className="button is-primary">Sign Up</a>
+              <p className="button is-primary">Sign Up</p>
             </Link>
             <Link to="/login">
-              <a className="button is-primary">Login</a>
+              <p className="button is-primary">Login</p>
             </Link>
             <Link to="/account">
-              <a className="button is-primary">Account</a>
+              <p className="button is-primary">Account</p>
             </Link>
             <Link to="/logout">
-              <a className="button is-primary">Logout</a>
+              <p className="button is-primary">Logout</p>
               {/* <a href="/" className="button is-primary" onClick={() => Auth.logout()}>Logout</a> */}
             </Link>
           </div>

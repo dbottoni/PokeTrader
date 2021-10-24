@@ -52,13 +52,13 @@ const Team = () => {
                       })}
                     </ul>
                   </div>
-                <span className='card-footer'><a
+                <span className='card-footer'><p
                     href="#"
                     className="card-footer-item"
                     onClick={removeFromTeam}
                   >
                     Remove From Team
-                  </a></span>
+                  </p></span>
                 </div>
               </div>
             );

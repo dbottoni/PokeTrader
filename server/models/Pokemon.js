@@ -6,7 +6,7 @@ const pokemonschema = new Schema({
       type: String,
       required:true,
     },
-  abilities: [{
+  stats: [{
     type: String,
     required: true,
   },],
@@ -20,14 +20,15 @@ const pokemonschema = new Schema({
     required:true
   },
   //image linke: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<pokemonId>.png
-  image: {
+  images: [{
     type: String,
-  },
-  items:[
-    {
+  }],
+  level:{
     type:String
-    }
-  ],
+  },
+  cost:{
+    type:String
+  },
   username:{
     type: String,
     required:true

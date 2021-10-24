@@ -82,9 +82,9 @@ console.log(renderedByXP);
               <div className="content">
                 <p>Base XP : {pokemon.base_experience}</p>
               </div>
-              <span className="card-footer"><a href="#" className="card-footer-item" onClick={addToTeam}>
+              <span className="card-footer"><p href="#" className="card-footer-item" onClick={addToTeam}>
                 Add to Team
-              </a></span>
+              </p></span>
             </div>
           </div>
         )
