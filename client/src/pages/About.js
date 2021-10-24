@@ -15,6 +15,10 @@ const About = () => {
       <div className="hero-body columns">
       {/* <div className="tile is-ancestor"> */}
         <div className="tile is-vertical">
+        <div className="has-text-centered">
+        <h1 className="form-header">Meet the Team!</h1>
+      </div>
+          
         {/* <p class="post-comment" contenteditable="false">${post.comment}</p> */}
           {/* <div className="tile"> */}
           
@@ -100,7 +104,7 @@ const About = () => {
   <div className="tile is-parent">
 
 <article className="tile is-child">
-              <p className="title">Wide tile</p>
+              <p className="subtitle">Wide tile</p>
               {/* <p className="subtitle">Aligned with the right tile</p> */}
               <p className="subtitle">With an image</p>
                 
@@ -115,7 +119,7 @@ const About = () => {
               &nbsp;
               &nbsp;
             <article className="tile is-child">
-              <p className="title">Wide tile</p>
+              <p className="subtitle">Wide tile</p>
               {/* <p className="subtitle">Aligned with the right tile</p> */}
               <p className="subtitle">With an image</p>
                 
