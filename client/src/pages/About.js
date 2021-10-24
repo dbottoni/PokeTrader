@@ -94,8 +94,8 @@ const About = () => {
               &nbsp;
               &nbsp;
               <article className="tile is-child notification is-info has-text-centered">
-                <p className="subtitle"><h3>GAYE</h3></p>
-                <p className="nametag"><h5>Proctor</h5></p>
+                <div className="subtitle"><h3>GAYE</h3>
+            <h5>Proctor</h5></div>
                 <figure className="image is-1by1">
                   <img className="is-rounded" src="./images/Gaye.jpeg"  alt="photo of Gaye" />
                 </figure>
