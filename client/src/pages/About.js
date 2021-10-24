@@ -9,25 +9,15 @@ const About = () => {
   return (
     
 
-<section className="hero is-fullheight">
+<section className="hero is-fullheight about-container">
 
-<div className="tile is-parent">
-            <article className="tile is-child notification is-warning is- is-offset-8">
-              <p className="title">Wide tile</p>
-              {/* <p className="subtitle">Aligned with the right tile</p> */}
-              <p className="subtitle">With an image</p>
-                <figure className="image is-1by1">
-                  <img className="is-rounded" src="./images/Dana.png"  alt="photo of Dana" />
-                </figure>
-              <div className="content">Content </div>
-            </article>
-          </div> 
 
-      <div className="hero-body columns about-container">
+      <div className="hero-body columns">
       {/* <div className="tile is-ancestor"> */}
         <div className="tile is-vertical">
         {/* <p class="post-comment" contenteditable="false">${post.comment}</p> */}
           {/* <div className="tile"> */}
+          
             <div className="tile is-parent is-vertical">
             {/* <article className="tile is-child notification is-info is">
                 <p className="title">Middle tile</p>
@@ -42,37 +32,100 @@ const About = () => {
               <article className="tile is-child notification is-info">
                 <p className="title">Middle tile</p>
                 <p className="subtitle">With an image</p>
-                <figure className="image is-2by2">
+                <figure className="image is-1by1">
                   <img className="is-rounded" src="./images/Dana.png" alt="photo of Dana" />
                 </figure>
               </article>
               &nbsp; 
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
 
               <article className="tile is-child notification is-info">
                 <p className="title">Middle tile</p>
                 <p className="subtitle">With an image</p>
-                <figure className="image is-2by2">
+                <figure className="image is-1by1">
                   <img className="is-rounded" src="./images/Dana.png"  alt="photo of Dana" />
                 </figure>
               </article> 
               &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+
+
+              <article className="tile is-child notification is-warning">
+              <p className="title">Wide tile</p>
+              {/* <p className="subtitle">Aligned with the right tile</p> */}
+              <p className="subtitle">With an image</p>
+                <figure className="image is-1by1">
+                  <img className="is-rounded" src="./images/Dana.png"  alt="photo of Dana" />
+                </figure>
+              <div className="content">Content </div>
+            </article>
+            &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+
               <article className="tile is-child notification is-info">
                 <p className="title">Middle tile</p>
                 <p className="subtitle">With an image</p>
-                <figure className="image is-2by2">
+                <figure className="image is-1by1">
                   <img className="is-rounded" src="./images/Dana.png"  alt="photo of Dana" />
                 </figure>
               </article> 
               &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
               <article className="tile is-child notification is-info">
                 <p className="title">Middle tile</p>
                 <p className="subtitle">With an image</p>
-                <figure className="image is-2by2">
+                <figure className="image is-1by1">
                   <img className="is-rounded" src="./images/Dana.png"  alt="photo of Dana" />
                 </figure>
               </article> 
               
             </div>
+            <div className="body is-parent notification is-warning">
+  <div className="tile is-parent">
+
+<article className="tile is-child">
+              <p className="title">Wide tile</p>
+              {/* <p className="subtitle">Aligned with the right tile</p> */}
+              <p className="subtitle">With an image</p>
+                
+              <div className="content">Content </div>
+            </article>
+
+            
+            &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+            <article className="tile is-child">
+              <p className="title">Wide tile</p>
+              {/* <p className="subtitle">Aligned with the right tile</p> */}
+              <p className="subtitle">With an image</p>
+                
+              <div className="content">Content </div>
+            </article>
+
+          
+          
+          </div> 
+</div>
           </div>
 
           {/* <article className="tile is-child notification is-info">
