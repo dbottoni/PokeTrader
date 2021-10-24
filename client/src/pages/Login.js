@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 export default function Login() {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN_USER);
+  const [validated] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -64,7 +65,7 @@ export default function Login() {
           <fieldset className="login-signup-form">
             <legend className="form-title ml-6">Log In</legend>
 
-            <form className="m-6" onSubmit={handleFormSubmit}>
+            <form className="m-6" onSubmit={handleFormSubmit} noValidate validated={validated}>
               <div class="field mt-3">
                 <label class="label">What is your email?</label>
 

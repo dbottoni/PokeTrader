@@ -3,14 +3,12 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
     type Pokemon{
         _id:ID
-        pokeName: String
-        abilities: [String]
+        name: String
         pokemonId: String
         type:[String]
-        image: String
-        items: [String]
+        images: String
         stats: [String]
-        username:String
+
     }
     type User{
         _id: ID
@@ -30,9 +28,16 @@ const typeDefs = gql`
     type Mutation{
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        savePokemon(name:String!,abilities: [String]!, type:[String]!,pokemonId:String!,image:String!,items:[String]!): Pokemon
+        savePokemon(name:String!, type:[String]!,pokemonId:String!,images:String!): Pokemon
         removePokemon(_id: String!): Pokemon
     }
 `;
 
 module.exports = typeDefs;
+
+
+
+
+
+
+// cut from Pokemon: username:String, abilities: [String],  items: [String]

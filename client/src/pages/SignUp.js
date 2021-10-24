@@ -42,7 +42,7 @@ export default function SignUp() {
         throw new Error("something went wrong!");
       }
 
-      Auth.login(data.login.token);
+      Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);
       //   setShowAlert(true);

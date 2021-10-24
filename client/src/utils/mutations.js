@@ -21,10 +21,7 @@ export const ADD_USER = gql`
         username
         email
         pokemonList {
-          pokeName
-          type
-          pokemonId
-          image 
+          name
           }
       }
     }
@@ -32,19 +29,15 @@ export const ADD_USER = gql`
 `;
 
 
-// export const BUY_POKEMON = gql`
-//   mutation buyPokemon()
-// `
-
-
 export const ADD_POKEMON = gql`
   mutation savePokemon($id: ID!) {
     savePokemon(pokemonId: $id) {
       _id
-      pokeName
-      image
+      name
+      images
       stats
       level
+      type
     }
   }
 

@@ -2,7 +2,7 @@
 const { Schema, model } = require('mongoose');
 
 const pokemonschema = new Schema({
-  pokeName:
+  name:
     {
       type: String,
       required:true,
@@ -24,6 +24,10 @@ const pokemonschema = new Schema({
   images: {
     type: String,
   },
+  stats:[{
+    type: Number,
+    required: true,
+  }]
   // items:[
   //   {
   //   type:String

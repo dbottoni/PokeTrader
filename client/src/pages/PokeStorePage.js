@@ -17,7 +17,8 @@ export default function PokeStorePage(props) {
   const {pokedex} = useContext(PokedexContext)
   console.log(pokedex);
 
-  const [renderedPokemon, setRenderedPokemon] = useState(pokedex)
+  const [renderedPokemon, setRenderedPokemon] = useState(pokedex);
+  const [addPokemon, { error } ] = useMutation(ADD_POKEMON)
 
   const {loading, data} = useQuery(GET_ME)
   const userData = data?.me || {};
@@ -27,19 +28,36 @@ export default function PokeStorePage(props) {
 
 
 
-  const addToTeam = (id) => {
+  const addToTeam = async (pokemonId) => {
    console.log("Adding to Team");
-   console.log(id);
-    if (userData.pokemonList.length >= 5) window.alert('You can only own 6 pokemon at a time!')
-    const pokemonToAdd = pokedex.filter(pokemon => pokemon.id === id)
+   console.log(pokemonId);
+
+    // if (userData.pokemonList.length >= 5) window.alert('You can only own 6 pokemon at a time!')
+
+    const pokemonToAdd = pokedex.find(pokemon => pokemon.id === pokemonId)
+    const {id, name, base_experience, stats, sprites, types } = pokedex.find(pokemon => pokemon.id === pokemonId)
+    // console.log(pokemonToAdd);
+    console.log(name, stats);
+
 
     const token = Auth.loggedIn() ? Auth.getToken() : null;
-
+    //run stat functions here or call on Pokemon model itself? 
     if (!token) {
       return false;
     }
+    ///pokemon data captured. Now send addPokemon Request 
 
-  
+    try {
+      const {data} = await addPokemon({
+        variables: {
+          ...pokemonToAdd
+        }
+      })
+      console.log(data);
+    } catch(err){
+      console.error(err);
+    }
+    
 
   // const itemInCart = cart.find((cartItem) => cartItem._id === _id)
   // if (itemInCart) {
