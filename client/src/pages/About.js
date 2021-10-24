@@ -7,13 +7,19 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="about-container">
-      {/* PLACEHOLDER CODE PLEASE REMOVE */}
+    
+
+<section className="hero is-fullheight">
+      <div className="hero-body columns container about-container">
+        
+    className="about-container">
 
       
-      <div className="page-heading">
-        <h1 align="center">About Us</h1>
-        </div>
+
+      
+      
+
+        
   
 
       <div className="tile is-ancestor">
@@ -21,7 +27,7 @@ const About = () => {
         {/* <p class="post-comment" contenteditable="false">${post.comment}</p> */}
           <div className="tile">
             <div className="tile is-parent is-vertical">
-            <article className="tile is-child notification is-info">
+            <article className="tile is-child notification is-info is">
                 <p className="title">Middle tile</p>
                 <p className="subtitle">With an image</p>
                 <figure className="image is-1by1">
@@ -30,8 +36,8 @@ const About = () => {
               </article>
               
             </div>
-            <div className="tile is-parent">
-              <article className="tile is-child notification is-info">
+            <div className="tile is-parent m-6is large is-full">
+              <article className="tile is-child notification is-info ">
                 <p className="title">Middle tile</p>
                 <p className="subtitle">With an image</p>
                 <figure className="image is-1by1">
@@ -86,6 +92,8 @@ const About = () => {
         </div> */}
       </div>
     </div>
+
+    </section> 
   );
 };
 
