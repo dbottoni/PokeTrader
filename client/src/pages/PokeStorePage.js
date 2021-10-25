@@ -76,7 +76,6 @@ export default function PokeStorePage() {
       {/* <p className="content has-text-centered">Search for pokemon in the space below.</p> */}
 
       <Filters
-        renderedPokemon={renderedPokemon}
         setRenderedPokemon={setRenderedPokemon}
       />
       <h2 className="content has-text-centered">Add to Your Team</h2>

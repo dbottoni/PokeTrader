@@ -28,7 +28,6 @@ const Team = () => {
   // }, [userData.pokemonList])
 
   const removeFromTeam = async (pokemonId) => {
-    console.log(pokemonId);
     console.log("Removed from Team");
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 

@@ -3,7 +3,7 @@ import { PokedexContext } from "../App";
 import { sortPokedex } from "../utils/helpers";
 
 export default function Filters(props) {
-  const { renderedPokemon, setRenderedPokemon } = props;
+  const { setRenderedPokemon } = props;
   const { pokedex } = useContext(PokedexContext);
   const [sliderValue, setSliderValue] = useState(0);
   const [selectedType, setSelectedType] = useState('');
