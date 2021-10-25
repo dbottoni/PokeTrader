@@ -118,12 +118,12 @@ export default function PokeStorePage() {
                     <p>Base XP : {pokemon.base_experience}</p>
                   </div>
                   <span className="card-footer">
-                    <p
+                    <a
                       className="card-footer-item"
                       onClick={() => addToTeam(pokemon.id)}
                     >
                       Add to Team
-                    </p>
+                    </a>
                   </span>
                 </div>
               </div>
