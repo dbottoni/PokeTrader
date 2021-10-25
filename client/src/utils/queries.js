@@ -9,6 +9,7 @@ export const GET_ME = gql`
         pokemonList {
           pokemonId
           name
+          level
           images
           type 
           stats

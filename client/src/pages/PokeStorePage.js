@@ -35,10 +35,10 @@ export default function PokeStorePage(props) {
     // if (userData.pokemonList.length >= 5) window.alert('You can only own 6 pokemon at a time!')
 
     const pokemonToAdd = pokedex.find(pokemon => pokemon.id === pokemonId)
-    const {id, name, base_experience, stats, sprites, types } = pokedex.find(pokemon => pokemon.id === pokemonId)
+    // const {id, name, base_experience, stats, sprites, types } = pokedex.find(pokemon => pokemon.id === pokemonId)
     // console.log(pokemonToAdd);
-    console.log(name, stats);
-
+    // console.log(name, stats);
+    const name = pokemonToAdd.name.toString();
 
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     //run stat functions here or call on Pokemon model itself? 
@@ -46,12 +46,11 @@ export default function PokeStorePage(props) {
       return false;
     }
     ///pokemon data captured. Now send addPokemon Request 
+    // const pokeName = name.toString();
 
     try {
       const {data} = await addPokemon({
-        variables: {
-          ...pokemonToAdd
-        }
+        variables: { name }
       })
       console.log(data);
     } catch(err){

@@ -7,10 +7,6 @@ const pokemonschema = new Schema({
       type: String,
       required:true,
     },
-  // abilities: [{
-  //   type: String,
-  //   required: true,
-  // },],
   type: [{
     type: String,
     required: true,
@@ -20,23 +16,20 @@ const pokemonschema = new Schema({
     type: String,
     required:true
   },
-  //image linke: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<pokemonId>.png
-  images: {
+  //image link: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<pokemonId>.png
+  images: [{
     type: String,
-  },
+  }],
   stats:[{
     type: Number,
     required: true,
-  }]
-  // items:[
-  //   {
-  //   type:String
-  //   }
-  // ],
-  // username:{
-  //   type: String,
-  //   required:true
-  // }
+  }],
+  level: {
+    type: String
+  },
+  cost: {
+    type: String
+  }
 },
 {
   toJSON: {
