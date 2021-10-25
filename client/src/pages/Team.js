@@ -14,18 +14,19 @@ const Team = () => {
   const {loading, data} = useQuery(GET_ME)
   const userData = data?.me || {};
 
-  const [removePokemon, {error}] = useMutation(REMOVE_POKEMON)
+  const [removePokemon, {error}] = useMutation(REMOVE_POKEMON, {
+    refetchQueries: [{query: GET_ME}]
+  })
 
-  const ownedPokemon = userData.pokemonList;
+  // const ownedPokemon = userData.pokemonList;
+  
+  const [ownedPokemon, setOwnedPokemon] = useState([]);
   console.log(userData);
   console.log(ownedPokemon);
 
-  // const [ownedPokemon, setOwnedPokemon] = useState([userData.pokemonList ? userData.pokemonList : []]);
-  // console.log(ownedPokemon);
-
-  // useEffect(() => {
-  //   setOwnedPokemon(userData.pokemonList)
-  // }, [userData.pokemonList])
+  useEffect(() => {
+    setOwnedPokemon(userData.pokemonList)
+  }, [userData.pokemonList])
 
   const removeFromTeam = async (pokemonId) => {
     console.log("Removed from Team");
@@ -48,7 +49,7 @@ const Team = () => {
     } catch (err) {
       console.error(err);
     }
-    // setOwnedPokemon(userData.pokemonList)
+    setOwnedPokemon(userData.pokemonList)
   };
 
   return (
@@ -58,7 +59,7 @@ const Team = () => {
         You can only have six Pokemon on your team.
       </p>
       <div className="columns is-desktop is-justify-content-center is-flex-wrap-wrap is-flex-direction-row">
-        {loading === false ? (
+        {ownedPokemon !== undefined ? (
           ownedPokemon.map((pokemon) => {
             return (
               <div
