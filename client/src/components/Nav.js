@@ -33,7 +33,7 @@ function Nav() {
             {Auth.loggedIn() ? (
               <>
                 <Link to="/">
-                  <a className="navbar-item" onClick="myFunction()">
+                  <a className="navbar-item">
                     HOME
                   </a>
                 </Link>
@@ -47,7 +47,7 @@ function Nav() {
             ) : (
               <>
                 <Link to="/">
-                  <a className="navbar-item" onClick="myFunction()">
+                  <a className="navbar-item">
                     HOME
                   </a>
                 </Link>

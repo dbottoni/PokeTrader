@@ -34,16 +34,12 @@ export default function SignUp() {
           ...formState,
         },
       });
-      console.log("===========");
-      console.log(data);
 
       if (error) {
         console.log(error);
         throw new Error("something went wrong!");
       }
 
-      //   const { token, user } = await response.json();
-      //   console.log(user);
       Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);

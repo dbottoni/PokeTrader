@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
@@ -7,13 +7,6 @@ export const LOGIN_USER = gql`
       user {
         _id
         username
-        email
-        pokemonList {
-          pokemonId
-          name
-          image
-          type  
-        }
       }
     }
   }
@@ -29,9 +22,6 @@ export const ADD_USER = gql`
         email
         pokemonList {
           name
-          type
-          pokemonId
-          image 
           }
       }
     }
@@ -39,19 +29,15 @@ export const ADD_USER = gql`
 `;
 
 
-// export const BUY_POKEMON = gql`
-//   mutation buyPokemon()
-// `
-
-
 export const ADD_POKEMON = gql`
-  mutation savePokemon($id: ID!) {
-    savePokemon(pokemonId: $id) {
+  mutation savePokemon($_id: ID!, $name: String!, $level: String, $type: [String]!, $stats: [String], $images: [String]! ) {
+    savePokemon(pokemonId: $_id, name: $name, level: $level, type: $type, images: $images, stats: $stats) {
       _id
-      pokeName
+      name
       images
       stats
       level
+      type
     }
   }
 
@@ -59,6 +45,10 @@ export const ADD_POKEMON = gql`
 
 
 
-// export const REMOVE_POKEMON = gql`
-//   mutation removePokemon()
-// `
+export const REMOVE_POKEMON = gql`
+  mutation removePokemon($_id: ID!){
+    removePokemon(_id: $_id){
+      _id
+    }
+  }
+`

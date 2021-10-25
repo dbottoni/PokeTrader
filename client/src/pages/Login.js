@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 
 export default function Login() {
   const [formState, setFormState] = useState({ email: "", password: "" });
-  const [loginUser, { error }] = useMutation(LOGIN_USER);
+  const [login, { error }] = useMutation(LOGIN_USER);
+  const [validated] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -24,12 +25,12 @@ export default function Login() {
     }
 
     try {
-      const { data } = await loginUser({
+      const { data } = await login({
         variables: {
           ...formState,
         },
       });
-
+      console.log(data);
       if (error) {
         throw new Error("something went wrong!");
       }
@@ -57,14 +58,14 @@ export default function Login() {
 
       <div className="columns form-container m-6">
         <div className="column image-space">
-          <img className="oak-img" src="/images/oak.png" />
+          <img className="oak-img" src="/images/oak.png" alt='professor oak' />
         </div>
 
         <div className="column">
           <fieldset className="login-signup-form">
             <legend className="form-title ml-6">Log In</legend>
 
-            <form className="m-6">
+            <form className="m-6" onSubmit={handleFormSubmit} noValidate validated={validated}>
               <div className="field mt-3">
                 <label className="label">What is your email?</label>
 
@@ -92,19 +93,18 @@ export default function Login() {
                   onChange={handleChange}
                 />
               </div>
-            </form>
             <button
               className="button poke-button is-fullwidth mb-3"
               type="submit"
-              onClick={handleFormSubmit}
-            >
+              >
               ▶ Log In
             </button>
+            </form>
 
             <Link to="/signup">
-              <a className="content link-on-white">
+              {/* <a className="content link-on-white"> */}
                 <p className="is-underlined">Don't have an account? Make one now!</p>
-              </a>
+              {/* </a> */}
             </Link>
           </fieldset>
         </div>

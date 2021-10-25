@@ -1,96 +1,138 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { PokedexContext } from "../App";
-// import axios from "axios";
+import Auth from "../utils/auth";
+import { v4 as uuid } from "uuid";
+import { useMutation, useQuery } from "@apollo/client";
+import { ADD_POKEMON } from "../utils/mutations";
+import { diceRoll } from "../utils/helpers";
+import { GET_ME } from '../utils/queries';
 
 import { setCardColor } from "../utils/helpers";
 import { capitalizeName } from "../utils/helpers";
+import {
+  generatePokemonStats,
+  generatePokemonLevel,
+} from "../utils/actualizedStats";
 import Filters from "../components/Filters";
 
 
-// are we getting our pokedex state through props like this? 
-export default function PokeStorePage(props) {
-  const {pokedex} = useContext(PokedexContext)
+export default function PokeStorePage() {
+  const { pokedex } = useContext(PokedexContext);
 
-  const [renderedPokemon, setRenderedPokemon] = useState(pokedex)
+  const {loading, data} = useQuery(GET_ME)
+  const userData = data?.me || {};
 
-
-
-  const addToTeam = () => {
-   return console.log("Added to Cart");
-  // const itemInCart = cart.find((cartItem) => cartItem._id === _id)
-  // if (itemInCart) {
-  //   dispatch({
-  //     type: UPDATE_CART_QUANTITY,
-  //     _id: _id,
-  //     purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-  //   });
-  //   idbPromise('cart', 'put', {
-  //     ...itemInCart,
-  //     purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-  //   });
-  // } else {
-  //   dispatch({
-  //     type: ADD_TO_CART,
-  //     product: { ...item, purchaseQuantity: 1 }
-  //   });
-  //   idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
-  // }
-}
-
-// const renderedPokedex = sortByType(pokedex, )
-// const renderedByXP = sortByXP(renderedPokedex, 100)
+  const [renderedPokemon, setRenderedPokemon] = useState(pokedex);
+  const [addPokemon, { error }] = useMutation(ADD_POKEMON, {
+    refetchQueries: [{query: GET_ME}]
+  });
 
 
-  // const [addPokemon] = useMutation(ADD_POKEMON)
+  const addToTeam = async (pokemonId) => {
+       if(userData.pokemonList.length >= 6){
+        return window.alert('You can only own 6 pokemon at a time!')
+    }
 
-//   const pokemon = "Pokemon";
+    const actualizedStats = async (stats, base_experience) => {
+      const pokemonLevel = await generatePokemonLevel(base_experience);
+      const pokemonStats = await generatePokemonStats(stats.map((stat) => stat.base_stat), pokemonLevel);
+      return { pokemonLevel, pokemonStats };
+    };
 
+    const { name, base_experience, stats, sprites, types } = pokedex.find((pokemon) => pokemon.id === pokemonId);
 
-  //functions to handle: openPokemonModal, filter/search, buyPokemon, buyCoins (open a modal on store page? or buy coins in profile?)
+    let typeArr = []
+    for (const type of types) {
+      typeArr.push(type.type.name)
+    }
+    const isShiny = diceRoll();
+    const pokemonImage = isShiny === true ? sprites.front_shiny : sprites.front_default;
 
-  //render our store page with all pokemon
-  // need to map a different variable than our state. Take pokedex and mutate it (default: no change, filter by type/XP); then map that variable 
+    const { pokemonLevel, pokemonStats } = await actualizedStats(stats, base_experience);
+    const pokeID = uuid();
+
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    if (!token) {
+      return false;
+    }
+
+    try {
+      const { data } = await addPokemon({
+        variables: {
+          _id: pokeID,
+          name: name,
+          images: pokemonImage,
+          type: typeArr,
+          level: pokemonLevel.toString(),
+          stats: pokemonStats.toString().split(',')
+        },
+      });
+      console.log(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div className="container">
       {/* <p className="content has-text-centered">Search for pokemon in the space below.</p> */}
 
-      {/* POTENTIAL SEARCH OR FILTER EXPERIENCE HERE */}
-       <Filters renderedPokemon={renderedPokemon} setRenderedPokemon={setRenderedPokemon}/> 
+      <Filters
+        setRenderedPokemon={setRenderedPokemon}
+      />
       <h2 className="content has-text-centered">Add to Your Team</h2>
-      <div className="columns is-desktop is-justify-content-center is-flex-wrap-wrap is-flex-direction-row" >
-      {renderedPokemon.length > 0 ? renderedPokemon.map(pokemon => {
-        return (
-          <div className="card column is-one-fifth" style={{"backgroundColor": setCardColor(pokemon.types[0].type.name)}}>
-            <div className="card-image">
-              <figure className="image is-4by3">
-                <img src={pokemon.sprites.front_default} alt="data.sprites.back_default" />
-              </figure>
-            </div>
-            <div className="card-content">
-              <div className="media">
-                <div className="media-content">
-                  <p className="title is-4">{capitalizeName(pokemon.name)}</p>
-                  <p className="subtitle is-6">{pokemon.types.map(type => {
-                    return (capitalizeName(type.type.name + " ") )
-                  })}</p>
+      <div className="columns is-desktop is-justify-content-center is-flex-wrap-wrap is-flex-direction-row">
+        {renderedPokemon.length > 0 ? (
+          renderedPokemon.map((pokemon) => {
+            return (
+              <div
+                className="card column is-one-fifth"
+                style={{
+                  backgroundColor: setCardColor(pokemon.types[0].type.name),
+                }}
+                key={uuid()}
+              >
+                <div className="card-image">
+                  <figure className="image is-4by3">
+                    <img
+                      src={pokemon.sprites.front_default}
+                      alt="data.sprites.back_default"
+                    />
+                  </figure>
+                </div>
+                <div className="card-content">
+                  <div className="media">
+                    <div className="media-content">
+                      <p className="title is-4">
+                        {capitalizeName(pokemon.name)}
+                      </p>
+                      <p className="subtitle is-6">
+                        {pokemon.types.map((type) => {
+                          return capitalizeName(type.type.name + " ");
+                        })}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="content">
+                    <p>Base XP : {pokemon.base_experience}</p>
+                  </div>
+                  <span className="card-footer">
+                    <a
+                      className="card-footer-item"
+                      onClick={() => addToTeam(pokemon.id)}
+                    >
+                      Add to Team
+                    </a>
+                  </span>
                 </div>
               </div>
-  
-              <div className="content">
-                <p>Base XP : {pokemon.base_experience}</p>
-              </div>
-              <span className="card-footer"><a href="#" className="card-footer-item" onClick={addToTeam}>
-                Add to Team
-              </a></span>
-            </div>
-          </div>
-        )
-      }): <div> No Pokemon Returned</div>}
+            );
+          })
+        ) : (
+          <div> No Pokemon Returned</div>
+        )}
       </div>
     </div>
-  )
+  );
 }
-
-
-
