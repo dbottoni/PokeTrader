@@ -13,11 +13,14 @@ import { setCardColor } from "../utils/helpers";
 
 const Team = () => {
   const {loading, data} = useQuery(GET_ME)
+  console.log('===============9999======');
+  console.log(data);
   const userData = data?.me || {};
   console.log(userData);
 
   const ownedPokemon = userData.pokemonList;
   const myPokemon = dummyData.pokemon;
+  console.log(ownedPokemon);
 
 
   const removeFromTeam = () => {
@@ -31,12 +34,12 @@ const Team = () => {
         You can only have six Pokemon on your team.
       </p>
       <div className="columns is-desktop is-justify-content-center is-flex-wrap-wrap is-flex-direction-row">
-        {myPokemon.length ? (
-          myPokemon.map((pokemon) => {
+        {loading === false ? (
+          ownedPokemon.map((pokemon) => {
             return (
               <div
                 className="card column is-one-third"
-                style={{"background-color": setCardColor(pokemon.type)}}
+                style={{"backgroundColor": setCardColor(pokemon.type)}}
               >
                 <div className="card-image">
                   <figure className="image is-4by3">
@@ -47,7 +50,7 @@ const Team = () => {
                   <div className="media">
                     <div className="media-content">
                       <p className="title is-4">
-                        {pokemon.pokemonId} : {capitalizeName(pokemon.pokeName)}
+                     {capitalizeName(pokemon.name)}
                       </p>
                       <p className="subtitle is-6">{pokemon.type}</p>
                     </div>
@@ -57,18 +60,16 @@ const Team = () => {
                     <p>Lvl {pokemon.level}</p>
                     <p className="subtitle is-6">Stats</p>
                     <ul>
-                      {pokemon.actualizedStats.map(stat => {
-                      return <li>Stat Name: {stat} </li>
-                      })}
+                     {/* <li>HP: {pokemon}</li> */}
                     </ul>
                   </div>
-                <span className='card-footer'><a
+                <span className='card-footer'><p
                     href="#"
                     className="card-footer-item"
                     onClick={removeFromTeam}
                   >
                     Remove From Team
-                  </a></span>
+                  </p></span>
                 </div>
               </div>
             );

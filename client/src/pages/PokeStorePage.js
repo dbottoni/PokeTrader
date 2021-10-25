@@ -69,7 +69,7 @@ export default function PokeStorePage(props) {
           images: sprites.front_default,
           type: typeArr,
           level: pokemonLevel.toString(),
-          stats: pokemonStats.toString()
+          stats: pokemonStats.toString().split(',')
         },
       });
       console.log(data);
