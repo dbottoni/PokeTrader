@@ -4,15 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { setContext } from '@apollo/client/link/context';
 import pokeAPI from "./utils/pokeAPI";
 import axios from "axios";
-// import {
-//   generatePokemonStats,
-//   generatePokemonLevel,
-// } from "./utils/actualizedStats";
-
-// import { capitalizeName } from "./utils/helpers";
-// import { pokemonJSON } from './utils/pokeAPI';
-// import { ApolloProvider } from '@apollo/react-hooks';
-// import ApolloClient from 'apollo-boost';
 
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
@@ -24,8 +15,6 @@ import SignUp from './pages/SignUp';
 import About from './pages/About';
 
 import PokeStorePage from "./pages/PokeStorePage";
-//import ProfilePage from "./pages/ProfilePage";
-
 
 export const PokedexContext = React.createContext()
 
@@ -55,40 +44,33 @@ const client = new ApolloClient({
 function App() {
   //set state at APP level to track all pokemon in our pokedexDB
   const [pokedex, setPokedex] = useState([]);
-  // console.log("POKEDEX");
-  // console.log(pokedex);
   
-  let isLoading = true;
-  let pokedexData = [];
-
-  const pokemonContextValue = {
-    pokedex
-  }
   
-
-  useEffect(() => {
+useEffect(() => {
     // on load, fetch pokemon data and save to state
     populateData();
-
+    
   }, []);
   
+  
   const populateData = async () => {
+    let pokedexData = [];
     
     const response = await pokeAPI.get("/pokemon/", {});
     const URLs = response.data.results.map((pokemon) => pokemon.url);
     URLs.map(async (url) => {
       const res = await axios.get(url)
 
-      pokedexData.push(res.data);
+     return pokedexData.push(res.data);
       
     });
     setPokedex(pokedexData)
-    isLoading = false;
   };
+
+  const pokemonContextValue = {
+    pokedex
+  }
   
-
-
-
   return (
     <ApolloProvider client = {client} >
     <PokedexContext.Provider value={pokemonContextValue}>
@@ -104,13 +86,13 @@ function App() {
               exact
               path="/trade"
               component={PokeStorePage}
-              pokedex={pokedex}
+              // pokedex={pokedex}
             />
                         <Route
               exact
               path="/about"
               component={About}
-              pokedex={pokedex}
+              // pokedex={pokedex}
             />
 
             <Route exact path="/team" component={Team} />
@@ -129,27 +111,3 @@ function App() {
 
 export default App;
 
-
-
-
-///store only maps one on first render 
-
-
-
-
-
-
-//or use Context.Provider?
-//export const PokemonStoreContext = React.createContext()
-
-// {/* <ApolloProvider client = {client} >
-// <Router>
-//   <>
-//     <Switch>
-//       <Route exact path='/' component={PokemonStorePage} />
-//       <Route exact path='/profile' component={ProfilePage} />
-//       <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
-//     </Switch>
-//   </>
-// </Router>
-// </ ApolloProvider> */}

@@ -8,13 +8,11 @@ export const GET_ME = gql`
         email
         pokemonList {
           _id
-          pokemonId
           name
-          images
-          stats
           level
-          type
-          cost  
+          images
+          type 
+          stats
         }
       }
 }`;

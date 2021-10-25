@@ -1,5 +1,5 @@
 {
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:3001",
   "name": "components_tests",
   "version": "0.1.0",
   "private": true,
@@ -15,6 +15,7 @@
     "graphql-tag": "^2.12.5",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
+    "rc-slider": "^9.7.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.5",

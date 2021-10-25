@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 export default function Login() {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN_USER);
+  const [validated] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -26,10 +27,18 @@ export default function Login() {
 
     try {
       const { data } = await login({
-        variables: {...formState}
+        variables: {
+          ...formState,
+        },
       });
       console.log(data);
-      Auth.login(data.login.token)
+      if (error) {
+        throw new Error("something went wrong!");
+      }
+
+      //   const { token, user } = await response.json();
+      //   console.log(user);
+      Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
     }
@@ -49,14 +58,14 @@ export default function Login() {
 
       <div className="columns form-container m-6">
         <div className="column image-space">
-          <img className="oak-img" src="/images/oak.png" />
+          <img className="oak-img" src="/images/oak.png" alt='professor oak' />
         </div>
 
         <div className="column">
           <fieldset className="login-signup-form">
             <legend className="form-title ml-6">Log In</legend>
 
-            <form className="m-6" onSubmit={handleFormSubmit}>
+            <form className="m-6" onSubmit={handleFormSubmit} noValidate validated={validated}>
               <div className="field mt-3">
                 <label className="label">What is your email?</label>
 
@@ -86,15 +95,18 @@ export default function Login() {
                   onChange={handleChange}
                 />
               </div>
-              <button
+            <button
               className="button poke-button is-fullwidth mb-3"
               type="submit"
               >
               ▶ Log In
             </button>
             </form>
+
             <Link to="/signup">
+              {/* <a className="content link-on-white"> */}
                 <p className="is-underlined">Don't have an account? Make one now!</p>
+              {/* </a> */}
             </Link>
           </fieldset>
         </div>

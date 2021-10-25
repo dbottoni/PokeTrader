@@ -1,32 +1,70 @@
-import React, { useContext } from "react";
-import { PokedexContext } from "../App";
-
+import React, { useContext, useState, useEffect } from "react";
+import { useMutation, useQuery } from "@apollo/client";
+import { GET_ME } from '../utils/queries';
+import Auth from '../utils/auth';
+import {REMOVE_POKEMON} from '../utils/mutations';
 
 import { capitalizeName } from "../utils/helpers";
-import { diceRoll } from "../utils/helpers";
 import { setCardColor } from "../utils/helpers";
 
 
 const Team = () => {
-  const myPokemon = dummyData.pokemon;
 
-  const removeFromTeam = () => {
+
+  const {loading, data} = useQuery(GET_ME)
+  const userData = data?.me || {};
+
+  const [removePokemon, {error}] = useMutation(REMOVE_POKEMON)
+
+  const ownedPokemon = userData.pokemonList;
+  console.log(userData);
+  console.log(ownedPokemon);
+
+  // const [ownedPokemon, setOwnedPokemon] = useState([userData.pokemonList ? userData.pokemonList : []]);
+  // console.log(ownedPokemon);
+
+  // useEffect(() => {
+  //   setOwnedPokemon(userData.pokemonList)
+  // }, [userData.pokemonList])
+
+  const removeFromTeam = async (pokemonId) => {
     console.log("Removed from Team");
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+     await removePokemon({
+       variables: {
+         _id: pokemonId
+       }
+     });
+
+      if (error) {
+        throw new Error('something went wrong!');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+    // setOwnedPokemon(userData.pokemonList)
   };
 
   return (
     <div className="container">
-      <h2 className="content has-text-centered">Your Team</h2>
+      <h2 className="content has-text-centered">{userData.username ? `${userData.username}'s ` : "Your" } Team</h2>
       <p className="content has-text-centered">
         You can only have six Pokemon on your team.
       </p>
       <div className="columns is-desktop is-justify-content-center is-flex-wrap-wrap is-flex-direction-row">
-        {myPokemon.length ? (
-          myPokemon.map((pokemon) => {
+        {loading === false ? (
+          ownedPokemon.map((pokemon) => {
             return (
               <div
                 className="card column is-one-third"
-                style={{"background-color": setCardColor(pokemon.type)}}
+                style={{"backgroundColor": setCardColor(pokemon.type[0])}}
+                key={pokemon._id}
               >
                 <div className="card-image">
                   <figure className="image is-4by3">
@@ -37,25 +75,27 @@ const Team = () => {
                   <div className="media">
                     <div className="media-content">
                       <p className="title is-4">
-                        {pokemon.pokemonId} : {capitalizeName(pokemon.pokeName)}
+                     {capitalizeName(pokemon.name)}
                       </p>
-                      <p className="subtitle is-6">{pokemon.type}</p>
+                      <p className="subtitle is-6">{pokemon.type.map(el =>capitalizeName(el) + ' ')}</p>
                     </div>
                   </div>
-
                   <div className="content">
                     <p>Lvl {pokemon.level}</p>
-                    <p className="subtitle is-6">Stats</p>
+                    <p className="subtitle is-6">Stats Total: {pokemon.stats.reduce((acc, cur) => parseInt(acc) + parseInt(cur) )} </p>
                     <ul>
-                      {pokemon.actualizedStats.map(stat => {
-                      return <li>Stat Name: {stat} </li>
-                      })}
+                     <li>HP: {pokemon.stats[0]}</li>
+                     <li>Attack: {pokemon.stats[1]}</li>
+                     <li>Defense: {pokemon.stats[2]}</li>
+                     <li>Special Attack: {pokemon.stats[3]}</li>
+                     <li>Special Defense: {pokemon.stats[4]}</li>
+                     <li>Speed: {pokemon.stats[5]}</li>
                     </ul>
                   </div>
                 <span className='card-footer'><p
                     href="#"
                     className="card-footer-item"
-                    onClick={removeFromTeam}
+                    onClick={() => removeFromTeam(pokemon._id)}
                   >
                     Remove From Team
                   </p></span>
@@ -73,51 +113,3 @@ const Team = () => {
 
 export default Team;
 
-
-const dummyData = {
-  username: "Benny",
-  email: "ben@gmail.com",
-  pokemon: [
-    {
-      pokemonId: 1,
-      pokeName: "charizard",
-      images: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
-      actualizedStats: [110, 95, 100, 190, 180, 140],
-      level: 53,
-      type: "fire",
-      cost: 100,
-      shinyImg: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png'
-    },
-    {
-      pokemonId: 2,
-      pokeName: "kakuna",
-      images:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/14.png ",
-      actualizedStats: [40, 40, 50, 65, 45, 35],
-      level: 21,
-      type: "bug",
-      cost: 20,
-    },
-    {
-      pokemonId: 3,
-      pokeName: "pidgeotto",
-      images:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/17.png ",
-      actualizedStats: [75, 76, 49, 120, 119, 120],
-      level: 40,
-      type: "flying",
-      cost: 40,
-    },
-    {
-      pokemonId: 4,
-      pokeName: "arbok",
-      images:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png",
-      actualizedStats: [99, 95, 75, 85, 130, 65],
-      level: 25,
-      type: "poison",
-      cost: 45,
-    },
-  ],
-  currentTeam: [1, 3],
-};

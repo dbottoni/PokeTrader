@@ -214,3 +214,17 @@ a.link-on-white {
   font-family: var(--content-font);
   text-align: center;
 }
+
+legend.filter-title {
+  font-family: var(--header-font);
+  font-size: 1em;
+}
+
+.select {
+  display: flex;
+  justify-content: center;
+}
+
+.select.is-info:not(:hover)::after {
+  position: relative;
+}
