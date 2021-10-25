@@ -31,7 +31,7 @@ export const generatePokemonStats = (stats, level) => {
   let statRandomizer = Math.random() + Math.random();
 
   stats.map((stat) => {
-    return newStats.push(stat * statRandomizer + level);
+    return newStats.push(Math.floor(stat * statRandomizer + level));
   });
   return newStats;
 };

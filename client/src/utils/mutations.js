@@ -30,8 +30,8 @@ export const ADD_USER = gql`
 
 
 export const ADD_POKEMON = gql`
-  mutation savePokemon($id: ID!) {
-    savePokemon(pokemonId: $id) {
+  mutation savePokemon($_id: ID!, $name: String!, $level: String, $type: [String]!, $stats: [String], $images: [String]! ) {
+    savePokemon(pokemonId: $_id, name: $name, level: $level, type: $type, images: $images, stats: $stats) {
       _id
       name
       images

@@ -34,8 +34,6 @@ export default function SignUp() {
           ...formState,
         },
       });
-      console.log("===========");
-      console.log(data);
 
       if (error) {
         console.log(error);

@@ -49,7 +49,7 @@ const resolvers = {
         },
         savePokemon: async (parent, args, context) => {
             if (context.user) {
-              const pokemon = await Pokemon.create({...args, username:context.user.username})
+              const pokemon = await Pokemon.create({...args, username: context.user.username})
              
               await User.findByIdAndUpdate(
                 { _id: context.user._id },
