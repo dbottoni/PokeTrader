@@ -7,7 +7,7 @@ export const GET_ME = gql`
         username
         email
         pokemonList {
-          pokemonId
+          id
           name
           level
           images

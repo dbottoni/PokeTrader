@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const pokemonschema = require('./Pokemon');
+const Pokemon = require('./Pokemon');
 
 
 const userSchema = new Schema(
@@ -23,13 +23,13 @@ const userSchema = new Schema(
     // balance: {
     //   type: String,
     // },
-    pokemonList: [pokemonschema],
-    // pokemonList: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref:'Pokemon'
-    //   }
-    // ],
+    // pokemonList: [Pokemon],
+    pokemonList: [
+      {
+        type: Schema.Types.ObjectId,
+        ref:'Pokemon'
+      }
+    ],
   },
   {
     toJSON: {

@@ -1,4 +1,4 @@
-const {User,Pokemon} = require('../models')
+const {User, Pokemon} = require('../models')
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -50,6 +50,7 @@ const resolvers = {
         savePokemon: async (parent, args, context) => {
             if (context.user) {
               const pokemon = await Pokemon.create({...args, username: context.user.username})
+              console.log(pokemon);
              
               await User.findByIdAndUpdate(
                 { _id: context.user._id },
