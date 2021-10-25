@@ -23,7 +23,9 @@ export default function PokeStorePage() {
   const userData = data?.me || {};
 
   const [renderedPokemon, setRenderedPokemon] = useState(pokedex);
-  const [addPokemon, { error }] = useMutation(ADD_POKEMON);
+  const [addPokemon, { error }] = useMutation(ADD_POKEMON, {
+    refetchQueries: [{query: GET_ME}]
+  });
 
 
   const addToTeam = async (pokemonId) => {
