@@ -221,3 +221,12 @@ page-heading {}
 
 /* ABOUT */
 about.page-heading {}
+
+.h6 {
+
+}
+.roles {
+  /* display: inline; */
+  list-style: line-height:10px;
+}
+
