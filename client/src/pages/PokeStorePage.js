@@ -2,11 +2,9 @@ import React, { useState, useContext } from "react";
 import { PokedexContext } from "../App";
 import Auth from "../utils/auth";
 import { v4 as uuid } from "uuid";
-// import axios from "axios";
-import { useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
-import { GET_ME } from "../utils/queries";
 import { ADD_POKEMON } from "../utils/mutations";
+import { diceRoll } from "../utils/helpers";
 
 import { setCardColor } from "../utils/helpers";
 import { capitalizeName } from "../utils/helpers";
@@ -16,50 +14,41 @@ import {
 } from "../utils/actualizedStats";
 import Filters from "../components/Filters";
 
-// are we getting our pokedex state through props like this?
-export default function PokeStorePage(props) {
+
+export default function PokeStorePage() {
   const { pokedex } = useContext(PokedexContext);
-  console.log(pokedex);
 
   const [renderedPokemon, setRenderedPokemon] = useState(pokedex);
   const [addPokemon, { error }] = useMutation(ADD_POKEMON);
-
-  const { loading, data } = useQuery(GET_ME);
-  const userData = data?.me || {};
-  console.log(userData);
-
 
 
   const addToTeam = async (pokemonId) => {
 
     const actualizedStats = async (stats, base_experience) => {
-      ///take in base poke data and run through actualization funcs before sending try{addPokemon}
       const pokemonLevel = await generatePokemonLevel(base_experience);
       const pokemonStats = await generatePokemonStats(stats.map((stat) => stat.base_stat), pokemonLevel);
       return { pokemonLevel, pokemonStats };
     };
 
     // if (userData.pokemonList.length >= 5) window.alert('You can only own 6 pokemon at a time!')
-    // const pokemonToAdd = pokedex.find(pokemon => pokemon.id === pokemonId)
 
-    const { id, name, base_experience, stats, sprites, types } = pokedex.find((pokemon) => pokemon.id === pokemonId);
+    const { name, base_experience, stats, sprites, types } = pokedex.find((pokemon) => pokemon.id === pokemonId);
 
     let typeArr = []
     for (const type of types) {
       typeArr.push(type.type.name)
     }
+    const isShiny = diceRoll();
+    console.log(isShiny);
+    const pokemonImage = isShiny === true ? sprites.front_shiny : sprites.front_default;
 
     const { pokemonLevel, pokemonStats } = await actualizedStats(stats, base_experience);
     const pokeID = uuid();
-
-    console.log("Adding to Team");
-    console.log(pokemonLevel, pokemonStats);
 
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
       return false;
     }
-    ///pokemon data captured. Now send addPokemon Request
 
     try {
       const { data } = await addPokemon({
@@ -78,16 +67,10 @@ export default function PokeStorePage(props) {
     }
   };
 
-  //functions to handle: openPokemonModal, filter/search, buyPokemon, buyCoins (open a modal on store page? or buy coins in profile?)
-
-  //render our store page with all pokemon
-  // need to map a different variable than our state. Take pokedex and mutate it (default: no change, filter by type/XP); then map that variable
-
   return (
     <div className="container">
       {/* <p className="content has-text-centered">Search for pokemon in the space below.</p> */}
 
-      {/* POTENTIAL SEARCH OR FILTER EXPERIENCE HERE */}
       <Filters
         renderedPokemon={renderedPokemon}
         setRenderedPokemon={setRenderedPokemon}
@@ -102,6 +85,7 @@ export default function PokeStorePage(props) {
                 style={{
                   backgroundColor: setCardColor(pokemon.types[0].type.name),
                 }}
+                key={uuid()}
               >
                 <div className="card-image">
                   <figure className="image is-4by3">
