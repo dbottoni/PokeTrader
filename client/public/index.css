@@ -133,7 +133,7 @@ a.footer {
 .card-content {
   background-color: var(--goldenrod-light);
   border-radius: 1em;
-  margin-top: 5px;
+  margin-top: px;
 }
 
 .card-footer {
@@ -213,4 +213,18 @@ p.form-header {
 a.link-on-white {
   font-family: var(--content-font);
   text-align: center;
+}
+
+legend.filter-title {
+  font-family: var(--header-font);
+  font-size: 1em;
+}
+
+.select {
+  display: flex;
+  justify-content: center;
+}
+
+.select.is-info:not(:hover)::after {
+  position: relative;
 }

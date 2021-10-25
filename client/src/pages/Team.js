@@ -64,7 +64,7 @@ const Team = () => {
             return (
               <div
                 className="card column is-one-third"
-                style={{"backgroundColor": setCardColor(pokemon.type)}}
+                style={{"backgroundColor": setCardColor(pokemon.type[0])}}
               >
                 <div className="card-image">
                   <figure className="image is-4by3">
@@ -77,15 +77,20 @@ const Team = () => {
                       <p className="title is-4">
                      {capitalizeName(pokemon.name)}
                       </p>
-                      <p className="subtitle is-6">{pokemon.type}</p>
+                      <p className="subtitle is-6">{pokemon.type.map(el =>capitalizeName(el) + ' ')}</p>
                     </div>
                   </div>
 
                   <div className="content">
                     <p>Lvl {pokemon.level}</p>
-                    <p className="subtitle is-6">Stats</p>
+                    <p className="subtitle is-6">Stats Total: {pokemon.stats.reduce((acc, cur) => parseInt(acc) + parseInt(cur) )} </p>
                     <ul>
-                     {/* <li>HP: {pokemon}</li> */}
+                     <li>HP: {pokemon.stats[0]}</li>
+                     <li>Attack: {pokemon.stats[1]}</li>
+                     <li>Defense: {pokemon.stats[2]}</li>
+                     <li>Special Attack: {pokemon.stats[3]}</li>
+                     <li>Special Defense: {pokemon.stats[4]}</li>
+                     <li>Speed: {pokemon.stats[5]}</li>
                     </ul>
                   </div>
                 <span className='card-footer'><p
