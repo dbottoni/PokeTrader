@@ -45,6 +45,10 @@ export const ADD_POKEMON = gql`
 
 
 
-// export const REMOVE_POKEMON = gql`
-//   mutation removePokemon()
-// `
+export const REMOVE_POKEMON = gql`
+  mutation removePokemon($_id: ID!){
+    removePokemon(_id: $_id){
+      _id
+    }
+  }
+`

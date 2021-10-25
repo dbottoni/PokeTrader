@@ -1,30 +1,55 @@
 import React, { useContext, useState } from "react";
 import { PokedexContext } from "../App";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { GET_ME } from '../utils/queries';
+import Auth from '../utils/auth';
+import {REMOVE_POKEMON} from '../utils/mutations';
+
  
 
 import { capitalizeName } from "../utils/helpers";
 import { diceRoll } from "../utils/helpers";
 import { setCardColor } from "../utils/helpers";
-// import  useToggle  from '../utils/useToggle';
+
 
 
 
 const Team = () => {
   const {loading, data} = useQuery(GET_ME)
-  console.log('===============9999======');
-  console.log(data);
+  const [removePokemon, {error}] = useMutation(REMOVE_POKEMON)
   const userData = data?.me || {};
   console.log(userData);
 
   const ownedPokemon = userData.pokemonList;
-  const myPokemon = dummyData.pokemon;
   console.log(ownedPokemon);
 
 
-  const removeFromTeam = () => {
+  const removeFromTeam = async (pokemonId) => {
+    console.log(pokemonId);
     console.log("Removed from Team");
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+     await removePokemon({
+       variables: {
+         _id: pokemonId
+       }
+     });
+
+      if (error) {
+        throw new Error('something went wrong!');
+      }
+
+      // const updatedUser = await response.json();
+      // setUserData(updatedUser);
+      // upon success, remove book's id from localStorage
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -66,7 +91,7 @@ const Team = () => {
                 <span className='card-footer'><p
                     href="#"
                     className="card-footer-item"
-                    onClick={removeFromTeam}
+                    onClick={() => removeFromTeam(pokemon._id)}
                   >
                     Remove From Team
                   </p></span>

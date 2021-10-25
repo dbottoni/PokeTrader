@@ -29,7 +29,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         savePokemon(name:String!, type:[String]!, pokemonId:ID!, images:[String]! level:String, stats:[String]): Pokemon
-        removePokemon(_id: String!): Pokemon
+        removePokemon(_id: ID!): Pokemon
     }
 `;
 
