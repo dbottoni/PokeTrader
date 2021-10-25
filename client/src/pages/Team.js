@@ -17,6 +17,8 @@ const Team = () => {
   const [removePokemon, {error}] = useMutation(REMOVE_POKEMON)
 
   const ownedPokemon = userData.pokemonList;
+  console.log(userData);
+  console.log(ownedPokemon);
 
   // const [ownedPokemon, setOwnedPokemon] = useState([userData.pokemonList ? userData.pokemonList : []]);
   // console.log(ownedPokemon);

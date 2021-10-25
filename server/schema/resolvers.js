@@ -48,7 +48,9 @@ const resolvers = {
             return { token, user };
         },
         savePokemon: async (parent, args, context) => {
-            if (context.user) {
+          if (context.user) {
+            console.log(context.user);
+            
               const pokemon = await Pokemon.create({...args, username: context.user.username})
              
               await User.findByIdAndUpdate(
@@ -56,8 +58,6 @@ const resolvers = {
                 { $push: { pokemonList: pokemon._id } },
                 { new: true }
               );
-              console.log('===============');
-              console.log(pokemon);
               return pokemon;
             }
           

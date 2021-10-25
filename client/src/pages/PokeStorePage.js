@@ -1,10 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { PokedexContext } from "../App";
 import Auth from "../utils/auth";
 import { v4 as uuid } from "uuid";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { ADD_POKEMON } from "../utils/mutations";
 import { diceRoll } from "../utils/helpers";
+import { GET_ME } from '../utils/queries';
 
 import { setCardColor } from "../utils/helpers";
 import { capitalizeName } from "../utils/helpers";
@@ -18,19 +19,23 @@ import Filters from "../components/Filters";
 export default function PokeStorePage() {
   const { pokedex } = useContext(PokedexContext);
 
+  const {loading, data} = useQuery(GET_ME)
+  const userData = data?.me || {};
+
   const [renderedPokemon, setRenderedPokemon] = useState(pokedex);
   const [addPokemon, { error }] = useMutation(ADD_POKEMON);
 
 
   const addToTeam = async (pokemonId) => {
+       if(userData.pokemonList.length >= 6){
+        return window.alert('You can only own 6 pokemon at a time!')
+    }
 
     const actualizedStats = async (stats, base_experience) => {
       const pokemonLevel = await generatePokemonLevel(base_experience);
       const pokemonStats = await generatePokemonStats(stats.map((stat) => stat.base_stat), pokemonLevel);
       return { pokemonLevel, pokemonStats };
     };
-
-    // if (userData.pokemonList.length >= 5) window.alert('You can only own 6 pokemon at a time!')
 
     const { name, base_experience, stats, sprites, types } = pokedex.find((pokemon) => pokemon.id === pokemonId);
 
@@ -39,7 +44,6 @@ export default function PokeStorePage() {
       typeArr.push(type.type.name)
     }
     const isShiny = diceRoll();
-    console.log(isShiny);
     const pokemonImage = isShiny === true ? sprites.front_shiny : sprites.front_default;
 
     const { pokemonLevel, pokemonStats } = await actualizedStats(stats, base_experience);
@@ -55,7 +59,7 @@ export default function PokeStorePage() {
         variables: {
           _id: pokeID,
           name: name,
-          images: sprites.front_default,
+          images: pokemonImage,
           type: typeArr,
           level: pokemonLevel.toString(),
           stats: pokemonStats.toString().split(',')
