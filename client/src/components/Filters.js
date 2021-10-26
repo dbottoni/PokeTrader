@@ -25,12 +25,10 @@ export default function Filters(props) {
   return (
     <div className="select-container is-flex-wrap-nowrap is-justify-content-center">
       <fieldset className="login-signup-form">
-        <legend className="filter-title has-text-centered">
-          Filter Pokemon
-        </legend>
+        <legend className="filter-title content has-text-centered">Filter</legend>
+        <h3 className="content has-text-centered">Sort by Type:</h3>
 
         <div className="dropdown select is-info mt-6 mb-6">
-          <h3>Sort by Type: </h3>
           <select onChange={handleTypeFilter} value={selectedType}>
             <option>Select Type</option>
             <option value="fire">Fire</option>
@@ -55,7 +53,7 @@ export default function Filters(props) {
         </div>
 
         <div className="mt-6 mb-6 has-text-centered">
-          <h3>Sort by XP: </h3>
+          <h3 className="content has-text-centered">Sort by XP:</h3>
           <p>{sliderValue}</p>
           <input
             type="range"

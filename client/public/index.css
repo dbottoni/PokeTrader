@@ -21,12 +21,18 @@ body {
 
 .no-match-container,
 .form-container,
-.home-container, 
-.select-container {
+.home-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
+
+.select-container {
+  display: block;
+  justify-content: space-around;
+  align-items: center;
+}
+
 
 /* CONTENT */
 
@@ -141,7 +147,7 @@ a.footer {
   border-top: none;
 }
 
-.card-footer a {
+.card-footer-item {
   color: var(--white);
   border-bottom: var(--white) double;
   border-right: var(--white) double;

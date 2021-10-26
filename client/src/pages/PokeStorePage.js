@@ -82,15 +82,17 @@ export default function PokeStorePage() {
   };
 
   return (
-    <div className="container m-6">
-      <h2 className="content has-text-centered">Add to Your Team</h2>
-      <p className="content has-text-centered">
-        Use the filter, then the slider, to choose the type and experience you
-        want in a pokemon.
-      </p>
-      <p className="content has-text-centered">
-        Then, click the Add to Team button to build your team!
-      </p>
+    <div className="container">
+      <div className="m-6">
+        <h2 className="content has-text-centered">Add to Your Team</h2>
+        <p className="content has-text-centered">
+          Use the filter, then the slider, to choose the type and experience you
+          want in a pokemon.
+        </p>
+        <p className="content has-text-centered">
+          Then, click the Add to Team button to build your team!
+        </p>
+      </div>
 
       <div className="columns">
         <div className="column is-one-fifth">
@@ -102,7 +104,7 @@ export default function PokeStorePage() {
               renderedPokemon.map((pokemon) => {
                 return (
                   <div
-                    className="card column is-one-fifth"
+                    className="card column is-one-third"
                     style={{
                       backgroundColor: setCardColor(pokemon.types[0].type.name),
                     }}
