@@ -59,14 +59,9 @@ export const setCardColor = (type) => {
   }
 };
 
-console.log(setCardColor("steel"));
-
 export const capitalizeName = (str) => {
   return str[0].toUpperCase() + str.slice(1);
 };
-
-console.log(capitalizeName("charizard"));
-
 
 
 //STORE FILTER FUNCTION
@@ -94,9 +89,7 @@ export const sortPokedex = (pokedex, type, xp) => {
 // 1 in X chance to return true; used for shiney probability
 export function diceRoll() {
   const randNum = Math.floor(Math.random() * 100 + 1);
-  console.log(randNum);
   if (randNum === 1) return true;
   else return false;
 }
 
-// console.log(diceRoll());

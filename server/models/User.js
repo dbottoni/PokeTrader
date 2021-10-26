@@ -1,7 +1,6 @@
-const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt');
-const pokemonschema = require('./Pokemon');
-
+const { Schema, model } = require("mongoose");
+const bcrypt = require("bcrypt");
+const Pokemon = require("./Pokemon");
 
 const userSchema = new Schema(
   {
@@ -14,7 +13,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      match: [/.+@.+\..+/, 'Must use a valid email address'],
+      match: [/.+@.+\..+/, "Must use a valid email address"],
     },
     password: {
       type: String,
@@ -23,13 +22,13 @@ const userSchema = new Schema(
     // balance: {
     //   type: String,
     // },
-    pokemonList: [pokemonschema],
-    // pokemonList: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref:'Pokemon'
-    //   }
-    // ],
+    // pokemonList: [Pokemon],
+    pokemonList: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Pokemon",
+      },
+    ],
   },
   {
     toJSON: {
@@ -39,8 +38,8 @@ const userSchema = new Schema(
 );
 
 // hash user password
-userSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
+userSchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("password")) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
@@ -53,11 +52,10 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-
-userSchema.virtual('pokemonCount').get(function () {
+userSchema.virtual("pokemonCount").get(function () {
   return this.pokemonList.length;
 });
 
-const User = model('User', userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;

@@ -6,14 +6,19 @@ export const GET_ME = gql`
     me {
         username
         email
-        pokemon {
-          pokemonId
-          pokeName
-          images
-          stats
+        pokemonList {
+          _id
+          name
           level
-          type
-          cost  
+          images
+          type 
+          stats
         }
       }
 }`;
+
+
+
+
+// level
+// cost 

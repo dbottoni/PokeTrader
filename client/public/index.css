@@ -134,7 +134,7 @@ a.footer {
 .card-content {
   background-color: var(--goldenrod-light);
   border-radius: 1em;
-  margin-top: 5px;
+  margin-top: px;
 }
 
 .card-footer {
@@ -206,7 +206,7 @@ h1.form-header {
   font-size: 1.5em;
 }
 
-p.form-header {
+a.form-header {
   font-family: var(--header-font);
   font-size: .75em;
 }

@@ -3,7 +3,7 @@ import { PokedexContext } from "../App";
 import { sortPokedex } from "../utils/helpers";
 
 export default function Filters(props) {
-  const { renderedPokemon, setRenderedPokemon } = props;
+  const { setRenderedPokemon } = props;
   const { pokedex } = useContext(PokedexContext);
   const [sliderValue, setSliderValue] = useState(0);
   const [selectedType, setSelectedType] = useState("");
@@ -30,6 +30,7 @@ export default function Filters(props) {
         </legend>
 
         <div className="dropdown select is-info mt-6 mb-6">
+          <h3>Sort by Type: </h3>
           <select onChange={handleTypeFilter} value={selectedType}>
             <option>Select Type</option>
             <option value="fire">Fire</option>
@@ -54,7 +55,7 @@ export default function Filters(props) {
         </div>
 
         <div className="mt-6 mb-6 has-text-centered">
-          <p>Experience Value</p>
+          <h3>Sort by XP: </h3>
           <p>{sliderValue}</p>
           <input
             type="range"

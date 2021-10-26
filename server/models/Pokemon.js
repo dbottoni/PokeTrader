@@ -7,10 +7,6 @@ const pokemonschema = new Schema({
       type: String,
       required:true,
     },
-  // abilities: [{
-  //   type: String,
-  //   required: true,
-  // },],
   type: [{
     type: String,
     required: true,
@@ -20,25 +16,26 @@ const pokemonschema = new Schema({
     type: String,
     required:true
   },
-  //image linke: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<pokemonId>.png
-  image: {
+  //image link: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<pokemonId>.png
+  images: [{
     type: String,
+  }],
+  stats:[{
+    type: String,
+    required: true,
+  }],
+  level: {
+    type: String
   },
-  // items:[
-  //   {
-  //   type:String
-  //   }
-  // ],
-  // username:{
-  //   type: String,
-  //   required:true
-  // }
+  cost: {
+    type: String
+  }
 },
 {
   toJSON: {
     getters: true
   }
 });
-// const Pokemon = model('Pokemon',pokemonschema)
+const Pokemon = model('Pokemon', pokemonschema)
 
-module.exports = pokemonschema;
+module.exports = Pokemon;
