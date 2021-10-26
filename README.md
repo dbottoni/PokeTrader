@@ -21,17 +21,25 @@ This application is an online trading card game based on the Pokemon games that 
 
 A user will sign up and create their "team account" by providing their email and setting a password when prompted.  Once they log in, they will be directed to a page to choose their Pokemon trading cards to build their team.  This application initially allows only six trading cards per team. As you collect and trade your cards, you will find "shiny" cards, although rare. Features like these keep Pokemon fans striving for more "shiny" cards and other "rare collections". 
 
-### Installation/SetUp
-To run this project, install it locally using npm:
+### How To Use:
 ```
-$ cd ../<filename on local device>
+# Clone this repository
+$ git clone https://github.com/dbottoni/PokeTrader
+
+# Go into the repository
+$ cd PokeTrader
+
+# Install dependencies
 $ npm install
+
+# Run the app
 $ npm start
 ```
-The app will automatical appear in your web browser. 
+
 
 ### Screenshot/Video Demo
 
+[PokeTrader App](url of screencastify recording)
 
 
 ### Technology Used
@@ -48,6 +56,7 @@ The app will automatical appear in your web browser.
 
 ### Presentation Link
 
+[Poke Trader Presentation Slides](link to slides)
 
 ### The Team
 * ReactDana Bottoni - Project Three Team Leader, Project Management Specialist (Leader of ALL THREE bootcamp projects)
