@@ -5,7 +5,7 @@
 ### Table of Contents
 
 * Description
-* Installation/SetUp
+* Installation/SetUp - How To Use
 * Screenshots/Video Demo/Tutorial
 * Technology
 * Presentation
