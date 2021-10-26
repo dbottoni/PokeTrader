@@ -93,13 +93,13 @@ const Team = () => {
                      <li>Speed: {pokemon.stats[5]}</li>
                     </ul>
                   </div>
-                <span className='card-footer'><p
+                <span className='card-footer'><button
                     href="#"
                     className="card-footer-item"
                     onClick={() => removeFromTeam(pokemon._id)}
                   >
                     Remove From Team
-                  </p></span>
+                  </button></span>
                 </div>
               </div>
             );
