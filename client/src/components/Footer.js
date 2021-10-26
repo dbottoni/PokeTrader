@@ -13,7 +13,7 @@ function Footer() {
           </div>
           <div className="column">
             <Link to="/about">
-              <p className="column">About PokeTraders</p>
+              <a className="column">About PocketTrader</a>
             </Link>
           </div>
         </div>

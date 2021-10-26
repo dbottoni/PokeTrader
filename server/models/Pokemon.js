@@ -26,12 +26,8 @@ const pokemonschema = new Schema({
   level:{
     type:String
   },
-  cost:{
-    type:String
-  },
-  username:{
-    type: String,
-    required:true
+  cost: {
+    type: String
   }
 },
 {
@@ -39,6 +35,6 @@ const pokemonschema = new Schema({
     getters: true
   }
 });
-const Pokemon = model('Pokemon',pokemonschema)
+const Pokemon = model('Pokemon', pokemonschema)
 
 module.exports = Pokemon;

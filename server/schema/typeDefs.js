@@ -9,8 +9,9 @@ const typeDefs = gql`
         pokemonId: String
         images: [String]
         level: String
-        cost: Int
-        username:String
+        type:[String]
+        images: [String]
+        stats: [String]
     }
     type User{
         _id: ID

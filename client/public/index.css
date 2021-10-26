@@ -205,7 +205,7 @@ h1.form-header {
   font-size: 1.5em;
 }
 
-p.form-header {
+a.form-header {
   font-family: var(--header-font);
   font-size: .75em;
 }
