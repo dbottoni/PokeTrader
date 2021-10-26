@@ -20,7 +20,7 @@ const Team = () => {
 
   // const ownedPokemon = userData.pokemonList;
   
-  const [ownedPokemon, setOwnedPokemon] = useState([]);
+  const [ownedPokemon, setOwnedPokemon] = useState([userData.pokemonList]);
   console.log(userData);
   console.log(ownedPokemon);
 
