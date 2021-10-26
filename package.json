@@ -23,6 +23,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.9",
     "nodemon": "^2.0.13",
+    "react-confirm-alert": "^2.7.0",
+    "react-popup-alert": "^2.0.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

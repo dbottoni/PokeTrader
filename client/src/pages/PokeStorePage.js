@@ -14,14 +14,24 @@ import {
   generatePokemonLevel,
 } from "../utils/actualizedStats";
 import Filters from "../components/Filters";
+import ConfirmAdd from '../components/ConfirmAdd';
+
 
 
 export default function PokeStorePage() {
   const { pokedex } = useContext(PokedexContext);
+  console.log(pokedex);
 
   const {loading, data} = useQuery(GET_ME)
   const userData = data?.me || {};
 
+  const [modalState, setModalState] = useState(
+    {
+      modalOpen: false, 
+      pokemonId: '', 
+      teamLength: '',
+      img: '',
+    })
   const [renderedPokemon, setRenderedPokemon] = useState(pokedex);
   const [addPokemon, { error }] = useMutation(ADD_POKEMON, {
     refetchQueries: [{query: GET_ME}]
@@ -75,8 +85,10 @@ export default function PokeStorePage() {
 
   return (
     <div className="container">
-      {/* <p className="content has-text-centered">Search for pokemon in the space below.</p> */}
 
+
+      {/* <p className="content has-text-centered">Search for pokemon in the space below.</p> */}
+      <ConfirmAdd modalState={modalState} setModalState={setModalState} addToTeam={addToTeam} pokemonList={userData.pokemonList} />
       <Filters
         setRenderedPokemon={setRenderedPokemon}
       />
@@ -120,7 +132,7 @@ export default function PokeStorePage() {
                   <span className="card-footer">
                     <a
                       className="card-footer-item"
-                      onClick={() => addToTeam(pokemon.id)}
+                      onClick={() =>  setModalState({modalOpen: true, pokemonId: pokemon.id, img: pokemon.sprites.front_default, teamLength: userData.pokemonList.length })}
                     >
                       Add to Team
                     </a>
