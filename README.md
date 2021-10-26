@@ -1,17 +1,18 @@
 
 # POCKET TRADER
-/(#### GWU-BOOTCAMP-2021 (FINAL PROJECT)/
+###### (GWU-BOOTCAMP-May-Oct 2021 (FINAL PROJECT)
 
 ### Table of Contents
 
-Description
-Installation/SetUp
-Screenshots/Video Demo/Tutorial
-Technology
-Presentation
-Team Members
-Sources
-Status
+* Description
+* Installation/SetUp
+* Screenshots/Video Demo/Tutorial
+* Technology
+* Presentation
+* Team Members
+* Sources
+* Status
+* Credits
 
 ### Description
 
@@ -34,26 +35,26 @@ The app will automatical appear in your web browser.
 
 
 ### Technology Used
+* React
+* GraphQL
+* JavaScript
+* Express API library
+* Pokemon API library
+* Axios
+* Bulma
+* Font-Awesome Google API library
+* Canva (presentation)
 
-React
-GraphQL
-JavaScript
-Express API library
-Pokemon API library
-Axios
-Bulma
-Font-Awesome Google API library
-Canva (presentation)
 
 ### Presentation Link
 
 
 ### The Team
-** Dana Bottoni - Project Three Team Leader, Project Management Specialist (Leader of ALL THREE bootcamp projects)
-** Ben Gallagher - Provided concept for Pocket Trader application, Front-End and Back-End Specialist
-** Emily Necciai Mayeski - Provided project name of Pocket Trader, Github Specialist, Front-End,Framework and Structure Specialist
-** Baiyang Qi - Back-End Specialist, Logic/debugging and Data Specialist
-** Gaye Proctor - Presentation and Marketing Specialist, and a Code Newbie 
+* ReactDana Bottoni - Project Three Team Leader, Project Management Specialist (Leader of ALL THREE bootcamp projects)
+* Ben Gallagher - Provided concept for Pocket Trader application, Front-End and Back-End Specialist
+* Emily Necciai Mayeski - Provided project name of Pocket Trader, Github Specialist, Front-End,Framework and Structure Specialist
+* Baiyang Qi - Back-End Specialist, Logic/debugging and Data Specialist
+* Gaye Proctor - Presentation and Marketing Specialist, and a Code Newbie 
 
 
 ### Sources
@@ -67,6 +68,8 @@ Although this project is the last one for the Bootcamp, it does not end with thi
  * adding more special effects
 
 ### Credits
-This project would not be possible without the guidance, assistance, feedback, suggestions and support of the GWU Bootcamp Instructors: Gabe Perry,Lead Instructor; Taleh Aliyev, Teaching Assistant; Lawrence Kirk, Teaching Assistant. Also, many thanks to all of our SP/FA 2021 bootcamp co-horts who endured with us through the end. 
+This project would not be possible without the guidance, assistance, feedback, suggestions and support of the GWU Bootcamp Instructors: Gabe Perry,Lead Instructor; Taleh Aliyev, Teaching Assistant; and Lawrence Kirk, Teaching Assistant. 
+
+Also, many thanks to all of our SP/FA 2021 bootcamp co-horts who endured with us through the end. CONGRATULATIONS!
 
 
