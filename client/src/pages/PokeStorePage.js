@@ -5,7 +5,7 @@ import { v4 as uuid } from "uuid";
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_POKEMON } from "../utils/mutations";
 import { diceRoll } from "../utils/helpers";
-import { GET_ME } from '../utils/queries';
+import { GET_ME } from "../utils/queries";
 
 import { setCardColor } from "../utils/helpers";
 import { capitalizeName } from "../utils/helpers";
@@ -14,41 +14,49 @@ import {
   generatePokemonLevel,
 } from "../utils/actualizedStats";
 import Filters from "../components/Filters";
-
+import { Link } from "react-router-dom";
 
 export default function PokeStorePage() {
   const { pokedex } = useContext(PokedexContext);
 
-  const {loading, data} = useQuery(GET_ME)
+  const { loading, data } = useQuery(GET_ME);
   const userData = data?.me || {};
 
   const [renderedPokemon, setRenderedPokemon] = useState(pokedex);
   const [addPokemon, { error }] = useMutation(ADD_POKEMON, {
-    refetchQueries: [{query: GET_ME}]
+    refetchQueries: [{ query: GET_ME }],
   });
 
-
   const addToTeam = async (pokemonId) => {
-       if(userData.pokemonList.length >= 6){
-        return window.alert('You can only own 6 pokemon at a time!')
+    if (userData.pokemonList.length >= 6) {
+      return window.alert("You can only own 6 pokemon at a time!");
     }
 
     const actualizedStats = async (stats, base_experience) => {
       const pokemonLevel = await generatePokemonLevel(base_experience);
-      const pokemonStats = await generatePokemonStats(stats.map((stat) => stat.base_stat), pokemonLevel);
+      const pokemonStats = await generatePokemonStats(
+        stats.map((stat) => stat.base_stat),
+        pokemonLevel
+      );
       return { pokemonLevel, pokemonStats };
     };
 
-    const { name, base_experience, stats, sprites, types } = pokedex.find((pokemon) => pokemon.id === pokemonId);
+    const { name, base_experience, stats, sprites, types } = pokedex.find(
+      (pokemon) => pokemon.id === pokemonId
+    );
 
-    let typeArr = []
+    let typeArr = [];
     for (const type of types) {
-      typeArr.push(type.type.name)
+      typeArr.push(type.type.name);
     }
     const isShiny = diceRoll();
-    const pokemonImage = isShiny === true ? sprites.front_shiny : sprites.front_default;
+    const pokemonImage =
+      isShiny === true ? sprites.front_shiny : sprites.front_default;
 
-    const { pokemonLevel, pokemonStats } = await actualizedStats(stats, base_experience);
+    const { pokemonLevel, pokemonStats } = await actualizedStats(
+      stats,
+      base_experience
+    );
     const pokeID = uuid();
 
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -64,7 +72,7 @@ export default function PokeStorePage() {
           images: pokemonImage,
           type: typeArr,
           level: pokemonLevel.toString(),
-          stats: pokemonStats.toString().split(',')
+          stats: pokemonStats.toString().split(","),
         },
       });
       console.log(data);
@@ -75,63 +83,91 @@ export default function PokeStorePage() {
 
   return (
     <div className="container">
-      {/* <p className="content has-text-centered">Search for pokemon in the space below.</p> */}
+      <div className="m-6">
+        <h2 className="content has-text-centered">Add to Your Team</h2>
+        <p className="content has-text-centered">
+          Use the filter, then the slider, to choose the type and experience you
+          want in a pokemon.
+        </p>
+        <p className="content has-text-centered">
+          Then, click the Add to Team button to build your team!
+        </p>
+      </div>
 
-      <Filters
-        setRenderedPokemon={setRenderedPokemon}
-      />
-      <h2 className="content has-text-centered">Add to Your Team</h2>
-      <div className="columns is-desktop is-justify-content-center is-flex-wrap-wrap is-flex-direction-row">
-        {renderedPokemon.length > 0 ? (
-          renderedPokemon.map((pokemon) => {
-            return (
-              <div
-                className="card column is-one-fifth"
-                style={{
-                  backgroundColor: setCardColor(pokemon.types[0].type.name),
-                }}
-                key={uuid()}
-              >
-                <div className="card-image">
-                  <figure className="image is-4by3">
-                    <img
-                      src={pokemon.sprites.front_default}
-                      alt="data.sprites.back_default"
-                    />
-                  </figure>
-                </div>
-                <div className="card-content">
-                  <div className="media">
-                    <div className="media-content">
-                      <p className="title is-4">
-                        {capitalizeName(pokemon.name)}
-                      </p>
-                      <p className="subtitle is-6">
-                        {pokemon.types.map((type) => {
-                          return capitalizeName(type.type.name + " ");
-                        })}
-                      </p>
+      <div className="columns">
+        <div className="column is-one-fifth">
+          <Filters setRenderedPokemon={setRenderedPokemon} />
+        </div>
+        <div className="column">
+          <div className="columns is-desktop is-flex-wrap-wrap is-justify-content-space-evenly">
+            {renderedPokemon.length > 0 ? (
+              renderedPokemon.map((pokemon) => {
+                return (
+                  <div
+                    className="card column is-one-third"
+                    style={{
+                      backgroundColor: setCardColor(pokemon.types[0].type.name),
+                    }}
+                    key={uuid()}
+                  >
+                    <div className="card-image">
+                      <figure className="image is-4by3">
+                        <img
+                          src={pokemon.sprites.front_default}
+                          alt="data.sprites.back_default"
+                        />
+                      </figure>
+                    </div>
+                    <div className="card-content">
+                      <div className="media">
+                        <div className="media-content">
+                          <p className="title is-4">
+                            {capitalizeName(pokemon.name)}
+                          </p>
+                          <p className="subtitle is-6">
+                            {pokemon.types.map((type) => {
+                              return capitalizeName(type.type.name + " ");
+                            })}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="content">
+                        <p>Base XP : {pokemon.base_experience}</p>
+                      </div>
+                      <span className="card-footer">
+                        <a
+                          className="card-footer-item"
+                          onClick={() => addToTeam(pokemon.id)}
+                        >
+                          Add to Team
+                        </a>
+                      </span>
                     </div>
                   </div>
-
-                  <div className="content">
-                    <p>Base XP : {pokemon.base_experience}</p>
+                );
+              })
+            ) : (
+              <div>
+                {" "}
+                <div className="container">
+                  <div className="columns no-match-container is-centered">
+                    <div className="column is-one-third">
+                      <h1 className="no-match">Oops!</h1>
+                      <p className="no-match">
+                        We couldn't match a Pokemon with your filter choices.
+                        Click Trade in the Navigation Bar to try again!
+                      </p>
+                    </div>
+                    <div className="column is-one-third">
+                      <img className="no-match" src="/images/digimon.png" />
+                    </div>
                   </div>
-                  <span className="card-footer">
-                    <a
-                      className="card-footer-item"
-                      onClick={() => addToTeam(pokemon.id)}
-                    >
-                      Add to Team
-                    </a>
-                  </span>
                 </div>
               </div>
-            );
-          })
-        ) : (
-          <div> No Pokemon Returned</div>
-        )}
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
