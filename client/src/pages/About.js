@@ -20,8 +20,8 @@ const About = () => {
               <figure className="image is-1by1">
                 <img
                   className="is-rounded"
-                  src="./images/baiyang.png"
-                  alt="photo of Baiyang"
+                  src="./images/Baiyang.png"
+                  alt="Baiyang"
                 />
               </figure>
               <div className="roles">
@@ -43,7 +43,7 @@ const About = () => {
                 <img
                   className="is-rounded"
                   src="./images/Ben.jpg"
-                  alt="photo of Ben"
+                  alt="Ben"
                 />
               </figure>
               <div className="roles">
@@ -67,7 +67,7 @@ const About = () => {
                 <img
                   className="is-rounded"
                   src="./images/Dana.png"
-                  alt="photo of Dana"
+                  alt="Dana"
                 />
               </figure>
               <div className="roles">
@@ -91,7 +91,7 @@ const About = () => {
                 <img
                   className="is-rounded"
                   src="./images/Emily.jpeg"
-                  alt="photo of Emily"
+                  alt="Emily"
                 />
               </figure>
               <div className="roles">
@@ -113,8 +113,8 @@ const About = () => {
               <figure className="image is-1by1">
                 <img
                   className="is-rounded"
-                  src="./images/gaye.jpeg"
-                  alt="photo of Gaye"
+                  src="./images/Gaye.jpeg"
+                  alt="Gaye"
                 />
               </figure>
               <div className="roles">

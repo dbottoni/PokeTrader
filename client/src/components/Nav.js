@@ -33,9 +33,7 @@ function Nav() {
             {Auth.loggedIn() ? (
               <>
                 <Link to="/">
-                  <a className="navbar-item">
-                    HOME
-                  </a>
+                  <a className="navbar-item">HOME</a>
                 </Link>
                 <Link to="/trade">
                   <a className="navbar-item">TRADE</a>
@@ -50,9 +48,7 @@ function Nav() {
             ) : (
               <>
                 <Link to="/">
-                  <a className="navbar-item">
-                    HOME
-                  </a>
+                  <a className="navbar-item">HOME</a>
                 </Link>
               </>
             )}
@@ -65,7 +61,13 @@ function Nav() {
                   <a className="button is-primary">Account</a>
                 </Link> */}
                 <Link to="/logout">
-                  <a href="/" className="button is-primary" onClick={() => Auth.logout()}>Logout</a>
+                  <a
+                    href="/"
+                    className="button is-primary"
+                    onClick={() => Auth.logout()}
+                  >
+                    Logout
+                  </a>
                 </Link>
               </>
             ) : (

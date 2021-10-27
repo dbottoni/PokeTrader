@@ -95,7 +95,6 @@ export default function PokeStorePage() {
           balance: -price
         }
       })
-      // console.log(updateUser)
     } catch (err) {
       console.error(err);
     }
