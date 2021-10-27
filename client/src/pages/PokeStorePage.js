@@ -160,7 +160,7 @@ export default function PokeStorePage() {
                       <span className="card-footer">
                         <a
                           className="card-footer-item"
-                          onClick={() => setModalState({modalOpen: true, pokemonId: pokemon.id, img: pokemon.sprites.front_default, teamLength: userData.pokemonList.length })}
+                          onClick={() => setModalState({modalOpen: true, pokemonId: pokemon.id, img: pokemon.sprites.front_default, teamLength: userData.pokemonList.length,name:pokemon.name,price:pokemon.price })}
                         >
                           Add to Team
                         </a>
