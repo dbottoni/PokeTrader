@@ -79,7 +79,7 @@ export default function SignUp() {
                     value={formState.email}
                     type="email"
                     id="email"
-                    placeholder="email"
+                    placeholder="Email"
                     onChange={handleFormChange}
                   />
                 </div>
@@ -95,7 +95,7 @@ export default function SignUp() {
                     value={formState.password}
                     type="password"
                     id="password"
-                    placeholder="password"
+                    placeholder="Password"
                     onChange={handleFormChange}
                   />
                 </div>
