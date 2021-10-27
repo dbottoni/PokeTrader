@@ -26,26 +26,26 @@ const stripePromise = loadStripe(
   };
   return (
 
-    <div>
-    <div className="m-6">
-      <h2 className="content has-text-centered">Thank you for considering a $5 donation!</h2>
-      <p className="content has-text-centered">
-        Your donation will be used towards the future improvement of the Pocket Traders Platform
-      </p> 
-      <p className="content has-text-centered">
-          By clicking "Donate Now!" you will be re-routed to an external site for payment processing
+    <div className="container">
+      <div className="m-6">
+        <h2 className="content has-text-centered">Thank you for considering a $5 donation!</h2>
+        <p className="content has-text-centered">
+          Your donation will be used towards the future improvement of the Pocket Traders Platform
         </p> 
-    </div>
+        <p className="content has-text-centered">
+            By clicking "Donate Now!" you will be re-routed to an external site for payment processing
+          </p> 
+      </div>
     
-    <span className="card-footer">
-     <a href="https://buy.stripe.com/test_6oE5m54YZ4OM5igbII"
-     role="link"
-      className="card-footer-item"
-      onClick={handleClick}
-      target="_blank"
-      >
-      Donate Now! 
-    </a>
+    <span className="container column is-one-fifth">
+      <a href="https://buy.stripe.com/test_6oE5m54YZ4OM5igbII"
+      role="link"
+        className="card-footer-item"
+        onClick={handleClick}
+        target="_blank"
+        >
+        Donate Now! 
+      </a>
     </span>
 
     </div>
