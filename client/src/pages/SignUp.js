@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Auth from "../utils/auth";
-
 import { ADD_USER } from "../utils/mutations";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from '@apollo/client';
+
 
 export default function SignUp() {
   const [formState, setFormState] = useState({
@@ -20,19 +20,15 @@ export default function SignUp() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
-    // check if form has everything (as per react-bootstrap docs)
-    const form = event.currentTarget;
+  
+  const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
-
     try {
       const { data } = await addUser({
-        variables: {
-          ...formState,
-        },
+        variables: { ...formState }
       });
 
       if (error) {
@@ -41,17 +37,11 @@ export default function SignUp() {
       }
 
       Auth.login(data.addUser.token);
-    } catch (err) {
-      console.error(err);
-      //   setShowAlert(true);
+      console.log(data)
+    } catch (e) {
+      console.error(e);
     }
-
-    setFormState({
-      username: "",
-      email: "",
-      password: "",
-    });
-  };
+    };
 
   return (
     <div className="container mt-6">
@@ -71,7 +61,7 @@ export default function SignUp() {
             <fieldset className="login-signup-form">
             <legend className="form-title ml-6">Sign Up</legend>
 
-              <form className="m-6" noValidate validated={validated}>
+              <form className="m-6" noValidate validated={validated} onSubmit={handleFormSubmit}>
                 <div className="field mt-3">
                   <label className="label">First, what is your username?</label>
 
@@ -79,7 +69,8 @@ export default function SignUp() {
                     className="input"
                     name="username"
                     value={formState.username}
-                    type="text"
+                    type="username"
+                    id="username"
                     placeholder="Username"
                     onChange={handleFormChange}
                   />
@@ -93,6 +84,7 @@ export default function SignUp() {
                     name="email"
                     value={formState.email}
                     type="email"
+                    id="email"
                     placeholder="Email"
                     onChange={handleFormChange}
                   />
@@ -108,22 +100,21 @@ export default function SignUp() {
                     name="password"
                     value={formState.password}
                     type="password"
+                    id="password"
                     placeholder="Password"
                     onChange={handleFormChange}
                   />
                 </div>
-              </form>
-
               <button
                 className="button poke-button is-fullwidth mb-3"
                 type="submit"
-                onClick={handleFormSubmit}
               >
                 ▶ Create New Account
               </button>
+              </form>
             </fieldset>
         </div>
       </div>
     </div>
   );
-}
+};

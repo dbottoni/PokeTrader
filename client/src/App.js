@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient from 'apollo-boost';
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { setContext } from '@apollo/client/link/context';
 import pokeAPI from "./utils/pokeAPI";
 import axios from "axios";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-
 import Home from "./pages/Home";
 import Team from "./pages/Team";
 import NoMatch from "./pages/NoMatch";
@@ -20,18 +19,27 @@ import PokeStorePage from "./pages/PokeStorePage";
 
 export const PokedexContext = React.createContext()
 
-const client = new ApolloClient({
-  request: (operation) => {
-    const token = localStorage.getItem("id_token");
-
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : "",
-      },
-    });
-  },
-  uri: "/graphql",
+const httpLink = createHttpLink({
+  uri: '/graphql',
 });
+
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
+
 
 
 function App() {

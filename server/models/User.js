@@ -19,9 +19,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    // balance: {
-    //   type: String,
-    // },
+    balance: {
+      type: Number,
+      default:500
+    },
     pokemonList: [
       {
         type: Schema.Types.ObjectId,

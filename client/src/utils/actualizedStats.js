@@ -34,3 +34,9 @@ export const generatePokemonStats = (stats, level) => {
   return newStats;
 };
 
+
+export const generatePokemonPrice = (level) =>{
+    // const level = generatePokemonLevel(baseXP);
+    let price = Math.floor(Math.random()*(level-0.5*level)+0.5*level)
+    return price
+}

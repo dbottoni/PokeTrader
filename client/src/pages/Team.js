@@ -22,8 +22,8 @@ const Team = () => {
     pokemonId: "",
   });
   const [ownedPokemon, setOwnedPokemon] = useState([]);
-  console.log(userData);
-  console.log(ownedPokemon);
+  // console.log(userData);
+  // console.log(ownedPokemon);
 
   useEffect(() => {
     setOwnedPokemon(userData.pokemonList);
@@ -66,6 +66,9 @@ const Team = () => {
       <p className="content has-text-centered">
         You can only have six Pokemon on your team.
       </p>
+      <p className="content has-text-centered">
+        Your current balance: ${userData.balance}.
+      </p>
       <div className="columns is-desktop is-justify-content-center is-flex-wrap-wrap is-flex-direction-row">
         {ownedPokemon !== undefined ? (
           ownedPokemon.map((pokemon) => {
@@ -106,22 +109,16 @@ const Team = () => {
                       <li>Special Attack: {pokemon.stats[3]}</li>
                       <li>Special Defense: {pokemon.stats[4]}</li>
                       <li>Speed: {pokemon.stats[5]}</li>
+                      <li>Price: ${pokemon.cost}</li>
                     </ul>
                   </div>
-                  <span className="card-footer">
-                    <a
-                      href="#"
-                      className="card-footer-item"
-                      onClick={() =>
-                        setModalState({
-                          modalOpen: true,
-                          pokemonId: pokemon._id,
-                        })
-                      }
-                    >
-                      Remove From Team
-                    </a>
-                  </span>
+                <span className='card-footer'><button
+                    href="#"
+                    className="card-footer-item"
+                    onClick={() => removeFromTeam(pokemon._id)}
+                  >
+                    Remove From Team
+                  </button></span>
                 </div>
               </div>
             );

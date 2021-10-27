@@ -38,7 +38,7 @@ function Nav() {
                   </a>
                 </Link>
                 <Link to="/trade">
-                  <a className="navbar-item">SHOP</a>
+                  <a className="navbar-item">TRADE</a>
                 </Link>
                 <Link to="/team">
                   <a className="navbar-item">TEAM</a>

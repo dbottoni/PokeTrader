@@ -10,7 +10,7 @@ const Home = () => {
           <p className="tagline">STOP & SHOCK</p>
           <p className="home title">ELECTRIC TYPES</p>
           <Link to="/trade">
-          <a className="is-underlined subtitle">SHOP THE FULL COLLECTION NOW</a>
+          <p className="is-underlined subtitle">SHOP THE FULL COLLECTION NOW</p>
           </Link>
           <img className="home2" src="/images/179.png" />
 
