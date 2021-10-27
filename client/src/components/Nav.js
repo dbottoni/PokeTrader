@@ -33,15 +33,15 @@ function Nav() {
             {Auth.loggedIn() ? (
               <>
                 <Link to="/">
-                  <a className="navbar-item">
+                  <p className="navbar-item">
                     HOME
-                  </a>
+                  </p>
                 </Link>
                 <Link to="/trade">
-                  <a className="navbar-item">SHOP</a>
+                  <p className="navbar-item">TRADE</p>
                 </Link>
                 <Link to="/team">
-                  <a className="navbar-item">TEAM</a>
+                  <p className="navbar-item">TEAM</p>
                 </Link>
                 <Link to="/trainers">
                   <a className="navbar-item">TRAINERS</a>
@@ -50,9 +50,9 @@ function Nav() {
             ) : (
               <>
                 <Link to="/">
-                  <a className="navbar-item">
+                  <p className="navbar-item">
                     HOME
-                  </a>
+                  </p>
                 </Link>
               </>
             )}
@@ -65,16 +65,16 @@ function Nav() {
                   <a className="button is-primary">Account</a>
                 </Link> */}
                 <Link to="/logout">
-                  <a href="/" className="button is-primary" onClick={() => Auth.logout()}>Logout</a>
+                  <p href="/" className="button is-primary" onClick={() => Auth.logout()}>Logout</p>
                 </Link>
               </>
             ) : (
               <>
                 <Link to="/signup">
-                  <a className="button is-primary">Sign Up</a>
+                  <p className="button is-primary">Sign Up</p>
                 </Link>
                 <Link to="/login">
-                  <a className="button is-primary">Login</a>
+                  <p className="button is-primary">Login</p>
                 </Link>
               </>
             )}

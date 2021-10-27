@@ -1,5 +1,5 @@
 {
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:3001",
   "name": "components_tests",
   "version": "0.1.0",
   "private": true,

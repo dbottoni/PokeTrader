@@ -38,7 +38,9 @@ export default function PokeStorePage() {
   const [addPokemon, { error }] = useMutation(ADD_POKEMON, {
     refetchQueries: [{query: GET_ME}]
   });
-  const [addBalance, {e}] = useMutation(ADD_BALANCE)
+  const [addBalance, {e}] = useMutation(ADD_BALANCE,{
+    refetchQueries: [{query: GET_ME}]
+  })
 
   const addToTeam = async (pokemonId) => {
        if(userData.pokemonList.length >= 6){

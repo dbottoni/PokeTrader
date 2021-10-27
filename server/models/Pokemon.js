@@ -1,4 +1,3 @@
-
 const { Schema, model } = require('mongoose');
 
 const pokemonschema = new Schema({
@@ -7,6 +6,10 @@ const pokemonschema = new Schema({
       type: String,
       required:true,
     },
+  stats: [{
+    type: String,
+    required: true,
+  },],
   type: [{
     type: String,
     required: true,
@@ -16,16 +19,12 @@ const pokemonschema = new Schema({
     type: String,
     required:true
   },
-  //image link: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<pokemonId>.png
+  //image linke: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<pokemonId>.png
   images: [{
     type: String,
   }],
-  stats:[{
-    type: String,
-    required: true,
-  }],
-  level: {
-    type: String
+  level:{
+    type:String
   },
   cost: {
     type: Number

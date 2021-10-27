@@ -55,7 +55,7 @@ export default function SignUp() {
             <fieldset className="login-signup-form">
             <legend className="form-title ml-6">Sign Up</legend>
 
-              <form className="m-6" noValidate validated={validated}>
+              <form className="m-6" noValidate validated={validated} onSubmit={handleFormSubmit}>
                 <div className="field mt-3">
                   <label className="label">First, what is your username?</label>
 
