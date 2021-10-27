@@ -1,64 +1,71 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { PokedexContext } from "../App";
 import Auth from "../utils/auth";
 import { v4 as uuid } from "uuid";
 import { useMutation, useQuery } from "@apollo/client";
-import { ADD_POKEMON } from "../utils/mutations";
+import { ADD_POKEMON,ADD_BALANCE } from "../utils/mutations";
 import { diceRoll } from "../utils/helpers";
-import { GET_ME } from "../utils/queries";
+import { GET_ME} from '../utils/queries';
 
 import { setCardColor } from "../utils/helpers";
 import { capitalizeName } from "../utils/helpers";
 import {
   generatePokemonStats,
   generatePokemonLevel,
+  generatePokemonPrice
 } from "../utils/actualizedStats";
 import Filters from "../components/Filters";
-import { Link } from "react-router-dom";
+import ConfirmAdd from '../components/ConfirmAdd';
+
+
 
 export default function PokeStorePage() {
   const { pokedex } = useContext(PokedexContext);
+  // console.log(pokedex);
+  // pokedex.forEach(pokemon => {pokemon.push({"price":generatePokemonPrice(pokemon.ba)})});
 
-  const { loading, data } = useQuery(GET_ME);
+  const {loading, data} = useQuery(GET_ME)
   const userData = data?.me || {};
 
+  const [modalState, setModalState] = useState(
+    {
+      modalOpen: false, 
+      pokemonId: '', 
+      teamLength: '',
+      img: '',
+    })
   const [renderedPokemon, setRenderedPokemon] = useState(pokedex);
+
   const [addPokemon, { error }] = useMutation(ADD_POKEMON, {
-    refetchQueries: [{ query: GET_ME }],
+    refetchQueries: [{query: GET_ME}]
   });
+  const [addBalance, {e}] = useMutation(ADD_BALANCE,{
+    refetchQueries: [{query: GET_ME}]
+  })
 
   const addToTeam = async (pokemonId) => {
-    if (userData.pokemonList.length >= 6) {
-      return window.alert("You can only own 6 pokemon at a time!");
+       if(userData.pokemonList.length >= 6){
+        return window.alert('You can only own 6 pokemon at a time!')
     }
 
     const actualizedStats = async (stats, base_experience) => {
       const pokemonLevel = await generatePokemonLevel(base_experience);
-      const pokemonStats = await generatePokemonStats(
-        stats.map((stat) => stat.base_stat),
-        pokemonLevel
-      );
+      const pokemonStats = await generatePokemonStats(stats.map((stat) => stat.base_stat), pokemonLevel);
       return { pokemonLevel, pokemonStats };
     };
 
-    const { name, base_experience, stats, sprites, types } = pokedex.find(
-      (pokemon) => pokemon.id === pokemonId
-    );
+    const { name, base_experience, stats, sprites, types } = pokedex.find((pokemon) => pokemon.id === pokemonId);
 
-    let typeArr = [];
+    let typeArr = []
     for (const type of types) {
-      typeArr.push(type.type.name);
+      typeArr.push(type.type.name)
     }
     const isShiny = diceRoll();
-    const pokemonImage =
-      isShiny === true ? sprites.front_shiny : sprites.front_default;
+    const pokemonImage = isShiny === true ? sprites.front_shiny : sprites.front_default;
 
-    const { pokemonLevel, pokemonStats } = await actualizedStats(
-      stats,
-      base_experience
-    );
+    const { pokemonLevel, pokemonStats } = await actualizedStats(stats, base_experience);
+    const price = await generatePokemonPrice(pokemonLevel);
     const pokeID = uuid();
-
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
       return false;
@@ -72,17 +79,26 @@ export default function PokeStorePage() {
           images: pokemonImage,
           type: typeArr,
           level: pokemonLevel.toString(),
-          stats: pokemonStats.toString().split(","),
+          stats: pokemonStats.toString().split(','),
+          cost: price
         },
       });
-      console.log(data);
+      console.log(data)
+      const {updateUser}= await addBalance({
+        variables: {
+          balance: -price
+        }
+      })
+      // console.log(updateUser)
     } catch (err) {
       console.error(err);
     }
   };
 
+
   return (
     <div className="container">
+        <ConfirmAdd modalState={modalState} setModalState={setModalState} addToTeam={addToTeam} pokemonList={userData.pokemonList} />
       <div className="m-6">
         <h2 className="content has-text-centered">Add to Your Team</h2>
         <p className="content has-text-centered">
@@ -138,7 +154,7 @@ export default function PokeStorePage() {
                       <span className="card-footer">
                         <a
                           className="card-footer-item"
-                          onClick={() => addToTeam(pokemon.id)}
+                          onClick={() => setModalState({modalOpen: true, pokemonId: pokemon.id, img: pokemon.sprites.front_default, teamLength: userData.pokemonList.length })}
                         >
                           Add to Team
                         </a>
@@ -171,4 +187,3 @@ export default function PokeStorePage() {
       </div>
     </div>
   );
-}

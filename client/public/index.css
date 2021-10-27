@@ -237,3 +237,12 @@ legend.filter-title {
 .select.is-info:not(:hover)::after {
   position: relative;
 }
+
+.user-team{
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.stats-list ul li{
+  list-style-type: none;
+}
