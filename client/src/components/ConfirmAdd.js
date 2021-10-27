@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function ConfirmAdd(props) {
   const { modalState, setModalState, addToTeam } = props;
-
+// console.log(modalState)
 
   return (
     <div
@@ -56,7 +56,7 @@ export default function ConfirmAdd(props) {
                   setModalState({ modalOpen: false });
                 }}
               >
-                Purchase Pokemon
+                Cost ${modalState.price} to Purchase {modalState.name}
               </button>
               <button
                 className="button is-danger"
