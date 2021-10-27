@@ -95,7 +95,6 @@ export default function PokeStorePage() {
     }
   };
 
-
   return (
     <div className="container">
         <ConfirmAdd modalState={modalState} setModalState={setModalState} addToTeam={addToTeam} pokemonList={userData.pokemonList} />
