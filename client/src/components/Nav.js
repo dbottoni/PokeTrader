@@ -43,6 +43,9 @@ function Nav() {
                 <Link to="/team">
                   <a className="navbar-item">TEAM</a>
                 </Link>
+                <Link to="/trainers">
+                  <a className="navbar-item">TRAINERS</a>
+                </Link>
               </>
             ) : (
               <>

@@ -28,28 +28,30 @@ const resolvers = {
             const user = await User.create(args);
             const token = signToken(user);
 
-            return {token,user};
+            return {user,token};
         },
 
         login: async(parent, { email, password }) =>{
             const user = await User.findOne({ email });
 
             if (!user) {
-              throw new AuthenticationError('Incorrect credentials');
+              throw new AuthenticationError('Email dos not exist.');
             }
           
             const correctPw = await user.isCorrectPassword(password);
           
             if (!correctPw) {
-              throw new AuthenticationError('Incorrect credentials');
+              throw new AuthenticationError('Password Was Wrong');
             }
           
             const token = signToken(user);
             return { token, user };
         },
+
+
+
         savePokemon: async (parent, args, context) => {
           if (context.user) {
-            console.log(context.user);
             
               const pokemon = await Pokemon.create({...args, username: context.user.username})
              
@@ -79,6 +81,25 @@ const resolvers = {
             }
 
             throw new AuthenticationError('You need to be logged in!');
+        },
+         
+ 
+        removeUser: async(parent,args) =>{
+          const removeUser  = await User.findByIdAndDelete(args._id);
+          return removeUser;
+        },
+
+        addBalance: async (parent,args,context) =>{
+          console.log(args.balance)
+          if(context.user){
+            const updateUser = await User.findOneAndUpdate(
+              {_id: context.user._id},
+              {$inc:{balance:parseInt(args.balance)}},
+              {new:true}
+            );
+            return updateUser;
+          }
+          throw new AuthenticationError('You need to be logged in!');
         }
     }
 };

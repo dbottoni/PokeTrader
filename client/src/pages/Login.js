@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
@@ -14,15 +14,16 @@ export default function Login() {
     setFormState({ ...formState, [name]: value });
   };
 
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     // check if form has everything (as per react-bootstrap docs)
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
+    // const form = event.currentTarget;
+    // if (form.checkValidity() === false) {
+    //   event.preventDefault();
+    //   event.stopPropagation();
+    // }
 
     try {
       const { data } = await login({
@@ -30,7 +31,7 @@ export default function Login() {
           ...formState,
         },
       });
-      console.log(data);
+      // console.log(data);
       if (error) {
         throw new Error("something went wrong!");
       }
@@ -40,7 +41,7 @@ export default function Login() {
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
-      //   setShowAlert(true);
+      alert("Wrong password or email not exist")
     }
 
     setFormState({
@@ -70,6 +71,7 @@ export default function Login() {
                 <label className="label">What is your email?</label>
 
                 <input
+                  id="email"
                   className="input"
                   name="email"
                   value={formState.email}
@@ -85,6 +87,7 @@ export default function Login() {
                 </label>
 
                 <input
+                  id="password"
                   className="input"
                   name="password"
                   value={formState.password}

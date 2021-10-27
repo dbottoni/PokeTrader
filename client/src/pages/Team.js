@@ -1,32 +1,33 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
-import { GET_ME } from '../utils/queries';
-import Auth from '../utils/auth';
-import {REMOVE_POKEMON} from '../utils/mutations';
+import { GET_ME } from "../utils/queries";
+import Auth from "../utils/auth";
+import { REMOVE_POKEMON } from "../utils/mutations";
 
 import { capitalizeName } from "../utils/helpers";
 import { setCardColor } from "../utils/helpers";
-
+import ConfirmDelete from "../components/ConfirmDelete";
 
 const Team = () => {
-
-
-  const {loading, data} = useQuery(GET_ME)
+  const { loading, data } = useQuery(GET_ME);
   const userData = data?.me || {};
 
-  const [removePokemon, {error}] = useMutation(REMOVE_POKEMON, {
-    refetchQueries: [{query: GET_ME}]
-  })
+  const [removePokemon, { error }] = useMutation(REMOVE_POKEMON, {
+    refetchQueries: [{ query: GET_ME }],
+  });
 
   // const ownedPokemon = userData.pokemonList;
-  
+  const [modalState, setModalState] = useState({
+    modalOpen: false,
+    pokemonId: "",
+  });
   const [ownedPokemon, setOwnedPokemon] = useState([]);
-  console.log(userData);
-  console.log(ownedPokemon);
+  // console.log(userData);
+  // console.log(ownedPokemon);
 
   useEffect(() => {
-    setOwnedPokemon(userData.pokemonList)
-  }, [userData.pokemonList])
+    setOwnedPokemon(userData.pokemonList);
+  }, [userData.pokemonList]);
 
   const removeFromTeam = async (pokemonId) => {
     console.log("Removed from Team");
@@ -37,26 +38,36 @@ const Team = () => {
     }
 
     try {
-     await removePokemon({
-       variables: {
-         _id: pokemonId
-       }
-     });
+      await removePokemon({
+        variables: {
+          _id: pokemonId,
+        },
+      });
 
       if (error) {
-        throw new Error('something went wrong!');
+        throw new Error("something went wrong!");
       }
     } catch (err) {
       console.error(err);
     }
-    setOwnedPokemon(userData.pokemonList)
+    setOwnedPokemon(userData.pokemonList);
   };
 
   return (
     <div className="container">
-      <h2 className="content has-text-centered">{userData.username ? `${userData.username}'s ` : "Your" } Team</h2>
+      <h2 className="content has-text-centered">
+        {userData.username ? `${userData.username}'s ` : "Your"} Team
+      </h2>
+      <ConfirmDelete
+        modalState={modalState}
+        setModalState={setModalState}
+        removeFromTeam={removeFromTeam}
+      />
       <p className="content has-text-centered">
         You can only have six Pokemon on your team.
+      </p>
+      <p className="content has-text-centered">
+        Your current balance: ${userData.balance}.
       </p>
       <div className="columns is-desktop is-justify-content-center is-flex-wrap-wrap is-flex-direction-row">
         {ownedPokemon !== undefined ? (
@@ -64,33 +75,41 @@ const Team = () => {
             return (
               <div
                 className="card column is-one-third"
-                style={{"backgroundColor": setCardColor(pokemon.type[0])}}
+                style={{ backgroundColor: setCardColor(pokemon.type[0]) }}
                 key={pokemon._id}
               >
                 <div className="card-image">
                   <figure className="image is-4by3">
-                    <img src={pokemon.shinyImg ? pokemon.shinyImg : pokemon.images} alt="data.sprites.back_default" />
+                    <img src={pokemon.images} alt="data.sprites.back_default" />
                   </figure>
                 </div>
                 <div className="card-content">
                   <div className="media">
                     <div className="media-content">
                       <p className="title is-4">
-                     {capitalizeName(pokemon.name)}
+                        {capitalizeName(pokemon.name)}
                       </p>
-                      <p className="subtitle is-6">{pokemon.type.map(el =>capitalizeName(el) + ' ')}</p>
+                      <p className="subtitle is-6">
+                        {pokemon.type.map((el) => capitalizeName(el) + " ")}
+                      </p>
                     </div>
                   </div>
                   <div className="content">
                     <p>Lvl {pokemon.level}</p>
-                    <p className="subtitle is-6">Stats Total: {pokemon.stats.reduce((acc, cur) => parseInt(acc) + parseInt(cur) )} </p>
+                    <p className="subtitle is-6">
+                      Total Stats:{" "}
+                      {pokemon.stats.reduce(
+                        (acc, cur) => parseInt(acc) + parseInt(cur)
+                      )}{" "}
+                    </p>
                     <ul>
-                     <li>HP: {pokemon.stats[0]}</li>
-                     <li>Attack: {pokemon.stats[1]}</li>
-                     <li>Defense: {pokemon.stats[2]}</li>
-                     <li>Special Attack: {pokemon.stats[3]}</li>
-                     <li>Special Defense: {pokemon.stats[4]}</li>
-                     <li>Speed: {pokemon.stats[5]}</li>
+                      <li>HP: {pokemon.stats[0]}</li>
+                      <li>Attack: {pokemon.stats[1]}</li>
+                      <li>Defense: {pokemon.stats[2]}</li>
+                      <li>Special Attack: {pokemon.stats[3]}</li>
+                      <li>Special Defense: {pokemon.stats[4]}</li>
+                      <li>Speed: {pokemon.stats[5]}</li>
+                      <li>Price: ${pokemon.cost}</li>
                     </ul>
                   </div>
                 <span className='card-footer'><button
@@ -113,4 +132,3 @@ const Team = () => {
 };
 
 export default Team;
-

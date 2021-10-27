@@ -30,14 +30,15 @@ export const ADD_USER = gql`
 
 
 export const ADD_POKEMON = gql`
-  mutation savePokemon($_id: ID!, $name: String!, $level: String, $type: [String]!, $stats: [String], $images: [String]! ) {
-    savePokemon(pokemonId: $_id, name: $name, level: $level, type: $type, images: $images, stats: $stats) {
+  mutation savePokemon($_id: ID!, $name: String!, $level: String, $type: [String]!, $stats: [String], $images: [String]!, $cost:Int) {
+    savePokemon(pokemonId: $_id, name: $name, level: $level, type: $type, images: $images, stats: $stats, cost:$cost) {
       _id
       name
       images
       stats
       level
       type
+      cost
     }
   }
 
@@ -51,4 +52,13 @@ export const REMOVE_POKEMON = gql`
       _id
     }
   }
+`
+
+export const ADD_BALANCE = gql`
+mutation addBalance($balance: Int!){
+  addBalance(balance: $balance) {
+    username
+    balance
+  }
+}
 `
