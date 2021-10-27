@@ -12,7 +12,8 @@ import { capitalizeName } from "../utils/helpers";
 import {
   generatePokemonStats,
   generatePokemonLevel,
-  generatePokemonPrice
+  generatePokemonPrice,
+  generatePokemonCost
 } from "../utils/actualizedStats";
 import Filters from "../components/Filters";
 import ConfirmAdd from '../components/ConfirmAdd';
@@ -22,7 +23,10 @@ import ConfirmAdd from '../components/ConfirmAdd';
 export default function PokeStorePage() {
   const { pokedex } = useContext(PokedexContext);
   // console.log(pokedex);
-  // pokedex.forEach(pokemon => {pokemon.push({"price":generatePokemonPrice(pokemon.ba)})});
+  pokedex.forEach(pokemon => {
+    pokemon["price"]=generatePokemonCost(pokemon.base_experience)
+    // console.log(pokemon)
+  });
 
   const {loading, data} = useQuery(GET_ME)
   const userData = data?.me || {};
@@ -33,6 +37,8 @@ export default function PokeStorePage() {
       pokemonId: '', 
       teamLength: '',
       img: '',
+      price:'',
+      name:''
     })
   const [renderedPokemon, setRenderedPokemon] = useState(pokedex);
 
@@ -54,7 +60,7 @@ export default function PokeStorePage() {
       return { pokemonLevel, pokemonStats };
     };
 
-    const { name, base_experience, stats, sprites, types } = pokedex.find((pokemon) => pokemon.id === pokemonId);
+    const { name, base_experience, stats, sprites, types, price } = pokedex.find((pokemon) => pokemon.id === pokemonId);
 
     let typeArr = []
     for (const type of types) {
@@ -64,7 +70,7 @@ export default function PokeStorePage() {
     const pokemonImage = isShiny === true ? sprites.front_shiny : sprites.front_default;
 
     const { pokemonLevel, pokemonStats } = await actualizedStats(stats, base_experience);
-    const price = await generatePokemonPrice(pokemonLevel);
+    // const price = await generatePokemonPrice(pokemonLevel);
     const pokeID = uuid();
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
@@ -154,7 +160,7 @@ export default function PokeStorePage() {
                       <span className="card-footer">
                         <a
                           className="card-footer-item"
-                          onClick={() => setModalState({modalOpen: true, pokemonId: pokemon.id, img: pokemon.sprites.front_default, teamLength: userData.pokemonList.length })}
+                          onClick={() => setModalState({modalOpen: true, pokemonId: pokemon.id, img: pokemon.sprites.front_default, teamLength: userData.pokemonList.length,name:pokemon.name,price:pokemon.price })}
                         >
                           Add to Team
                         </a>
