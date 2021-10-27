@@ -20,6 +20,12 @@ export default function SignUp() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+  
+  const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
     try {
       const { data } = await addUser({
         variables: { ...formState }
