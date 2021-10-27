@@ -21,11 +21,9 @@ export const generatePokemonLevel = (baseXP) => {
   }
 };
 
-
 //takes stats as array of base stats and returns actualized stats
 export const generatePokemonStats = (stats, level) => {
   let newStats = [];
-
   let statRandomizer = Math.random() + Math.random();
 
   stats.map((stat) => {
@@ -34,16 +32,15 @@ export const generatePokemonStats = (stats, level) => {
   return newStats;
 };
 
+export const generatePokemonCost = (baseXP) =>{
+
+  let price = Math.floor(0.3*baseXP);
+  return price
+}
+
 
 export const generatePokemonPrice = (level) =>{
     // const level = generatePokemonLevel(baseXP);
     let price = Math.floor(Math.random()*(level-0.5*level)+0.5*level)
     return price
-}
-
-export const generatePokemonCost = (baseXP) =>{
-  // const level = generatePokemonLevel(baseXP);
-  // let price = Math.floor(Math.random()*(level-0.5*level)+0.5*level)
-  let price = Math.floor(0.3*baseXP);
-  return price
 }
