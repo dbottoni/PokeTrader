@@ -17,7 +17,7 @@ export default function TrainersPage() {
           return (
             <div
               className="section user-team"
-              style={{ backgroundColor: "grey" }}
+              style={{ backgroundColor: "whitesmoke", boxShadow: '0px 0px 2px 2px grey' }}
             >
               <div className='block'><h3>{`${user.username}'s Team`}</h3></div>
             <div className ='columns is-desktop is-justify-content-center is-flex-wrap-wrap is-flex-direction-row'>
@@ -42,12 +42,13 @@ export default function TrainersPage() {
                           <p className="title is-4">
                             {capitalizeName(pokemon.name)}
                           </p>
+                          <p className='is-4'>Level: {pokemon.level}</p>
                           <p className="subtitle is-6">
                             {pokemon.type.map((el) => capitalizeName(el) + " ")}
                           </p>
                         </div>
                       </div>
-                      <div className="content">
+                      {/* <div className="content">
                         <p>Lvl {pokemon.level}</p>
                         <p className="subtitle is-6">
                           Total Stats:{" "}
@@ -63,7 +64,7 @@ export default function TrainersPage() {
                           <li>Special Defense: {pokemon.stats[4]}</li>
                           <li>Speed: {pokemon.stats[5]}</li>
                         </ul>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 );

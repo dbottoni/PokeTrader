@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { PokedexContext } from "../App";
 import Auth from "../utils/auth";
 import { v4 as uuid } from "uuid";
@@ -82,6 +82,7 @@ export default function PokeStorePage() {
       console.error(err);
     }
   };
+
 
   return (
     <div className="container">
