@@ -52,6 +52,7 @@ $ npm start
 * Pokemon API library
 * Axios
 * Bulma
+* Stripe
 * Font-Awesome Google API library
 * Canva (presentation)
 
