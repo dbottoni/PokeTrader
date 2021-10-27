@@ -8,7 +8,7 @@
 * [Heroku Link](#heroku-link)
 * [Video Demo](#video-demonstration)
 * [Technology](#technology-used)
-* [Presentation](#presentation)
+* [Canva Presentation](#canva-presentation)
 * [Team Members](#the-team)
 * [Sources](#sources)
 * [Status](#status)
@@ -58,7 +58,7 @@ $ npm start
 * Canva (presentation)
 
 
-### Presentation
+### Canva Presentation
 
 [PocketTraders Presentation](https://www.canva.com/design/DAEtGpmVYYQ/IrQMyNBBOUydCwzf-4ETsQ/view?utm_content=DAEtGpmVYYQ&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
 
