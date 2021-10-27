@@ -8,7 +8,7 @@ function Footer() {
         <div className="columns">
           <div className="column">
             <Link to="/">
-              <p>Home</p>
+              <a>Home</a>
             </Link>
           </div>
           <div className="column">
