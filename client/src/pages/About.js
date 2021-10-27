@@ -20,7 +20,7 @@ const About = () => {
               <figure className="image is-1by1">
                 <img
                   className="is-rounded"
-                  src="./images/Baiyang.png"
+                  src="./images/baiyang.png"
                   alt="photo of Baiyang"
                 />
               </figure>
@@ -113,7 +113,7 @@ const About = () => {
               <figure className="image is-1by1">
                 <img
                   className="is-rounded"
-                  src="./images/Gaye.jpeg"
+                  src="./images/gaye.jpeg"
                   alt="photo of Gaye"
                 />
               </figure>
