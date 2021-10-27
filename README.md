@@ -7,8 +7,8 @@
 * Installation/SetUp - How To Use
 * Screenshots/Video Demo/Tutorial
 * Technology
-* Presentation
-* Team Members
+* [Pesentation](#presentation)
+* [eam Members](#the team)
 * Sources
 * Status
 * Credits
@@ -57,7 +57,7 @@ $ npm start
 * Canva (presentation)
 
 
-### Presentation Link
+### Presentation
 
 [PocketTraders Presentation](https://www.canva.com/design/DAEtGpmVYYQ/IrQMyNBBOUydCwzf-4ETsQ/view?utm_content=DAEtGpmVYYQ&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
 
