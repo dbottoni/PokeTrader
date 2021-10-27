@@ -7,8 +7,8 @@
 * Installation/SetUp - How To Use
 * Screenshots/Video Demo/Tutorial
 * Technology
-* [Pesentation](#presentation)
-* [Team Members](#the team)
+* [Presentation](#presentation)
+* [Team Members](#the-team)
 * Sources
 * Status
 * Credits
