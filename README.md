@@ -4,7 +4,7 @@
 ### Table of Contents
 
 * [Description](description)
-* [Installation/SetUp - How To Use](how-to-use)
+* [Installation](Installation)
 * [Heroku Link](heroku-link)
 * [Video Demo](video-demonstration)
 * [Technology](technology-used)
@@ -21,7 +21,7 @@ This application is an online trading card game based on the Pokemon games that 
 
 A user will sign up and create their "team account" by providing their email and setting a password when prompted.  Once they log in, they will be directed to a page to choose their Pokemon trading cards to build their team.  This application initially allows only six trading cards per team. As you collect and trade your cards, you will find "shiny" cards, although rare. Features like these keep Pokemon fans striving for more "shiny" cards and other "rare collections". 
 
-### How To Use:
+### Installation:
 ```
 # Clone this repository
 $ git clone https://github.com/dbottoni/PokeTrader
