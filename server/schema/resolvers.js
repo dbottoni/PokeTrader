@@ -16,12 +16,26 @@ const resolvers = {
         },
         users: async () => {
           return User.find()
-                    .select('-__v -password')
-                    .populate('pokemonList')
-      },
+            .select('-__v -password')
+            .populate('pokemonList')
+       },
         pokemons:async()=>{
           return Pokemon.find()
-        }
+        },
+        donate: async()=>{
+
+        const session = await stripe.checkout.sessions.create({
+          payment_method_types: ['card'],
+          line_items: [{
+            price: '{{PRICE_ID}}',
+            quantity: 1,
+          }],
+          mode: 'payment',
+          success_url: 'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
+          cancel_url: 'https://example.com/cancel',
+        });
+
+      }
     },
     Mutation:{
         addUser: async(parent, args) => {
