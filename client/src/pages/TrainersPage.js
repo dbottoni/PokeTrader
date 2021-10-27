@@ -10,6 +10,9 @@ export default function TrainersPage() {
 
   const fullTeams = usersData !== undefined ? usersData.filter(users => users.pokemonList.length >= 6) : []
   
+  
+  console.log(fullTeams);
+
 
   return (
     <div className="container">
