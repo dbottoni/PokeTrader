@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useRef } from "react";
+import React, { useState, useContext } from "react";
 import { PokedexContext } from "../App";
 import Auth from "../utils/auth";
 import { v4 as uuid } from "uuid";
@@ -86,7 +86,6 @@ export default function PokeStorePage() {
 
   return (
     <div className="container">
-
 
       {/* <p className="content has-text-centered">Search for pokemon in the space below.</p> */}
       <ConfirmAdd modalState={modalState} setModalState={setModalState} addToTeam={addToTeam} pokemonList={userData.pokemonList} />

@@ -79,18 +79,14 @@ useEffect(() => {
               exact
               path="/trade"
               component={PokeStorePage}
-              // pokedex={pokedex}
             />
-                        <Route
+            <Route
               exact
               path="/about"
               component={About}
-              // pokedex={pokedex}
             />
-
             <Route exact path="/team" component={Team} />
             <Route exact path="/trainers" component={TrainersPage} />
-              {/* <Route exact path="/products/:id" component={Detail} /> */}
             <Route component={NoMatch} />
           </Switch>
         </div>

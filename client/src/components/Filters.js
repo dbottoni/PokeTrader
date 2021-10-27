@@ -17,13 +17,12 @@ export default function Filters(props) {
   }
 
   useEffect(() => {
-    //next add set timeout to delay state change on slider by like .2 seconds - add page persistence 
     const filteredPokemon = sortPokedex(pokedex, selectedType, sliderValue);
     setRenderedPokemon(filteredPokemon);
   }, [sliderValue, selectedType, setRenderedPokemon, pokedex]);
 
   return (
-    <div className="select-container is-flex-wrap-nowrap is-justify-content-center">
+    <div className="select-container is-flex-wrap-nowrap is-justify-content-center" style={{marginTop: '20px', marginBottom: '15px'}}>
       <fieldset className="login-signup-form">
         <legend className="filter-title has-text-centered">
           Filter Pokemon
