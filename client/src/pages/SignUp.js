@@ -20,6 +20,12 @@ export default function SignUp() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+  
+  const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
     try {
       const { data } = await addUser({
         variables: { ...formState }
@@ -79,7 +85,7 @@ export default function SignUp() {
                     value={formState.email}
                     type="email"
                     id="email"
-                    placeholder="email"
+                    placeholder="Email"
                     onChange={handleFormChange}
                   />
                 </div>
@@ -95,7 +101,7 @@ export default function SignUp() {
                     value={formState.password}
                     type="password"
                     id="password"
-                    placeholder="password"
+                    placeholder="Password"
                     onChange={handleFormChange}
                   />
                 </div>

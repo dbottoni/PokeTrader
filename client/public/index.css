@@ -33,7 +33,6 @@ body {
   align-items: center;
 }
 
-
 /* CONTENT */
 
 h1,
@@ -53,7 +52,6 @@ p {
 a {
   color: var(--white);
 }
-
 
 a:hover {
   color: var(--goldenrod);
@@ -196,7 +194,7 @@ img.oak-img {
 }
 
 .label {
-  font-size: .75em;
+  font-size: 0.75em;
   font-family: var(--header-font);
   color: black;
   font-weight: normal;
@@ -214,7 +212,7 @@ h1.form-header {
 
 a.form-header {
   font-family: var(--header-font);
-  font-size: .75em;
+  font-size: 0.75em;
 }
 
 a.link-on-white {
@@ -245,4 +243,69 @@ legend.filter-title {
 
 .stats-list ul li{
   list-style-type: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 1000px) {
+  .navbar-item {
+    width: auto;
+    background-color: var(--royal-blue-dark);
+  }
+  .pokestore-form,
+  .select-container,
+  .m-6 {
+    width: 40%;
+    font-size: x-small;
+    text-align: justify;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .navbar-item:hover,
+  .navbar-item.is-active {
+    width: auto;
+    color: var(--goldenrod);
+    background-color: var(--royal-blue-dark);
+  }
 }

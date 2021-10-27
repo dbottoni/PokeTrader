@@ -104,66 +104,94 @@ export default function PokeStorePage() {
 
   return (
     <div className="container">
+        <ConfirmAdd modalState={modalState} setModalState={setModalState} addToTeam={addToTeam} pokemonList={userData.pokemonList} />
+      <div className="m-6">
+        <h2 className="content has-text-centered">Add to Your Team</h2>
+        <p className="content has-text-centered">
+          Use the filter, then the slider, to choose the type and experience you
+          want in a pokemon.
+        </p>
+        <p className="content has-text-centered">
+          Then, click the Add to Team button to build your team!
+        </p>
+      </div>
 
+      <div className="columns">
+        <div className="column is-one-fifth">
+          <Filters setRenderedPokemon={setRenderedPokemon} />
+        </div>
+        <div className="column">
+          <div className="columns is-desktop is-flex-wrap-wrap is-justify-content-space-evenly">
+            {renderedPokemon.length > 0 ? (
+              renderedPokemon.map((pokemon) => {
+                return (
+                  <div
+                    className="card column is-one-third"
+                    style={{
+                      backgroundColor: setCardColor(pokemon.types[0].type.name),
+                    }}
+                    key={uuid()}
+                  >
+                    <div className="card-image">
+                      <figure className="image is-4by3">
+                        <img
+                          src={pokemon.sprites.front_default}
+                          alt="data.sprites.back_default"
+                        />
+                      </figure>
+                    </div>
+                    <div className="card-content">
+                      <div className="media">
+                        <div className="media-content">
+                          <p className="title is-4">
+                            {capitalizeName(pokemon.name)}
+                          </p>
+                          <p className="subtitle is-6">
+                            {pokemon.types.map((type) => {
+                              return capitalizeName(type.type.name + " ");
+                            })}
+                          </p>
+                        </div>
+                      </div>
 
-      {/* <p className="content has-text-centered">Search for pokemon in the space below.</p> */}
-      <ConfirmAdd modalState={modalState} setModalState={setModalState} addToTeam={addToTeam} pokemonList={userData.pokemonList} />
-      <Filters
-        setRenderedPokemon={setRenderedPokemon}
-      />
-      <h2 className="content has-text-centered">Add to Your Team</h2>
-      <div className="columns is-desktop is-justify-content-center is-flex-wrap-wrap is-flex-direction-row">
-        {renderedPokemon.length > 0 ? (
-          renderedPokemon.map((pokemon) => {
-            return (
-              <div
-                className="card column is-one-fifth"
-                style={{
-                  backgroundColor: setCardColor(pokemon.types[0].type.name),
-                }}
-                key={uuid()}
-              >
-                <div className="card-image">
-                  <figure className="image is-4by3">
-                    <img
-                      src={pokemon.sprites.front_default}
-                      alt="data.sprites.back_default"
-                    />
-                  </figure>
-                </div>
-                <div className="card-content">
-                  <div className="media">
-                    <div className="media-content">
-                      <p className="title is-4">
-                        {capitalizeName(pokemon.name)}
-                      </p>
-                      <p className="subtitle is-6">
-                        {pokemon.types.map((type) => {
-                          return capitalizeName(type.type.name + " ");
-                        })}
-                      </p>
+                      <div className="content">
+                        <p>Base XP : {pokemon.base_experience}</p>
+                      </div>
+                      <span className="card-footer">
+                        <a
+                          className="card-footer-item"
+                          onClick={() => setModalState({modalOpen: true, pokemonId: pokemon.id, img: pokemon.sprites.front_default, teamLength: userData.pokemonList.length })}
+                        >
+                          Add to Team
+                        </a>
+                      </span>
                     </div>
                   </div>
-
-                  <div className="content">
-                    <p>Base XP : {pokemon.base_experience}</p>
+                );
+              })
+            ) : (
+              <div>
+                {" "}
+                <div className="container">
+                  <div className="columns no-match-container is-centered">
+                    <div className="column is-one-third">
+                      <h1 className="no-match">Oops!</h1>
+                      <p className="no-match">
+                        We couldn't match a Pokemon with your filter choices.
+                        Click Trade in the Navigation Bar to try again!
+                      </p>
+                    </div>
+                    <div className="column is-one-third">
+                      <img className="no-match" src="/images/digimon.png" />
+                    </div>
                   </div>
-                  <span className="card-footer">
-                    <a
-                      className="card-footer-item"
-                      onClick={() =>  setModalState({modalOpen: true, pokemonId: pokemon.id, img: pokemon.sprites.front_default, teamLength: userData.pokemonList.length,price:pokemon.price,name:pokemon.name })}
-                    >
-                      Add to Team
-                    </a>
-                  </span>
                 </div>
               </div>
-            );
-          })
-        ) : (
-          <div> No Pokemon Returned</div>
-        )}
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
-}
+};
+
