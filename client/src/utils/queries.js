@@ -17,6 +17,20 @@ export const GET_ME = gql`
       }
 }`;
 
+export const GET_USERS = gql`
+{
+    users {
+      username
+      pokemonList {
+        name
+        level
+        _id
+        images
+        type
+        stats
+      }
+    }
+}`
 
 
 

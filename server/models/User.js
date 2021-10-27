@@ -51,7 +51,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-console.log(userSchema);
 
 userSchema.virtual("pokemonCount").get(function () {
   return this.pokemonList.length;

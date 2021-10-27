@@ -228,3 +228,8 @@ legend.filter-title {
 .select.is-info:not(:hover)::after {
   position: relative;
 }
+
+.user-team:not(:last-child){
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
