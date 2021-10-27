@@ -67,7 +67,7 @@ const Team = () => {
         You can only have six Pokemon on your team.
       </p>
       <p className="content has-text-centered">
-        Your current balance: {userData.balance}.
+        Your current balance: ${userData.balance}.
       </p>
       <div className="columns is-desktop is-justify-content-center is-flex-wrap-wrap is-flex-direction-row">
         {ownedPokemon !== undefined ? (
@@ -109,6 +109,7 @@ const Team = () => {
                       <li>Special Attack: {pokemon.stats[3]}</li>
                       <li>Special Defense: {pokemon.stats[4]}</li>
                       <li>Speed: {pokemon.stats[5]}</li>
+                      <li>Price: ${pokemon.cost}</li>
                     </ul>
                   </div>
                   <span className="card-footer">
