@@ -25,7 +25,7 @@ export default function TrainersPage() {
                 return (
                   <div
                     className="card column"
-                    style={{ backgroundColor: setCardColor(pokemon.type[0]) }}
+                    style={{ backgroundColor: setCardColor(pokemon.type[0])}}
                     key={pokemon._id}
                   >
                     <div className="card-image">

@@ -233,3 +233,7 @@ legend.filter-title {
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
 }
+
+.trainer-card{
+  max-height: 45px;
+}
