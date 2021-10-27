@@ -233,3 +233,7 @@ legend.filter-title {
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
+
+.stats-list ul li{
+  list-style-type: none;
+}

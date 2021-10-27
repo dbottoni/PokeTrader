@@ -19,7 +19,7 @@ export default function TrainersPage() {
               className="section user-team"
               style={{ backgroundColor: "grey" }}
             >
-              <div>{user.username}</div>
+              <div className='block'><h3>{`${user.username}'s Team`}</h3></div>
             <div className ='columns is-desktop is-justify-content-center is-flex-wrap-wrap is-flex-direction-row'>
               {user.pokemonList.map((pokemon) => {
                 return (
@@ -55,7 +55,7 @@ export default function TrainersPage() {
                             (acc, cur) => parseInt(acc) + parseInt(cur)
                           )}{" "}
                         </p>
-                        <ul>
+                        <ul className='stats-list'>
                           <li>HP: {pokemon.stats[0]}</li>
                           <li>Attack: {pokemon.stats[1]}</li>
                           <li>Defense: {pokemon.stats[2]}</li>
