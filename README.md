@@ -1,4 +1,3 @@
-
 # POCKET TRADER
 ###### (GWU-BOOTCAMP-May-Oct 2021 (FINAL PROJECT)
 
@@ -80,5 +79,3 @@ Although this project is the last one for the Bootcamp, it does not end with thi
 This project would not be possible without the guidance, assistance, feedback, suggestions and support of the GWU Bootcamp Instructors: Gabe Perry,Lead Instructor; Taleh Aliyev, Teaching Assistant; and Lawrence Kirk, Teaching Assistant. 
 
 Also, many thanks to all of our SP/FA 2021 bootcamp co-horts who endured with us through the end. CONGRATULATIONS!
-
-
