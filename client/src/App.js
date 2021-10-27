@@ -14,7 +14,7 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import About from './pages/About';
 import TrainersPage from "./pages/TrainersPage";
-
+import ScrollToTop from "./utils/ScrollToTop";
 import PokeStorePage from "./pages/PokeStorePage";
 
 export const PokedexContext = React.createContext()
@@ -77,6 +77,7 @@ useEffect(() => {
     <PokedexContext.Provider value={pokemonContextValue}>
       <Router>
       <div>
+        <ScrollToTop />
         <Nav />
         <div>
           <Switch>
