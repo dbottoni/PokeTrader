@@ -6,7 +6,7 @@ export default function Filters(props) {
   const { setRenderedPokemon } = props;
   const { pokedex } = useContext(PokedexContext);
   const [sliderValue, setSliderValue] = useState(0);
-  const [selectedType, setSelectedType] = useState("");
+  const [selectedType, setSelectedType] = useState(null);
 
   function handleSlider(e) {
     setSliderValue(e.target.value);
