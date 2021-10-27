@@ -3,15 +3,16 @@
 
 ### Table of Contents
 
-* Description
-* Installation/SetUp - How To Use
-* Screenshots/Video Demo/Tutorial
-* Technology
+* [Description](description)
+* [Installation/SetUp - How To Use](how-to-use)
+* [Heroku Link](heroku-link)
+* [Video Demo](video-demonstration)
+* [Technology](technology-used)
 * [Presentation](#presentation)
 * [Team Members](#the-team)
-* Sources
-* Status
-* Credits
+* [Sources](sources)
+* [Status](status)
+* [Credits](credits)
 
 ### Description
 
@@ -38,7 +39,7 @@ $ npm start
 ### Heroku Link
 [PocketTraders](https://pocket-traders.herokuapp.com/)
 
-### Screenshot/Video Demo
+### Video Demonstration
 
 [PokeTrader App Demo](https://user-images.githubusercontent.com/72705457/139108878-32bfa300-840d-4253-9dae-ae3358b84c2f.mp4)
 
