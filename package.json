@@ -9,7 +9,9 @@
     "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
-    "heroku-postbuild": "cd client && npm run build"
+    "heroku-postbuild": "cd client && npm run build",
+    "build": "cd client && npm run build",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\""
   },
   "keywords": [],
   "author": "",
@@ -23,6 +25,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.9",
     "nodemon": "^2.0.13",
+    "react-confirm-alert": "^2.7.0",
+    "react-popup-alert": "^2.0.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

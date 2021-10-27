@@ -66,7 +66,7 @@ export const capitalizeName = (str) => {
 
 //STORE FILTER FUNCTION
 export const sortPokedex = (pokedex, type, xp) => {
-  if (type === '' && xp === 0) return pokedex;
+  if (type === null && xp === 0) return pokedex;
 
   let filteredPokedex = [];
 

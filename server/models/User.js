@@ -19,10 +19,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    // balance: {
-    //   type: String,
-    // },
-    // pokemonList: [Pokemon],
+    balance: {
+      type: Number,
+      default:500
+    },
     pokemonList: [
       {
         type: Schema.Types.ObjectId,
@@ -51,6 +51,7 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
+
 
 userSchema.virtual("pokemonCount").get(function () {
   return this.pokemonList.length;

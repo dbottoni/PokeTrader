@@ -49,6 +49,7 @@ const About = () => {
               <div className="roles">
                 <ul className="roles">
                   <li className="role">Front-End</li>
+                  <li className="role">API's</li> 
                   <li className="role">React</li>
                   <li className="role">GraphQL</li>
                   <li className="role">Concept Originator</li>
