@@ -8,7 +8,7 @@
 * Screenshots/Video Demo/Tutorial
 * Technology
 * [Pesentation](#presentation)
-* [eam Members](#the team)
+* [Team Members](#the team)
 * Sources
 * Status
 * Credits
