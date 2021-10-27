@@ -13,6 +13,7 @@ import NoMatch from "./pages/NoMatch";
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import About from './pages/About';
+import Stripe from './pages/Stripe';
 import TrainersPage from "./pages/TrainersPage";
 
 import PokeStorePage from "./pages/PokeStorePage";
@@ -93,6 +94,7 @@ useEffect(() => {
               path="/about"
               component={About}
             />
+            <Route exact path="/stripe" component={Stripe} />
             <Route exact path="/team" component={Team} />
             <Route exact path="/trainers" component={TrainersPage} />
             <Route component={NoMatch} />

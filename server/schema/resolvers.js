@@ -16,9 +16,9 @@ const resolvers = {
         },
         users: async () => {
           return User.find()
-                    .select('-__v -password')
-                    .populate('pokemonList')
-      },
+            .select('-__v -password')
+            .populate('pokemonList')
+       },
         pokemons:async()=>{
           return Pokemon.find()
         }
