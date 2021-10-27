@@ -115,7 +115,7 @@ const Team = () => {
                 <span className='card-footer'><button
                     href="#"
                     className="card-footer-item"
-                    onClick={() => removeFromTeam(pokemon._id)}
+                    onClick={() => setModalState({modelOpen:true,pokemonId:pokemon._id})}
                   >
                     Remove From Team
                   </button></span>

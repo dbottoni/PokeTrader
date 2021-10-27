@@ -35,10 +35,13 @@ $ npm install
 $ npm start
 ```
 
+### Heroku Link
+[PocketTraders](https://pocket-traders.herokuapp.com/)
 
 ### Screenshot/Video Demo
 
-[PokeTrader App](url of screencastify recording)
+[PokeTrader App Demo](https://user-images.githubusercontent.com/72705457/139108878-32bfa300-840d-4253-9dae-ae3358b84c2f.mp4)
+
 
 
 ### Technology Used
@@ -55,7 +58,7 @@ $ npm start
 
 ### Presentation Link
 
-[Poke Trader Presentation Slides](link to slides)
+[PocketTraders Presentation](https://www.canva.com/design/DAEtGpmVYYQ/IrQMyNBBOUydCwzf-4ETsQ/view?utm_content=DAEtGpmVYYQ&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
 
 ### The Team
 * **Dana Bottoni** - 'Project Three' Team Leader, Project Management Specialist (Leader of ALL THREE bootcamp projects)
