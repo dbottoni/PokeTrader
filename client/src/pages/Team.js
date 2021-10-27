@@ -112,20 +112,13 @@ const Team = () => {
                       <li>Price: ${pokemon.cost}</li>
                     </ul>
                   </div>
-                  <span className="card-footer">
-                    <a
-                      href="#"
-                      className="card-footer-item"
-                      onClick={() =>
-                        setModalState({
-                          modalOpen: true,
-                          pokemonId: pokemon._id,
-                        })
-                      }
-                    >
-                      Remove From Team
-                    </a>
-                  </span>
+                <span className='card-footer'><button
+                    href="#"
+                    className="card-footer-item"
+                    onClick={() => removeFromTeam(pokemon._id)}
+                  >
+                    Remove From Team
+                  </button></span>
                 </div>
               </div>
             );

@@ -27,6 +27,13 @@ body {
   align-items: center;
 }
 
+.select-container {
+  display: block;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
 /* CONTENT */
 
 h1,
@@ -140,7 +147,7 @@ a.footer {
   border-top: none;
 }
 
-.card-footer a {
+.card-footer-item {
   color: var(--white);
   border-bottom: var(--white) double;
   border-right: var(--white) double;
@@ -214,6 +221,8 @@ a.link-on-white {
   font-family: var(--content-font);
   text-align: center;
 }
+
+/* FILTER STYLING */
 
 legend.filter-title {
   font-family: var(--header-font);
