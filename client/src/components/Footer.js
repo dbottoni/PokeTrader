@@ -11,6 +11,11 @@ function Footer() {
               <a>Home</a>
             </Link>
           </div>
+           <div className="column">
+            <Link to="/stripe">
+              <a>Donate to us!</a>
+            </Link>
+          </div>
           <div className="column">
             <Link to="/about">
               <a className="column">About PocketTrader</a>
