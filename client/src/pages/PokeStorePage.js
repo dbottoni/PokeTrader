@@ -22,6 +22,7 @@ import ConfirmAdd from '../components/ConfirmAdd';
 export default function PokeStorePage() {
   const { pokedex } = useContext(PokedexContext);
   // console.log(pokedex);
+  // pokedex.forEach(pokemon => {pokemon.push({"price":generatePokemonPrice(pokemon.base_experience)})});
 
   const {loading, data} = useQuery(GET_ME)
   const userData = data?.me || {};
