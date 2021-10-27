@@ -7,7 +7,7 @@
 * [Installation](#installation)
 * [Heroku Link](#heroku-link)
 * [Video Demo](#video-demonstration)
-* [Technology](#technology-used)
+* [Technology Used](#technology-used)
 * [Canva Presentation](#canva-presentation)
 * [Team Members](#the-team)
 * [Sources](#sources)
