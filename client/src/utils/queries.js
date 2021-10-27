@@ -6,29 +6,46 @@ export const GET_ME = gql`
     me {
         username
         email
+        balance
         pokemonList {
           _id
-          pokemonId
           name
-          images
-          stats
           level
-          type
-          cost  
+          images
+          type 
+          stats
         }
       }
 }`;
 
-export const QUERY_POKEMONS =gql`{
-      Pokemon {
-        _id
-        pokemonId
+export const GET_USERS = gql`
+{
+    users {
+      username
+      pokemonList {
         name
-        images
-        stats
         level
+        _id
+        images
         type
-        cost
-        username
+        stats
       }
-}`;
+    }
+}`
+
+export const GET_POKEMON = gql`
+query pokemons($username:String){
+  pokemons(username:$username){
+    _id
+    name
+    image
+    type
+    level
+    stats
+    cost
+  }
+}
+`
+
+// level
+// cost 

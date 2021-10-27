@@ -1,5 +1,4 @@
-//generate random level by base experience?
-//base xp, highest and lowest I see: 39-306(Blissy wtf?: 608 Chansey: 395)
+//generate random level by base experience
 export const generatePokemonLevel = (baseXP) => {
 
   let level = 1;
@@ -22,7 +21,6 @@ export const generatePokemonLevel = (baseXP) => {
   }
 };
 
-// console.log(generatePokemonLevel(142));
 
 //takes stats as array of base stats and returns actualized stats
 export const generatePokemonStats = (stats, level) => {
@@ -31,11 +29,13 @@ export const generatePokemonStats = (stats, level) => {
   let statRandomizer = Math.random() + Math.random();
 
   stats.map((stat) => {
-    return newStats.push(stat * statRandomizer + level);
+    return newStats.push(Math.floor(stat * statRandomizer + level));
   });
   return newStats;
 };
-// console.log(generatePokemonStats([83, 80, 75, 70, 70, 101], 38));
 
-// make these functions async and call them together when the pokemon is bought?
-//generatePokemonStats needs access to level
+
+export const generatePokemonPrice = (level) =>{
+    let price = Math.floor(Math.random()*(level-0.5*level)+0.5*level)
+    return price
+}

@@ -1,3 +1,4 @@
+
 const { Schema, model } = require('mongoose');
 
 const pokemonschema = new Schema({
@@ -6,10 +7,6 @@ const pokemonschema = new Schema({
       type: String,
       required:true,
     },
-  stats: [{
-    type: String,
-    required: true,
-  },],
   type: [{
     type: String,
     required: true,
@@ -19,19 +16,19 @@ const pokemonschema = new Schema({
     type: String,
     required:true
   },
-  //image linke: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<pokemonId>.png
+  //image link: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<pokemonId>.png
   images: [{
     type: String,
   }],
-  level:{
-    type:String
-  },
-  cost:{
-    type:String
-  },
-  username:{
+  stats:[{
     type: String,
-    required:true
+    required: true,
+  }],
+  level: {
+    type: String
+  },
+  cost: {
+    type: Number
   }
 },
 {
@@ -39,6 +36,6 @@ const pokemonschema = new Schema({
     getters: true
   }
 });
-const Pokemon = model('Pokemon',pokemonschema)
+const Pokemon = model('Pokemon', pokemonschema)
 
 module.exports = Pokemon;

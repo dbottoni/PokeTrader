@@ -4,21 +4,19 @@ const typeDefs = gql`
     type Pokemon{
         _id:ID
         name: String
-        stats: [String]
-        type:[String]
         pokemonId: String
-        images: [String]
         level: String
+        type:[String]
+        images: [String]
+        stats: [String]
         cost: Int
-        username:String
     }
     type User{
         _id: ID
         username: String
         email: String
-        balance: Int
-        pokemonCount: Int
         pokemonList: [Pokemon]
+        balance:Int
     }
     type Auth{
         token: ID!
@@ -32,9 +30,18 @@ const typeDefs = gql`
     type Mutation{
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        savePokemon(name:String!,stats: [String]!, type:[String]!,pokemonId:String!,images:[String]!,level:String!,cost:Int!): Pokemon
-        removePokemon(_id: String!): Pokemon
+        savePokemon(name:String!, type:[String]!, pokemonId:ID!, images:[String]! level:String, stats:[String],cost:Int): Pokemon
+        removePokemon(_id: ID!): Pokemon
+        addBalance(balance:Int!):User
+        removeUser(_id:ID!):User
     }
 `;
 
 module.exports = typeDefs;
+
+
+
+
+
+
+// cut from Pokemon: username:String, abilities: [String],  items: [String]

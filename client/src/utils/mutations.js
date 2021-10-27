@@ -19,22 +19,26 @@ export const ADD_USER = gql`
       user {
         _id
         username
+        email
+        pokemonList {
+          name
+          }
       }
     }
   }
 `;
 
 
-
-
 export const ADD_POKEMON = gql`
-  mutation savePokemon($id: ID!) {
-    savePokemon(pokemonId: $id) {
+  mutation savePokemon($_id: ID!, $name: String!, $level: String, $type: [String]!, $stats: [String], $images: [String]!, $cost:Int) {
+    savePokemon(pokemonId: $_id, name: $name, level: $level, type: $type, images: $images, stats: $stats, cost:$cost) {
       _id
-      pokeName
+      name
       images
       stats
       level
+      type
+      cost
     }
   }
 
@@ -42,6 +46,19 @@ export const ADD_POKEMON = gql`
 
 
 
-// export const REMOVE_POKEMON = gql`
-//   mutation removePokemon()
-// `
+export const REMOVE_POKEMON = gql`
+  mutation removePokemon($_id: ID!){
+    removePokemon(_id: $_id){
+      _id
+    }
+  }
+`
+
+export const ADD_BALANCE = gql`
+mutation addBalance($balance: Int!){
+  addBalance(balance: $balance) {
+    username
+    balance
+  }
+}
+`

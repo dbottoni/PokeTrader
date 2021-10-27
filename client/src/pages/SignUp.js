@@ -3,9 +3,14 @@ import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
 import { useMutation } from '@apollo/client';
 
-const Signup = () => {
-  const [formState, setFormState] = useState({username: '',email: '',password: ''});
 
+export default function SignUp() {
+  const [formState, setFormState] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [validated] = useState(false);
   const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleFormChange = (event) => {
@@ -19,6 +24,12 @@ const Signup = () => {
       const { data } = await addUser({
         variables: { ...formState }
       });
+
+      if (error) {
+        console.log(error);
+        throw new Error("something went wrong!");
+      }
+
       Auth.login(data.addUser.token);
       console.log(data)
     } catch (e) {
@@ -36,7 +47,7 @@ const Signup = () => {
 
       <div className="columns form-container m-6">
         <div className="column image-space">
-          <img className="oak-img" src="/images/oak.png" />
+          <img className="oak-img" src="/images/oak.png" alt="pokemon"/>
         </div>
 
         <div className="column">
@@ -44,7 +55,7 @@ const Signup = () => {
             <fieldset className="login-signup-form">
             <legend className="form-title ml-6">Sign Up</legend>
 
-              <form className="m-6"   onSubmit={handleFormSubmit}>
+              <form className="m-6" noValidate validated={validated}>
                 <div className="field mt-3">
                   <label className="label">First, what is your username?</label>
 
@@ -75,7 +86,7 @@ const Signup = () => {
 
                 <div className="field mt-3">
                   <label className="label">
-                    What do you want your password to be?
+                    What do you want your password to be?{" "}
                   </label>
 
                   <input
@@ -101,5 +112,3 @@ const Signup = () => {
     </div>
   );
 };
-
-export default Signup;

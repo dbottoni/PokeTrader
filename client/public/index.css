@@ -205,7 +205,7 @@ h1.form-header {
   font-size: 1.5em;
 }
 
-p.form-header {
+a.form-header {
   font-family: var(--header-font);
   font-size: .75em;
 }
@@ -213,4 +213,27 @@ p.form-header {
 a.link-on-white {
   font-family: var(--content-font);
   text-align: center;
+}
+
+legend.filter-title {
+  font-family: var(--header-font);
+  font-size: 1em;
+}
+
+.select {
+  display: flex;
+  justify-content: center;
+}
+
+.select.is-info:not(:hover)::after {
+  position: relative;
+}
+
+.user-team{
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.stats-list ul li{
+  list-style-type: none;
 }
