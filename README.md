@@ -3,16 +3,16 @@
 
 ### Table of Contents
 
-* [Description](description)
-* [Installation](Installation)
-* [Heroku Link](heroku-link)
-* [Video Demo](video-demonstration)
-* [Technology](technology-used)
+* [Description](#description)
+* [Installation](#installation)
+* [Heroku Link](#heroku-link)
+* [Video Demo](#video-demonstration)
+* [Technology](#technology-used)
 * [Presentation](#presentation)
 * [Team Members](#the-team)
-* [Sources](sources)
-* [Status](status)
-* [Credits](credits)
+* [Sources](#sources)
+* [Status](#status)
+* [Credits](#credits)
 
 ### Description
 
