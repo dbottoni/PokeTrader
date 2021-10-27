@@ -83,7 +83,7 @@ export default function PokeStorePage() {
 
   return (
     <div className="container">
-      <div className="m-6">
+      <div className="m-6 pokestore-form ">
         <h2 className="content has-text-centered">Add to Your Team</h2>
         <p className="content has-text-centered">
           Use the filter, then the slider, to choose the type and experience you
