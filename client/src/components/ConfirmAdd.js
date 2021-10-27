@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function ConfirmAdd(props) {
   const { modalState, setModalState, addToTeam } = props;

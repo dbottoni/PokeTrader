@@ -6,7 +6,7 @@ export default function Filters(props) {
   const { setRenderedPokemon } = props;
   const { pokedex } = useContext(PokedexContext);
   const [sliderValue, setSliderValue] = useState(0);
-  const [selectedType, setSelectedType] = useState("");
+  const [selectedType, setSelectedType] = useState(null);
 
   function handleSlider(e) {
     setSliderValue(e.target.value);
@@ -23,7 +23,7 @@ export default function Filters(props) {
   }, [sliderValue, selectedType, setRenderedPokemon, pokedex]);
 
   return (
-    <div className="select-container is-flex-wrap-nowrap is-justify-content-center">
+    <div className="select-container is-flex-wrap-nowrap is-justify-content-center" style={{marginTop: '20px', marginBottom: '15px'}}>
       <fieldset className="login-signup-form">
         <legend className="filter-title content has-text-centered">Filter</legend>
         <h3 className="content has-text-centered">Sort by Type:</h3>
