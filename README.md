@@ -59,11 +59,11 @@ $ npm start
 [Poke Trader Presentation Slides](link to slides)
 
 ### The Team
-* ReactDana Bottoni - Project Three Team Leader, Project Management Specialist (Leader of ALL THREE bootcamp projects)
-* Ben Gallagher - Provided concept for Pocket Trader application, Front-End and Back-End Specialist
-* Emily Necciai Mayeski - Provided project name of Pocket Trader, Github Specialist, Front-End,Framework and Structure Specialist
-* Baiyang Qi - Back-End Specialist, Logic/debugging and Data Specialist
-* Gaye Proctor - Presentation and Marketing Specialist, and a Code Newbie 
+* **Dana Bottoni** - 'Project Three' Team Leader, Project Management Specialist (Leader of ALL THREE bootcamp projects)
+* **Ben Gallagher** - Provided concept for Pocket Trader application, Front-End and Back-End Specialist
+* **Emily Necciai Mayeski** - Provided project name of Pocket Trader, Github Specialist, Front-End,Framework and Structure Specialist
+* **Baiyang Qi** - Back-End Specialist, Logic/debugging and Data Specialist
+* **Gaye Proctor** - Presentation and Marketing Specialist, and a Code Newbie 
 
 
 ### Sources
