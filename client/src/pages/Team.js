@@ -74,7 +74,7 @@ const Team = () => {
           ownedPokemon.map((pokemon) => {
             return (
               <div
-                className="card column is-one-third"
+                className="card column is-one-fifth"
                 style={{ backgroundColor: setCardColor(pokemon.type[0]) }}
                 key={pokemon._id}
               >
@@ -109,7 +109,6 @@ const Team = () => {
                       <li>Special Attack: {pokemon.stats[3]}</li>
                       <li>Special Defense: {pokemon.stats[4]}</li>
                       <li>Speed: {pokemon.stats[5]}</li>
-                      <li>Price: ${pokemon.cost}</li>
                     </ul>
                   </div>
                 <span className='card-footer'><button

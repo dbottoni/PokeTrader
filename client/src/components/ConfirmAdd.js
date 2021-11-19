@@ -38,7 +38,7 @@ export default function ConfirmAdd(props) {
           <div className="modal-card">
             <header className="modal-card-head">
               <p className="modal-card-title">Purchase this Pokemon? </p>
-              <button className="delete" aria-label="close"></button>
+              <button className="delete" aria-label="close" onClick={() => setModalState({modalOpen: false})}></button>
             </header>
             <section className="modal-card-body">
               <img
@@ -56,7 +56,7 @@ export default function ConfirmAdd(props) {
                   setModalState({ modalOpen: false });
                 }}
               >
-                Cost ${modalState.price} to Purchase {modalState.name}
+               ${modalState.price} to Purchase
               </button>
               <button
                 className="button is-danger"

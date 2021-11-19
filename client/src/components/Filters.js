@@ -13,7 +13,9 @@ export default function Filters(props) {
   }
 
   function handleTypeFilter(e) {
-    setSelectedType(e.target.value);
+    // if no filter chosen, type = null  
+    const type = e.target.value === "Select Type" ? null : e.target.value
+    setSelectedType(type);
   }
 
   useEffect(() => {
@@ -30,7 +32,7 @@ export default function Filters(props) {
 
         <div className="dropdown select is-info mt-6 mb-6">
           <select onChange={handleTypeFilter} value={selectedType}>
-            <option>Select Type</option>
+            <option>Select Type</option> 
             <option value="fire">Fire</option>
             <option value="water">Water</option>
             <option value="grass">Grass</option>

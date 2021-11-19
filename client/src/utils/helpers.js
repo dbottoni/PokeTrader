@@ -74,7 +74,7 @@ export const sortPokedex = (pokedex, type, xp) => {
     pokedex.map((pokemon) => {
       for (let i = 0; i < pokemon.types.length; i++) {
         if (pokemon.types[i].type.name === type) {
-          filteredPokedex.push(pokemon);
+           filteredPokedex.push(pokemon);
         }
       }
     });

@@ -11,7 +11,7 @@
     "seed": "cd server && npm run seed",
     "heroku-postbuild": "cd client && npm run build",
     "build": "cd client && npm run build",
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\""
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run start\""
   },
   "keywords": [],
   "author": "",
